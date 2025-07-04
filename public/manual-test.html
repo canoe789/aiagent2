@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Test - HELIX AI</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        textarea { 
+            width: 100%; 
+            height: 80px; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 16px; 
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+            cursor: pointer; 
+            margin: 5px 0;
+        }
+        button:hover { background: #218838; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        #result { 
+            margin-top: 20px; 
+            padding: 15px; 
+            background: #f8f9fa; 
+            border-radius: 4px;
+            min-height: 100px; 
+            white-space: pre-wrap; 
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .info { color: #17a2b8; }
+        .log { 
+            background: #e9ecef; 
+            padding: 10px; 
+            margin-top: 10px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🧪 HELIX AI 手动测试</h2>
+        
+        <textarea id="testInput" placeholder="输入测试消息...">设计一个简单的博客首页</textarea>
+        
+        <button onclick="runQuickTest()">快速测试</button>
+        <button onclick="runHealthCheck()">健康检查</button>
+        <button onclick="clearResult()">清空结果</button>
+        
+        <div id="result" class="info">点击按钮开始测试...</div>
+        <div id="log" class="log">日志将显示在这里...</div>
+    </div>
+
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${timestamp}] ${message}\n`;
+            console.log(`[LOG] ${message}`);
+        }
+        
+        function setResult(message, className = '') {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = message;
+            resultDiv.className = className;
+        }
+        
+        function clearResult() {
+            document.getElementById('result').textContent = '已清空结果...';
+            document.getElementById('result').className = 'info';
+            document.getElementById('log').innerHTML = '日志已清空...\n';
+            log('结果和日志已清空');
+        }
+        
+        async function runHealthCheck() {
+            log('开始健康检查...');
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+                log(`健康检查响应: ${response.status}`);
+                setResult('✅ 后端服务正常\n\n' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                log(`健康检查失败: ${error.message}`);
+                setResult('❌ 后端连接失败: ' + error.message, 'error');
+            }
+        }
+        
+        async function runQuickTest() {
+            log('开始快速测试...');
+            
+            const input = document.getElementById('testInput');
+            const message = input.value.trim();
+            
+            if (!message) {
+                log('输入为空');
+                setResult('❌ 请输入测试消息', 'error');
+                return;
+            }
+            
+            log(`发送消息: "${message}"`);
+            setResult('🤖 处理中，请稍候...', 'info');
+            
+            try {
+                const requestData = {
+                    message: message,
+                    type: 'general'
+                };
+                
+                log('发送POST请求到 /api/process');
+                const response = await fetch('/api/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                log(`响应状态: ${response.status} ${response.statusText}`);
+                
+                const data = await response.json();
+                log(`响应数据长度: ${JSON.stringify(data).length} 字符`);
+                
+                if (response.ok && data.success) {
+                    log('✅ 请求成功处理');
+                    let displayText = '✅ 测试成功！\n\n';
+                    
+                    if (data.result.type === 'COMPLETED') {
+                        displayText += `任务完成\n项目ID: ${data.result.projectId}\n`;
+                        displayText += `结果:\n${JSON.stringify(data.result.result, null, 2)}`;
+                    } else if (data.result.type === 'USER_CLARIFICATION_NEEDED') {
+                        displayText += `需要澄清\n项目ID: ${data.result.projectId}\n`;
+                        displayText += `消息: ${data.result.message}\n`;
+                        if (data.result.clarificationQuestions) {
+                            displayText += `问题:\n${data.result.clarificationQuestions.join('\n')}`;
+                        }
+                    } else {
+                        displayText += JSON.stringify(data.result, null, 2);
+                    }
+                    
+                    setResult(displayText, 'success');
+                } else {
+                    log(`❌ 请求失败: ${data.message || '未知错误'}`);
+                    setResult('❌ 处理失败: ' + (data.message || data.error || '未知错误'), 'error');
+                }
+            } catch (error) {
+                log(`❌ 网络错误: ${error.message}`);
+                setResult('❌ 网络错误: ' + error.message, 'error');
+            }
+        }
+        
+        // 页面加载完成后自动运行健康检查
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成');
+            setTimeout(runHealthCheck, 500);
+        });
+        
+        // 支持回车键发送
+        document.getElementById('testInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                log('检测到Ctrl+Enter快捷键');
+                runQuickTest();
+            }
+        });
+    </script>
+</body>
+</html>

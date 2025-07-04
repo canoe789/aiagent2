@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HELIX AI Test</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
+        textarea { width: 100%; height: 100px; padding: 10px; margin: 10px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 15px; font-size: 16px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:disabled { background: #ccc; }
+        #output { margin-top: 20px; padding: 20px; background: #f8f9fa; min-height: 200px; white-space: pre-wrap; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>HELIX AI 测试界面</h1>
+    
+    <textarea id="input" placeholder="请输入您的请求...">设计一个简单的博客首页</textarea>
+    
+    <button onclick="testAPI()">测试 API</button>
+    
+    <div id="output">点击按钮开始测试...</div>
+
+    <script>
+        function testAPI() {
+            console.log('Test button clicked');
+            
+            const input = document.getElementById('input');
+            const output = document.getElementById('output');
+            const button = document.querySelector('button');
+            
+            const message = input.value.trim();
+            if (!message) {
+                output.textContent = '请输入内容';
+                output.className = 'error';
+                return;
+            }
+            
+            button.disabled = true;
+            output.textContent = '正在处理...';
+            output.className = '';
+            
+            const data = {
+                message: message,
+                type: 'general'
+            };
+            
+            console.log('Sending data:', data);
+            
+            fetch('/api/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                console.log('Response received:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Data received:', data);
+                if (data.success) {
+                    output.textContent = '成功！\n\n' + JSON.stringify(data.result, null, 2);
+                    output.className = 'success';
+                } else {
+                    output.textContent = '错误: ' + (data.message || '未知错误');
+                    output.className = 'error';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                output.textContent = '网络错误: ' + error.message;
+                output.className = 'error';
+            })
+            .finally(() => {
+                button.disabled = false;
+            });
+        }
+        
+        // 页面加载完成后测试连接
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            
+            fetch('/health')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Health check OK:', data);
+                    document.getElementById('output').textContent = '✅ 后端连接正常，点击按钮测试 AI 功能';
+                })
+                .catch(error => {
+                    console.error('Health check failed:', error);
+                    document.getElementById('output').textContent = '❌ 后端连接失败: ' + error.message;
+                    document.getElementById('output').className = 'error';
+                });
+        });
+    </script>
+</body>
+</html>
