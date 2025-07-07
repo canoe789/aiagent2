@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: helix-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-helix}
+      POSTGRES_USER: ${POSTGRES_USER:-helix_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-helix_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-helix_user} -d ${POSTGRES_DB:-helix}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Application
+  api:
+    build: .
+    container_name: helix-api
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-helix}
+      - POSTGRES_USER=${POSTGRES_USER:-helix_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-helix_password}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  # Orchestrator Service
+  orchestrator:
+    build: .
+    container_name: helix-orchestrator
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-helix}
+      - POSTGRES_USER=${POSTGRES_USER:-helix_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-helix_password}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: python orchestrator/main.py
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  # Agent Workers (can be scaled)
+  agent-worker:
+    build: .
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=${POSTGRES_DB:-helix}
+      - POSTGRES_USER=${POSTGRES_USER:-helix_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-helix_password}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: python agents/worker.py
+    volumes:
+      - .:/app
+    restart: unless-stopped
+    scale: 2
+
+volumes:
+  postgres_data:

@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://helix.ai/schemas/CreativeBrief_v1.0.json",
+  "title": "Creative Brief",
+  "description": "Structured creative brief produced by the Creative Director Agent (AGENT_1)",
+  "type": "object",
+  "required": [
+    "project_overview",
+    "objectives",
+    "target_audience",
+    "creative_strategy",
+    "content_requirements",
+    "metadata"
+  ],
+  "properties": {
+    "project_overview": {
+      "type": "object",
+      "required": ["title", "type", "description", "key_themes"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Project title",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of project",
+          "enum": ["website", "application", "ecommerce", "portfolio", "corporate", "blog", "general_website"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Project description based on user input",
+          "minLength": 10,
+          "maxLength": 1000
+        },
+        "key_themes": {
+          "type": "array",
+          "description": "Key themes extracted from user requirements",
+          "items": {
+            "type": "string",
+            "enum": ["modern", "professional", "creative", "user-friendly", "premium", "tech", "minimalist", "innovative"]
+          },
+          "maxItems": 10
+        }
+      }
+    },
+    "objectives": {
+      "type": "object",
+      "required": ["primary_goal", "secondary_goals", "success_metrics"],
+      "properties": {
+        "primary_goal": {
+          "type": "string",
+          "description": "Main objective of the project",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "secondary_goals": {
+          "type": "array",
+          "description": "Additional objectives",
+          "items": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 200
+          },
+          "maxItems": 10
+        },
+        "success_metrics": {
+          "type": "array",
+          "description": "How success will be measured",
+          "items": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 100
+          },
+          "maxItems": 10
+        }
+      }
+    },
+    "target_audience": {
+      "type": "object",
+      "required": ["primary_audience", "audience_characteristics"],
+      "properties": {
+        "primary_audience": {
+          "type": "string",
+          "description": "Primary target audience",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "audience_characteristics": {
+          "type": "object",
+          "description": "Detailed audience characteristics",
+          "properties": {
+            "demographics": {"type": "string"},
+            "psychographics": {"type": "string"},
+            "behavior_patterns": {"type": "string"},
+            "pain_points": {"type": "string"},
+            "motivations": {"type": "string"}
+          }
+        },
+        "user_journey_stage": {
+          "type": "string",
+          "description": "Primary user journey stage being targeted",
+          "enum": ["awareness", "consideration", "decision", "retention", "advocacy"]
+        }
+      }
+    },
+    "creative_strategy": {
+      "type": "object",
+      "required": ["tone_of_voice", "key_messages", "creative_approach"],
+      "properties": {
+        "tone_of_voice": {
+          "type": "string",
+          "description": "Recommended tone of voice",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "key_messages": {
+          "type": "array",
+          "description": "Key messages to communicate",
+          "items": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 200
+          },
+          "maxItems": 10
+        },
+        "creative_approach": {
+          "type": "string",
+          "description": "Overall creative approach and strategy",
+          "minLength": 10,
+          "maxLength": 500
+        }
+      }
+    },
+    "content_requirements": {
+      "type": "object",
+      "required": ["content_types", "information_hierarchy"],
+      "properties": {
+        "content_types": {
+          "type": "array",
+          "description": "Types of content required",
+          "items": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+          },
+          "maxItems": 20
+        },
+        "information_hierarchy": {
+          "type": "object",
+          "description": "Information priority hierarchy",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        },
+        "call_to_action": {
+          "type": "string",
+          "description": "Primary call to action",
+          "minLength": 2,
+          "maxLength": 100
+        }
+      }
+    },
+    "constraints_and_considerations": {
+      "type": "object",
+      "properties": {
+        "technical_constraints": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "brand_guidelines": {
+          "type": "string"
+        },
+        "accessibility_requirements": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "timeline_considerations": {
+          "type": "string"
+        }
+      }
+    },
+    "next_steps": {
+      "type": "object",
+      "properties": {
+        "immediate_actions": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "deliverables_expected": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_by", "version"],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Agent that created this brief"
+        },
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Agent's confidence in the brief quality"
+        },
+        "processing_notes": {
+          "type": "string",
+          "description": "Additional processing information"
+        }
+      }
+    }
+  }
+}

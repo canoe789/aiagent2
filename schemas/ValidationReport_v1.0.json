@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://helix.ai/schemas/ValidationReport_v1.0.json",
+  "title": "Validation Report",
+  "description": "Quality validation report produced by the QA Compliance Agent (AGENT_4)",
+  "type": "object",
+  "required": [
+    "validation_passed",
+    "overall_score",
+    "checks_performed",
+    "compliance_status"
+  ],
+  "properties": {
+    "validation_passed": {
+      "type": "boolean",
+      "description": "Whether overall validation passed"
+    },
+    "overall_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Overall quality score"
+    },
+    "checks_performed": {
+      "type": "object",
+      "required": ["html_validation", "css_validation", "accessibility"],
+      "properties": {
+        "html_validation": {
+          "type": "object",
+          "required": ["passed", "score"],
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "severity": {"type": "string", "enum": ["error", "warning", "info"]},
+                  "message": {"type": "string"},
+                  "line": {"type": "integer"},
+                  "column": {"type": "integer"}
+                }
+              }
+            },
+            "validator_used": {"type": "string"},
+            "standards_checked": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "css_validation": {
+          "type": "object",
+          "required": ["passed", "score"],
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "severity": {"type": "string", "enum": ["error", "warning", "info"]},
+                  "message": {"type": "string"},
+                  "property": {"type": "string"},
+                  "value": {"type": "string"}
+                }
+              }
+            },
+            "vendor_prefixes": {
+              "type": "object",
+              "properties": {
+                "missing": {"type": "array", "items": {"type": "string"}},
+                "unnecessary": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "accessibility": {
+          "type": "object",
+          "required": ["passed", "score", "wcag_level"],
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "wcag_level": {"type": "string", "enum": ["A", "AA", "AAA"]},
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "severity": {"type": "string", "enum": ["error", "warning", "info"]},
+                  "guideline": {"type": "string"},
+                  "message": {"type": "string"},
+                  "element": {"type": "string"},
+                  "fix_suggestion": {"type": "string"}
+                }
+              }
+            },
+            "color_contrast": {
+              "type": "object",
+              "properties": {
+                "passed": {"type": "boolean"},
+                "ratio": {"type": "number"},
+                "minimum_required": {"type": "number"}
+              }
+            },
+            "keyboard_navigation": {
+              "type": "object",
+              "properties": {
+                "passed": {"type": "boolean"},
+                "focus_indicators": {"type": "boolean"},
+                "tab_order": {"type": "boolean"}
+              }
+            },
+            "screen_reader": {
+              "type": "object",
+              "properties": {
+                "semantic_markup": {"type": "boolean"},
+                "aria_labels": {"type": "boolean"},
+                "alt_texts": {"type": "boolean"}
+              }
+            }
+          }
+        },
+        "performance": {
+          "type": "object",
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "metrics": {
+              "type": "object",
+              "properties": {
+                "estimated_load_time": {"type": "string"},
+                "css_size": {"type": "string"},
+                "html_size": {"type": "string"},
+                "js_size": {"type": "string"},
+                "total_size": {"type": "string"}
+              }
+            },
+            "optimizations": {
+              "type": "object",
+              "properties": {
+                "minification": {"type": "boolean"},
+                "compression": {"type": "boolean"},
+                "critical_css": {"type": "boolean"},
+                "lazy_loading": {"type": "boolean"}
+              }
+            },
+            "recommendations": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        },
+        "responsive_design": {
+          "type": "object",
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "breakpoints_tested": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "viewport_meta": {"type": "boolean"},
+            "flexible_layouts": {"type": "boolean"},
+            "touch_targets": {
+              "type": "object",
+              "properties": {
+                "minimum_size": {"type": "boolean"},
+                "spacing": {"type": "boolean"}
+              }
+            }
+          }
+        },
+        "browser_compatibility": {
+          "type": "object",
+          "properties": {
+            "passed": {"type": "boolean"},
+            "score": {"type": "integer", "minimum": 0, "maximum": 100},
+            "tested_browsers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "browser": {"type": "string"},
+                  "version": {"type": "string"},
+                  "passed": {"type": "boolean"},
+                  "issues": {"type": "array", "items": {"type": "string"}}
+                }
+              }
+            },
+            "polyfills_needed": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "description": "Recommendations for improvement",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priority": {"type": "string", "enum": ["high", "medium", "low"]},
+          "category": {"type": "string", "enum": ["accessibility", "performance", "seo", "usability", "maintainability"]},
+          "message": {"type": "string"},
+          "fix_effort": {"type": "string", "enum": ["minimal", "moderate", "significant"]},
+          "impact": {"type": "string", "enum": ["high", "medium", "low"]}
+        }
+      }
+    },
+    "compliance_status": {
+      "type": "object",
+      "required": ["wcag_aa", "html5_standards", "css3_standards", "mobile_friendly"],
+      "properties": {
+        "wcag_aa": {
+          "type": "boolean",
+          "description": "WCAG 2.1 AA compliance"
+        },
+        "wcag_aaa": {
+          "type": "boolean",
+          "description": "WCAG 2.1 AAA compliance"
+        },
+        "html5_standards": {
+          "type": "boolean",
+          "description": "HTML5 standards compliance"
+        },
+        "css3_standards": {
+          "type": "boolean",
+          "description": "CSS3 standards compliance"
+        },
+        "mobile_friendly": {
+          "type": "boolean",
+          "description": "Mobile-friendly design"
+        },
+        "seo_basics": {
+          "type": "boolean",
+          "description": "Basic SEO requirements met"
+        },
+        "security_headers": {
+          "type": "boolean",
+          "description": "Security headers implemented"
+        }
+      }
+    },
+    "detailed_analysis": {
+      "type": "object",
+      "properties": {
+        "code_quality": {
+          "type": "object",
+          "properties": {
+            "structure": {"type": "string"},
+            "maintainability": {"type": "string"},
+            "readability": {"type": "string"},
+            "best_practices": {"type": "string"}
+          }
+        },
+        "user_experience": {
+          "type": "object",
+          "properties": {
+            "navigation": {"type": "string"},
+            "content_hierarchy": {"type": "string"},
+            "visual_design": {"type": "string"},
+            "interaction_design": {"type": "string"}
+          }
+        },
+        "technical_excellence": {
+          "type": "object",
+          "properties": {
+            "semantic_markup": {"type": "string"},
+            "css_organization": {"type": "string"},
+            "performance_considerations": {"type": "string"},
+            "scalability": {"type": "string"}
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_by", "version"],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Agent that created this report"
+        },
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "validation_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When validation was performed"
+        },
+        "tools_used": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Validation tools and services used"
+        },
+        "validation_duration": {
+          "type": "string",
+          "description": "Time taken for validation"
+        },
+        "confidence_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence in validation results"
+        }
+      }
+    }
+  }
+}

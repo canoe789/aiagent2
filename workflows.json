@@ -1,0 +1,53 @@
+{
+  "workflow_version": "1.0",
+  "description": "Project HELIX standard creative production workflow",
+  "agents": [
+    {
+      "id": "AGENT_1",
+      "name": "Creative Director",
+      "description": "Transforms user requirements into structured creative briefs",
+      "input_artifacts": [],
+      "output_artifact": "creative_brief"
+    },
+    {
+      "id": "AGENT_2", 
+      "name": "Visual Director",
+      "description": "Creates visual concepts based on creative briefs",
+      "input_artifacts": ["creative_brief"],
+      "output_artifact": "visual_explorations"
+    },
+    {
+      "id": "AGENT_3",
+      "name": "Frontend Engineer", 
+      "description": "Generates HTML/CSS code from creative and visual inputs",
+      "input_artifacts": ["creative_brief", "visual_explorations"],
+      "output_artifact": "frontend_code"
+    },
+    {
+      "id": "AGENT_4",
+      "name": "QAQC Bot",
+      "description": "Validates generated code quality and compliance",
+      "input_artifacts": ["frontend_code"],
+      "output_artifact": "validation_report"
+    },
+    {
+      "id": "AGENT_5",
+      "name": "Meta-Optimizer",
+      "description": "Analyzes failures and optimizes system performance",
+      "input_artifacts": [],
+      "output_artifact": "optimization_proposal",
+      "trigger": "on_failure"
+    }
+  ],
+  "execution_order": [
+    "AGENT_1",
+    "AGENT_2", 
+    "AGENT_3",
+    "AGENT_4"
+  ],
+  "failure_handling": {
+    "max_retries": 3,
+    "retry_delay_seconds": 30,
+    "escalation_agent": "AGENT_5"
+  }
+}

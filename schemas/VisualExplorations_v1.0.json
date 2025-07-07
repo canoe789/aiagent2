@@ -1,0 +1,208 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://helix.ai/schemas/VisualExplorations_v1.0.json",
+  "title": "Visual Explorations",
+  "description": "Visual concepts and design direction produced by the Visual Director Agent (AGENT_2)",
+  "type": "object",
+  "required": [
+    "visual_themes",
+    "style_direction",
+    "color_palette",
+    "typography",
+    "layout_principles",
+    "visual_elements",
+    "metadata"
+  ],
+  "properties": {
+    "visual_themes": {
+      "type": "array",
+      "description": "Three distinct visual themes representing different philosophical approaches",
+      "items": {
+        "type": "object",
+        "required": ["theme_name", "design_philosophy", "color_and_typography", "layout_and_graphics", "key_slide_archetype"],
+        "properties": {
+          "theme_name": {
+            "type": "string",
+            "description": "Name of the visual theme",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "design_philosophy": {
+            "type": "string",
+            "description": "Philosophical approach and reasoning behind the theme",
+            "minLength": 20,
+            "maxLength": 1000
+          },
+          "color_and_typography": {
+            "type": "string",
+            "description": "Color scheme and typography recommendations",
+            "minLength": 10,
+            "maxLength": 500
+          },
+          "layout_and_graphics": {
+            "type": "string",
+            "description": "Layout principles and graphic elements",
+            "minLength": 10,
+            "maxLength": 500
+          },
+          "key_slide_archetype": {
+            "type": "string",
+            "description": "Signature slide or screen design example",
+            "minLength": 10,
+            "maxLength": 500
+          }
+        }
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "style_direction": {
+      "type": "string",
+      "description": "Overall visual style direction",
+      "minLength": 10,
+      "maxLength": 500
+    },
+    "color_palette": {
+      "type": "array",
+      "description": "Primary color palette in hex format",
+      "items": {
+        "type": "string",
+        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+        "description": "Hex color code"
+      },
+      "minItems": 2,
+      "maxItems": 10
+    },
+    "typography": {
+      "type": "object",
+      "required": ["primary_font", "font_scale"],
+      "properties": {
+        "primary_font": {
+          "type": "string",
+          "description": "Primary font family",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "secondary_font": {
+          "type": "string",
+          "description": "Secondary font family",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "font_scale": {
+          "type": "string",
+          "description": "Typographic scale system",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "font_weights": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 900
+          }
+        }
+      }
+    },
+    "layout_principles": {
+      "type": "array",
+      "description": "Key layout and composition principles",
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 200
+      },
+      "minItems": 1,
+      "maxItems": 15
+    },
+    "visual_elements": {
+      "type": "object",
+      "required": ["iconography"],
+      "properties": {
+        "iconography": {
+          "type": "string",
+          "description": "Icon style and approach",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "imagery": {
+          "type": "string",
+          "description": "Photography/illustration style",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "graphics": {
+          "type": "string",
+          "description": "Graphic elements and patterns",
+          "minLength": 5,
+          "maxLength": 200
+        },
+        "buttons_and_interactions": {
+          "type": "object",
+          "properties": {
+            "button_style": {"type": "string"},
+            "hover_effects": {"type": "string"},
+            "animation_approach": {"type": "string"}
+          }
+        }
+      }
+    },
+    "responsive_approach": {
+      "type": "string",
+      "description": "Responsive design strategy",
+      "minLength": 5,
+      "maxLength": 200
+    },
+    "accessibility_considerations": {
+      "type": "array",
+      "description": "Accessibility design considerations",
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 200
+      }
+    },
+    "brand_alignment": {
+      "type": "object",
+      "properties": {
+        "brand_personality": {"type": "string"},
+        "visual_metaphors": {"type": "array", "items": {"type": "string"}},
+        "competitive_differentiation": {"type": "string"}
+      }
+    },
+    "mood_and_atmosphere": {
+      "type": "object",
+      "properties": {
+        "emotional_tone": {"type": "string"},
+        "user_feeling_goals": {"type": "array", "items": {"type": "string"}},
+        "visual_references": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["created_by", "version"],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Agent that created this exploration"
+        },
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "design_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence in design direction"
+        },
+        "inspiration_sources": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Design inspiration sources"
+        }
+      }
+    }
+  }
+}

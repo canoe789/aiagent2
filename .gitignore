@@ -57,6 +57,13 @@ __pycache__/
 .Python
 venv/
 env/
+helix_env/
+*.pyc
+.pytest_cache/
 
 # Project specific
 .ports.env
+demo_presentation.html
+prompt.txt
+test_db_simple.py
+quick_test_ai.py
