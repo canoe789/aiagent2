@@ -12,10 +12,10 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-from database.connection import db_manager, get_db_connection
-from database.models import JobCreate, JobResponse, Job, Task
-from api.jobs import jobs_router
-from api.health import health_router
+from src.database.connection import db_manager, get_db_connection
+from src.database.models import JobCreate, JobResponse, Job, Task
+from src.api.jobs import jobs_router
+from src.api.health import health_router
 
 # Configure structured logging
 structlog.configure(

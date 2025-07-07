@@ -7,9 +7,9 @@ import structlog
 import json
 from typing import Dict, Any
 
-from sdk.agent_sdk import BaseAgent
-from database.models import TaskInput, TaskOutput
-from ai_clients.client_factory import AIClientFactory
+from src.sdk.agent_sdk import BaseAgent
+from src.database.models import TaskInput, TaskOutput
+from src.ai_clients.client_factory import AIClientFactory
 
 logger = structlog.get_logger(__name__)
 

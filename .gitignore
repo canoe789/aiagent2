@@ -61,9 +61,7 @@ helix_env/
 *.pyc
 .pytest_cache/
 
-# Project specific
-.ports.env
-demo_presentation.html
-prompt.txt
-test_db_simple.py
-quick_test_ai.py
+# Project specific - tmp/ directory contains all temporary files
+tmp/
+config/*.env
+config/docker-compose.override.yml

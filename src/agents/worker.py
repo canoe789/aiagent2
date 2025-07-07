@@ -7,8 +7,8 @@ import asyncio
 import structlog
 from typing import Dict
 
-from sdk.agent_sdk import AgentWorker, BaseAgent
-from agents.creative_director import CreativeDirectorAgent
+from src.sdk.agent_sdk import AgentWorker, BaseAgent
+from src.agents.creative_director import CreativeDirectorAgent
 
 logger = structlog.get_logger(__name__)
 
@@ -20,7 +20,7 @@ class MockVisualDirectorAgent(BaseAgent):
         super().__init__("AGENT_2")
     
     async def process_task(self, task_input):
-        from database.models import TaskOutput
+        from src.database.models import TaskOutput
         
         # Get creative brief from artifacts
         artifacts = await self.get_artifacts(task_input.artifacts)
@@ -69,7 +69,7 @@ class MockFrontendEngineerAgent(BaseAgent):
         super().__init__("AGENT_3")
     
     async def process_task(self, task_input):
-        from database.models import TaskOutput
+        from src.database.models import TaskOutput
         
         # Get creative brief and visual concepts from artifacts
         artifacts = await self.get_artifacts(task_input.artifacts)
@@ -292,7 +292,7 @@ class MockQAAgent(BaseAgent):
         super().__init__("AGENT_4")
     
     async def process_task(self, task_input):
-        from database.models import TaskOutput
+        from src.database.models import TaskOutput
         
         # Get frontend code from artifacts
         artifacts = await self.get_artifacts(task_input.artifacts)

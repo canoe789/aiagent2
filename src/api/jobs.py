@@ -7,8 +7,8 @@ from typing import Optional, List
 import structlog
 from datetime import datetime
 
-from database.connection import get_db_connection
-from database.models import (
+from src.database.connection import get_db_connection
+from src.database.models import (
     JobCreate, JobResponse, Job, Task, JobStatus, TaskStatus
 )
 

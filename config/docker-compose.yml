@@ -13,7 +13,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../database/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-helix_user} -d ${POSTGRES_DB:-helix}"]
       interval: 10s
@@ -22,7 +22,9 @@ services:
 
   # FastAPI Application
   api:
-    build: .
+    build:
+      context: ..
+      dockerfile: config/Dockerfile
     container_name: helix-api
     ports:
       - "8000:8000"
@@ -37,9 +39,10 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
-      - .:/app
+      - ../src:/app/src
+      - ../tmp:/app/tmp
     restart: unless-stopped
 
   # Orchestrator Service

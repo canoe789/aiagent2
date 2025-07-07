@@ -9,10 +9,10 @@ import structlog
 from datetime import datetime
 from typing import Dict, List, Optional
 
-from database.connection import db_manager
-from database.models import JobStatus, TaskStatus, Task, Job
-from orchestrator.workflow_engine import WorkflowEngine
-from api.settings import settings
+from src.database.connection import db_manager
+from src.database.models import JobStatus, TaskStatus, Task, Job
+from src.orchestrator.workflow_engine import WorkflowEngine
+from src.api.settings import settings
 
 logger = structlog.get_logger(__name__)
 

@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from datetime import datetime
 import structlog
 
-from database.connection import get_db_connection
+from src.database.connection import get_db_connection
 
 logger = structlog.get_logger(__name__)
 health_router = APIRouter(tags=["Health"])

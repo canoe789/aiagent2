@@ -12,8 +12,8 @@ import json
 import jsonschema
 import os
 
-from database.connection import db_manager
-from database.models import (
+from src.database.connection import db_manager
+from src.database.models import (
     Task, TaskStatus, TaskInput, TaskOutput, 
     Artifact, AgentPrompt
 )
