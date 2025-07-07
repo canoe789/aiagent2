@@ -47,7 +47,9 @@ services:
 
   # Orchestrator Service
   orchestrator:
-    build: .
+    build:
+      context: ..
+      dockerfile: config/Dockerfile
     container_name: helix-orchestrator
     environment:
       - POSTGRES_HOST=postgres
@@ -67,7 +69,9 @@ services:
 
   # Agent Workers (can be scaled)
   agent-worker:
-    build: .
+    build:
+      context: ..
+      dockerfile: config/Dockerfile
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432

@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evolution Proposal v1.0",
+  "description": "AGENT_5系统诊断与进化工程师的输出Schema - 系统进化提案",
+  "type": "object",
+  "required": [
+    "evolution_proposal_id",
+    "failure_analysis", 
+    "corrective_action_plan",
+    "validation_summary",
+    "metadata"
+  ],
+  "properties": {
+    "evolution_proposal_id": {
+      "type": "string",
+      "description": "进化提案唯一标识符",
+      "pattern": "^EVO-SYS-\\d{8}-\\d{3}$"
+    },
+    "failure_analysis": {
+      "type": "object",
+      "description": "失败分析结果",
+      "required": ["case_study_id", "root_cause_diagnosis"],
+      "properties": {
+        "case_study_id": {
+          "type": "string",
+          "description": "分析案例标识符"
+        },
+        "root_cause_diagnosis": {
+          "type": "object",
+          "description": "根本原因诊断",
+          "required": ["summary", "primary_culprit"],
+          "properties": {
+            "summary": {
+              "type": "string",
+              "description": "失败原因总结",
+              "minLength": 50
+            },
+            "primary_culprit": {
+              "type": "object",
+              "description": "主要责任方",
+              "required": ["agent_id", "responsibility_share", "specific_prompt_flaw"],
+              "properties": {
+                "agent_id": {
+                  "type": "string",
+                  "enum": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5"]
+                },
+                "responsibility_share": {
+                  "type": "string",
+                  "pattern": "^\\d{1,2}%$"
+                },
+                "specific_prompt_flaw": {
+                  "type": "string",
+                  "description": "具体的提示词缺陷描述",
+                  "minLength": 20
+                }
+              }
+            },
+            "secondary_culprit": {
+              "type": "object",
+              "description": "次要责任方(可选)",
+              "properties": {
+                "agent_id": {
+                  "type": "string",
+                  "enum": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5"]
+                },
+                "responsibility_share": {
+                  "type": "string",
+                  "pattern": "^\\d{1,2}%$"
+                },
+                "specific_prompt_flaw": {
+                  "type": "string",
+                  "minLength": 20
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "corrective_action_plan": {
+      "type": "object",
+      "description": "纠正措施计划",
+      "required": ["hypothesis", "proposed_modifications"],
+      "properties": {
+        "hypothesis": {
+          "type": "string",
+          "description": "修复假设",
+          "minLength": 30
+        },
+        "proposed_modifications": {
+          "type": "array",
+          "description": "提议的修改措施",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["target_agent_id", "new_prompt_version_id", "change_summary", "full_new_prompt"],
+            "properties": {
+              "target_agent_id": {
+                "type": "string",
+                "enum": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5"]
+              },
+              "new_prompt_version_id": {
+                "type": "string",
+                "pattern": "^v\\d+\\.\\d+\\.\\d+$"
+              },
+              "change_summary": {
+                "type": "string",
+                "description": "变更总结",
+                "minLength": 20
+              },
+              "full_new_prompt": {
+                "type": "string",
+                "description": "完整的新提示词",
+                "minLength": 100
+              }
+            }
+          }
+        }
+      }
+    },
+    "validation_summary": {
+      "type": "object",
+      "description": "验证总结",
+      "required": ["experiment_result", "net_impact_assessment", "recommendation"],
+      "properties": {
+        "experiment_result": {
+          "type": "string",
+          "enum": ["SUCCESS", "PARTIAL_SUCCESS", "FAILURE", "INCONCLUSIVE"]
+        },
+        "net_impact_assessment": {
+          "type": "string",
+          "description": "净影响评估",
+          "minLength": 50
+        },
+        "recommendation": {
+          "type": "string",
+          "enum": [
+            "APPROVE_AND_DEPLOY_ALL_PROPOSED_MODIFICATIONS",
+            "APPROVE_SELECTED_MODIFICATIONS_ONLY", 
+            "REJECT_AND_REDESIGN_APPROACH",
+            "REQUIRE_ADDITIONAL_VALIDATION"
+          ]
+        },
+        "additional_validation_notes": {
+          "type": "string",
+          "description": "附加验证说明(可选)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "元数据信息",
+      "required": ["created_by", "version", "diagnosis_timestamp"],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "const": "AGENT_5"
+        },
+        "version": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "diagnosis_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "诊断时间戳"
+        },
+        "analyzed_agents": {
+          "type": "array",
+          "description": "分析过的Agent列表",
+          "items": {
+            "type": "string",
+            "enum": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"]
+          }
+        },
+        "diagnosis_confidence": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1.0,
+          "description": "诊断置信度"
+        },
+        "processing_notes": {
+          "type": "string",
+          "description": "处理备注"
+        }
+      }
+    }
+  }
+}

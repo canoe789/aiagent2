@@ -87,8 +87,8 @@ HELIX 系统的核心是一个围绕中心状态数据库（PostgreSQL）构建�
 
 - **AGENT_1: 创意总监 (Creative Director):** 将用户模糊的自然语言需求，转化为结构化的、充满故事性的**《创作蓝图》**。
 - **AGENT_2: 视觉总监 (Visual Director):** 基于《创作蓝图》，构想并产出多个风格迥异的**《视觉概念》**。
-- **AGENT_3: 前端工程师 (Frontend Engineer):** 融合《创作蓝图》与选定的《视觉概念》，生成最终的 **HTML 和 CSS 代码**。
-- **AGENT_4: 质量保证机器人 (QAQC Bot):** 对生成的代码进行自动化验证，输出一份**《验证报告》**。
+- **AGENT_3: 首席叙事架构师 (Chief Narrative Architect):** 融合《创作蓝图》与选定的《视觉概念》，构建结构化的**《演示文稿蓝图》**。
+- **AGENT_4: 首席原则审计官 (Chief Principles Auditor):** 对演示文稿蓝图进行原则性审计，输出详尽的**《审计报告》**。
 - **AGENT_5: 元优化师 (Meta-Optimizer):** 分析失败的作业历史，诊断根本原因，并提出**《系统优化提案》**以改进其他代理的未来表现。
 
 ## **4. 技术实现与规范 (Technical Implementation & Specifications)**
@@ -163,12 +163,12 @@ HELIX 系统的核心是一个围绕中心状态数据库（PostgreSQL）构建�
 - **AGENT_3: 首席叙事架构师 (Chief Narrative Architect)**
     - **读取 input_data:** {"artifacts": [{"name": "creative_brief", "source_task_id": 101}, {"name": "visual_explorations", "source_task_id": 102}], "params": {"prompt_version_to_use": "..."}}
     - **写入 output_data:** {"schema_id": "PresentationBlueprint_v1.0", "payload": {...}}
-- **AGENT_4: 质量保证机器人 (QAQC Bot)**
-    - **读取 input_data:** {"artifacts": [{"name": "presentation_blueprint", "source_task_id": 103}], "params": {}}
-    - **写入 output_data:** {"schema_id": "ValidationReport_v1.0", "payload": {...}}
-- **AGENT_5: 元优化师 (Meta-Optimizer)**
-    - **读取 input_data:** {"artifacts": [], "params": {"failed_job_id": 42}}
-    - **写入 output_data:** {"schema_id": "OptimizationProposal_v1.0", "payload": {...}}
+- **AGENT_4: 首席原则审计官 (Chief Principles Auditor)**
+    - **读取 input_data:** {"artifacts": [{"name": "presentation_blueprint", "source_task_id": 103}, {"name": "creative_brief", "source_task_id": 101}, {"name": "visual_explorations", "source_task_id": 102}], "params": {}}
+    - **写入 output_data:** {"schema_id": "AuditReport_v1.0", "payload": {...}}
+- **AGENT_5: 系统诊断与进化工程师 (Chief Evolution Engineer)**
+    - **读取 input_data:** {"artifacts": [{"name": "system_failure_case", "source_task_id": 501}, {"name": "audit_report", "source_task_id": 401}], "params": {"analysis_depth": "comprehensive"}}
+    - **写入 output_data:** {"schema_id": "EvolutionProposal_v1.0", "payload": {...}}
 
 ### **4.4 数据库核心 Schema (Database Core Schema)**
 

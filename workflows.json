@@ -18,25 +18,25 @@
     },
     {
       "id": "AGENT_3",
-      "name": "Frontend Engineer", 
-      "description": "Generates HTML/CSS code from creative and visual inputs",
+      "name": "Chief Narrative Architect", 
+      "description": "Transforms creative and visual concepts into presentation blueprints",
       "input_artifacts": ["creative_brief", "visual_explorations"],
-      "output_artifact": "frontend_code"
+      "output_artifact": "presentation_blueprint"
     },
     {
       "id": "AGENT_4",
-      "name": "QAQC Bot",
-      "description": "Validates generated code quality and compliance",
-      "input_artifacts": ["frontend_code"],
-      "output_artifact": "validation_report"
+      "name": "Chief Principles Auditor",
+      "description": "Audits presentation blueprints for principle compliance",
+      "input_artifacts": ["presentation_blueprint", "creative_brief", "visual_explorations"],
+      "output_artifact": "audit_report"
     },
     {
       "id": "AGENT_5",
-      "name": "Meta-Optimizer",
-      "description": "Analyzes failures and optimizes system performance",
-      "input_artifacts": [],
-      "output_artifact": "optimization_proposal",
-      "trigger": "on_failure"
+      "name": "Chief Evolution Engineer",
+      "description": "Diagnoses system failures and generates evolution proposals",
+      "input_artifacts": ["system_failure_case", "audit_report"],
+      "output_artifact": "evolution_proposal",
+      "trigger": "on_systematic_failure"
     }
   ],
   "execution_order": [
