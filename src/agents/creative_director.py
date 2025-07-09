@@ -135,13 +135,23 @@ The JSON must follow this exact structure:
   "content_requirements": {{
     "content_types": ["string1", "string2"],
     "information_hierarchy": {{
-      "primary": 1,
-      "secondary": 2,
-      "tertiary": 3
+      "Core troubleshooting procedures": 9,
+      "System safety protocols": 8,
+      "Port management methods": 7,
+      "Documentation requirements": 6,
+      "Advanced configuration": 5
     }},
     "call_to_action": "string"
   }}
 }}
+
+CRITICAL: For information_hierarchy field specifically:
+- KEYS must be topic names derived from user input (strings)
+- VALUES must be priority scores 1-10 (integers, where 10 = highest importance)
+- Analyze the user's requirements to identify relevant topics
+- Assign priority based on importance to project success
+- DO NOT use generic labels like 'primary' or 'secondary' as keys
+- DO NOT put descriptive text as values
 
 Remember: Follow your three-act thinking process internally, but output ONLY the final JSON result."""
             
@@ -216,12 +226,7 @@ Remember: Follow your three-act thinking process internally, but output ONLY the
             },
             "target_audience": {
                 "primary_audience": self._identify_audience(user_input),
-                "audience_characteristics": {
-                    "demographics": self._describe_audience_characteristics(user_input),
-                    "psychographics": "To be defined based on research",
-                    "behavior_patterns": "To be analyzed",
-                    "pain_points": "To be identified"
-                }
+                "audience_characteristics": self._describe_audience_characteristics(user_input)
             },
             "creative_strategy": {
                 "tone_of_voice": self._determine_tone(user_input, themes),

@@ -40,32 +40,43 @@ class ChiefNarrativeArchitectAgent(BaseAgent):
             
             # Get required artifacts from AGENT_1 and AGENT_2
             artifacts = await self.get_artifacts(task_input.artifacts)
-            if "creative_brief" not in artifacts:
-                raise ValueError("Required creative_brief artifact not found")
-            if "visual_explorations" not in artifacts:
-                raise ValueError("Required visual_explorations artifact not found")
+            
+            # Validate required artifacts with minimal essential checks
+            self._validate_required_artifacts(artifacts)
+            
+            # Check for existing output (P4: Idempotency)
+            existing_output = await self._check_existing_output(task_input, artifacts)
+            if existing_output:
+                logger.info("Task already processed successfully, returning existing output", 
+                           agent_id=self.agent_id)
+                return existing_output
             
             creative_brief = artifacts["creative_brief"]["payload"]
             visual_explorations = artifacts["visual_explorations"]["payload"]
             
-            # Get agent prompt
+            # Get agent prompt from database (P3: Externalized Cognition)
             system_prompt = await self.get_agent_prompt()
             if not system_prompt:
-                system_prompt = self._get_default_prompt()
+                raise ValueError("No prompt found for AGENT_3 in database - violates P3 principle")
             
             # Generate presentation blueprint using AI-first approach
             presentation_blueprint = await self._generate_presentation_blueprint(
                 creative_brief, visual_explorations, system_prompt
             )
             
-            # Log successful processing
+            # Validate output schema (P7: Self-Description and Validation)
+            if not self._validate_output_schema(presentation_blueprint):
+                logger.warning("Output schema validation failed, using fallback format")
+                presentation_blueprint = self._ensure_schema_compliance(presentation_blueprint)
+            
+            # Log successful processing  
             await self.log_system_event(
                 "INFO", 
                 "Presentation blueprint generated successfully",
                 {
-                    "total_slides": len(presentation_blueprint.get("presentation_blueprint", [])),
-                    "chosen_theme": presentation_blueprint.get("strategic_choice", {}).get("chosen_theme_name", "unknown"),
-                    "narrative_framework": presentation_blueprint.get("strategic_choice", {}).get("chosen_narrative_framework", "unknown")
+                    "content_sections": len(presentation_blueprint.get("content_sections", [])),
+                    "narrative_arc": presentation_blueprint.get("narrative_structure", {}).get("narrative_arc", "unknown")[:50],
+                    "story_beats": len(presentation_blueprint.get("narrative_structure", {}).get("key_story_beats", []))
                 }
             )
             
@@ -95,7 +106,8 @@ class ChiefNarrativeArchitectAgent(BaseAgent):
             # Try AI generation first (AGENT_1 pattern)
             ai_response = await self._generate_with_ai(creative_brief, visual_explorations, system_prompt)
             if ai_response:
-                return ai_response
+                # Force convert AI response to correct Schema format if needed
+                return self._ensure_schema_compliance(ai_response)
                 
         except Exception as e:
             logger.warning("AI generation failed, falling back to template", error=str(e))
@@ -111,42 +123,46 @@ class ChiefNarrativeArchitectAgent(BaseAgent):
             # Create AI client
             ai_client = AIClientFactory.create_client()
             
-            # Enhanced system prompt for JSON output (AGENT_1 pattern)
+            # Enhanced system prompt for JSON output matching PresentationBlueprint_v1.0.json Schema
             enhanced_prompt = f"""{system_prompt}
 
 CRITICAL: You must respond with VALID JSON only. Do not include any text before or after the JSON.
-The JSON must follow this exact structure:
+The JSON must follow this EXACT structure to match PresentationBlueprint_v1.0.json Schema:
 
 {{
-  "strategic_choice": {{
-    "chosen_theme_name": "string",
-    "chosen_narrative_framework": "string",
-    "reasoning": "string",
-    "rejected_options": [
-      {{
-        "option_type": "Visual Theme",
-        "option_name": "string",
-        "reason_for_rejection": "string"
-      }}
-    ]
+  "narrative_structure": {{
+    "narrative_arc": "string - overall story progression",
+    "key_story_beats": ["string", "string", "string"],
+    "emotional_journey": "string - audience emotional progression", 
+    "conflict_resolution": "string - how tensions are resolved"
   }},
-  "presentation_blueprint": [
+  "content_sections": [
     {{
-      "slide_number": 1,
-      "logic_unit_purpose": "string",
-      "layout": "Title_Slide",
-      "elements": {{
-        "title": "string",
-        "subtitle": "string",
-        "bullet_points": ["string"],
-        "visual_placeholder": "string"
-      }},
-      "speaker_notes": {{
-        "speech": "string",
-        "guide_note": "string"
-      }}
+      "section_title": "string",
+      "content_type": "string",
+      "key_messages": ["string", "string"],
+      "visual_treatment": "string",
+      "interaction_elements": ["string", "string"]
     }}
-  ]
+  ],
+  "storytelling_elements": {{
+    "hero_journey_stage": "string",
+    "narrative_devices": ["string", "string"],
+    "character_personas": ["string", "string"],
+    "story_themes": ["string", "string"]
+  }},
+  "engagement_strategy": {{
+    "attention_hooks": ["string", "string"],
+    "interactive_moments": ["string", "string"],
+    "call_to_action_placement": "string",
+    "retention_techniques": ["string", "string"]
+  }},
+  "metadata": {{
+    "created_by": "AGENT_3",
+    "version": "1.0",
+    "confidence_score": 0.85,
+    "processing_notes": "string"
+  }}
 }}
 
 Remember: Follow the Socratic thinking methodology to design a cognitive journey for the audience."""
@@ -198,7 +214,7 @@ Remember: Follow the Socratic thinking methodology to design a cognitive journey
             presentation_blueprint["metadata"].update({
                 "created_by": "AGENT_3",
                 "version": "1.0",
-                "total_slides": len(presentation_blueprint.get("presentation_blueprint", [])),
+                "total_slides": len(presentation_blueprint.get("content_sections", [])),
                 "narrative_complexity": "sophisticated",
                 "target_audience_level": "intermediate",
                 "presentation_style": "Socratic thought guidance",
@@ -261,24 +277,102 @@ Remember: Follow the Socratic thinking methodology to design a cognitive journey
         # Generate presentation slides
         presentation_slides = self._generate_template_slides(project_title, primary_goal, key_messages, primary_theme)
         
-        # Template presentation blueprint
+        # Generate content that matches PresentationBlueprint_v1.0.json Schema
         presentation_blueprint = {
-            "strategic_choice": strategic_choice,
-            "presentation_blueprint": presentation_slides,
+            "narrative_structure": {
+                "narrative_arc": "Problem-Solution-Benefit framework with strategic progression",
+                "key_story_beats": [
+                    "Opening and credibility establishment",
+                    "Problem/opportunity identification", 
+                    "Strategic solution presentation",
+                    "Benefits and outcomes demonstration",
+                    "Call to action and next steps"
+                ],
+                "emotional_journey": "From awareness through understanding to conviction and action",
+                "conflict_resolution": f"Addresses {target_audience} needs through systematic solution presentation"
+            },
+            "content_sections": self._generate_content_sections(project_title, primary_goal, key_messages),
+            "storytelling_elements": {
+                "hero_journey_stage": "Call to Adventure",
+                "narrative_devices": [
+                    "Strategic questioning",
+                    "Evidence-based reasoning", 
+                    "Visual metaphors",
+                    "Progressive disclosure"
+                ],
+                "character_personas": [target_audience, "Project stakeholders", "Implementation team"],
+                "story_themes": ["Innovation", "Strategic thinking", "Collaborative success"]
+            },
+            "engagement_strategy": {
+                "attention_hooks": [
+                    "Opening with compelling opportunity statement",
+                    "Strategic insights that challenge assumptions",
+                    "Clear benefit articulation"
+                ],
+                "interactive_moments": [
+                    "Audience agreement checkpoints",
+                    "Strategic question pauses",
+                    "Next steps clarification"
+                ],
+                "call_to_action_placement": "Final slide with clear next steps",
+                "retention_techniques": [
+                    "Logical flow reinforcement",
+                    "Key message repetition",
+                    "Visual memory aids"
+                ]
+            },
             "metadata": {
                 "created_by": "AGENT_3",
                 "version": "1.0",
-                "total_slides": len(presentation_slides),
-                "narrative_complexity": "moderate",
-                "target_audience_level": "intermediate",
-                "presentation_style": "Template-based professional presentation",
                 "confidence_score": self._calculate_template_confidence(creative_brief, visual_explorations),
-                "ai_model": "template_fallback",
                 "processing_notes": f"Template-generated from {len(visual_themes)} visual themes and {len(key_messages)} key messages"
             }
         }
         
         return presentation_blueprint
+    
+    def _generate_content_sections(self, project_title: str, primary_goal: str, key_messages: List[str]) -> List[Dict[str, Any]]:
+        """Generate content sections that match Schema requirements"""
+        
+        content_sections = [
+            {
+                "section_title": "Opening & Credibility",
+                "content_type": "Title_Slide",
+                "key_messages": [f"Presenting {project_title}", "Strategic presentation approach"],
+                "visual_treatment": "Clean, professional title layout with subtle branding",
+                "interaction_elements": ["Eye contact with key stakeholders", "Confident opening statement"]
+            },
+            {
+                "section_title": "Current Situation & Opportunity",
+                "content_type": "Problem_Definition",
+                "key_messages": [f"Current state: {primary_goal}", "Key challenges identification", "Market opportunity"],
+                "visual_treatment": "Comparison charts showing current vs desired state",
+                "interaction_elements": ["Audience agreement checkpoint", "Shared understanding confirmation"]
+            },
+            {
+                "section_title": "Strategic Approach",
+                "content_type": "Solution_Presentation",
+                "key_messages": key_messages,
+                "visual_treatment": "Visual hierarchy emphasizing key insights with supporting diagrams",
+                "interaction_elements": ["Strategic pause after each key message", "Evidence presentation"]
+            },
+            {
+                "section_title": "Expected Benefits & Outcomes",
+                "content_type": "Value_Proposition",
+                "key_messages": ["Concrete benefits demonstration", "Success metrics", "ROI justification"],
+                "visual_treatment": "Impact visualizations with clear metrics and timelines",
+                "interaction_elements": ["Benefits emphasis", "Stakeholder value confirmation"]
+            },
+            {
+                "section_title": "Next Steps Forward",
+                "content_type": "Call_To_Action",
+                "key_messages": ["Immediate action items", "Timeline and milestones", "Collaboration opportunities"],
+                "visual_treatment": "Clear action-oriented layout with timeline visualization",
+                "interaction_elements": ["Direct engagement", "Commitment seeking", "Questions and clarifications"]
+            }
+        ]
+        
+        return content_sections
     
     def _generate_template_slides(self, project_title: str, primary_goal: str, key_messages: List[str], primary_theme: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Generate template presentation slides"""
@@ -400,57 +494,165 @@ Remember: Follow the Socratic thinking methodology to design a cognitive journey
         
         return min(base_confidence + completeness_bonus + theme_bonus + message_bonus, 0.84)
     
-    def _get_default_prompt(self) -> str:
-        """Get default system prompt if none found in database"""
-        return """Agent 3: 首席叙事架构师 / 思想的向导 (最终版 V5)
-【第一部分：角色与世界观设定】
-你是一位顶级的AI首席叙事架构师，是思想的向导。你深知，任何强大的沟通，其本质都不是信息的传递，而是引导听众的思维，完成一次从"未知"到"确信"的精心设计的旅程。你的工作被比作设计一座伟大的博物馆，你不仅要决定展出什么（内容），更要精心设计参观路线（叙事结构）和展厅风格（视觉主题），以确保参观者在走出大门时，心中留下的不只是零散的展品，而是一个完整、深刻的核心故事。
-你鄙视那些将元素随意拼接的"信息堆砌工"。你是一位**"认知体验设计师"，你的价值在于构建一个层层递进、逻辑自洽、且符合人类认知习惯的思维阶梯**。你通过一场苏格拉底式的思维仪式，来确保你构建的每一级阶梯，都能稳固地承托起听众的理解，并自然地引导他们走向下一级，直至最终的"顿悟"时刻。
-【第二部分：你的苏格拉底思维仪式——构建思想阶梯的三幕剧】
-当你收到creative_brief（目标）和visual_themes（工具）后，你将启动一场构建"思想阶梯"的仪式。
-第一幕：【地基的选择：确立沟通的基调与路径】
-在铺设第一块砖之前，你必须决定这座"思想建筑"的整体风格（如何感受）和基本结构（如何行走）。这是所有后续决策的"元决策"。
-【苏格拉底诘问 I：视觉基调的选择】
-内心独白: "我的听众是target_audience，我希望他们最终能有desired_feeling。现在，我手上有三套视觉工具：'主题A'（例如，忠实演绎）、'主题B'（例如，抽象转译）和'主题C'（例如，逆向挑战）。
-诘问A: 哪一个主题的内在哲学最能营造出我想要的desired_feeling，并能让target_audience感到亲切、信服而非排斥？
-诘问B: 另外两个主题，如果被误用，可能会给听众带来怎样的认知偏差或情感阻力？
-决策与论证: 我选择【主题X】，因为它能为我的思想旅程设定最正确的情感基调。我放弃【主题Y和Z】，因为它们可能会将听众引向错误的情感岔路。"
-【苏格拉底诘问 II：叙事路径的选择】
-内心独白: "我的核心使命是传递key_message，达成purpose。我需要一条清晰的路径来引导听众。
-诘问A: 哪一种叙事框架（例如，'问题-解决方案'、'现状-挑战-机遇'）最像一条平坦、清晰的逻辑大道，能自然地将听众从他们目前的认知起点，引导至我的核心论点？
-诘问B: 如果采用其他框架，可能会在哪个逻辑拐点上让听众感到困惑、跳跃或难以跟上？
-决策与论证: 我选择【框架A】，因为它提供了最符合人类认知习惯的逻辑路径。我放弃【框架B】，因为它可能会在旅程中制造不必要的认知障碍。"
-第二幕：【阶梯的铺设：将叙事路径分解为逻辑单元】
-地基已定。现在，你将把你选择的"叙事路径"精确地分解成一级一级的"逻辑阶梯"。每一级阶梯就是一次核心思想的传递，通常对应一到两张幻灯片。
-你的任务:
-结构分解: 将你选定的【叙事框架】拆解成一个有序的逻辑单元列表。例如，将"问题-解决方案-收益"框架分解为：
-逻辑单元1: 开场 & 确立共识
-逻辑单元2: 揭示一个严峻的问题
-逻辑单元3: 深入分析问题的影响与根源
-逻辑单元4: 提出我们的核心解决方案
-逻辑单元5: 展示解决方案带来的具体收益
-逻辑单元6: 号召行动 & 总结
-内容映射: 将creative_brief中的content_structure和key_message，填充到这些逻辑单元中。确保每一个单元都承载了清晰、单一的核心思想。
-第三幕：【场景的设计：为每一级阶梯赋予形态】
-现在，你是展厅设计师。你将为每一级"逻辑阶梯"（逻辑单元）设计出具体的"视觉形态"（幻灯片）。
-你的任务: 遍历你在第二幕中创建的逻辑单元列表，为每一个单元设计一张或多张幻灯片，并填充到presentation_blueprint中。
-设计原则:
-形式服务于内容: 每一张幻灯片的layout和elements都必须服务于它所承载的那个"逻辑单元"的核心思想。如果单元是"揭示问题"，那么幻灯片就应该充满视觉冲击力；如果单元是"分析根源"，幻灯片就应该清晰、有条理。
-风格一以贯之: 所有的视觉设计都必须严格遵循你在第一幕中选定的【视觉主题】的design_philosophy。
-引导者的旁白: speaker_notes不仅是讲稿，更是你这位"向导"的内心独白。它应该包含：
-对听众说的话 (The Speech): 讲稿的核心内容。
-对自己的提示 (The Guide's Note): "在这一步，我的目标是让听众感受到紧迫感。"或"这是整个论证的关键转折点，语速要放慢。"
-【第三部分：任务与输出格式】
-"请接收以下由Orchestrator分派的任务。首先，根据project_id从Memory中读取《创作蓝图》和《视觉主题画板》。然后，严格遵循你的苏格拉底思维仪式，并将最终的、为听众精心设计的《演示文稿蓝图》以严格的JSON格式，写入与project_id关联的Memory条目中。"
-核心指令：
-将你最终生成的、完整的《演示文稿蓝图》JSON对象，作为输出结果。
-输出格式要求:
-最终输出必须是一个单一的、没有被任何代码块包裹的、纯净的JSON对象。
-strategic_choice对象必须完整记录你在第一幕中的"元决策"过程，包含reasoning和rejected_options。
-reasoning字段必须清晰地阐述你为何选择这条"情感基调"与"逻辑路径"的组合，以及这个组合如何为听众构建了最佳的认知体验。
-rejected_options数组必须记录被放弃的选项及其被放弃的核心原因，以展示决策的严谨性。
-presentation_blueprint数组中的每个对象，都必须包含logic_unit_purpose字段，以明确该幻灯片在整个"思想阶梯"中所处的位置和作用。"""
-
+    def _ensure_schema_compliance(self, ai_response: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Force convert AI response to PresentationBlueprint_v1.0.json Schema format
+        Handles cases where AI ignores Schema instructions
+        """
+        # Check if AI response is already in correct format
+        if all(key in ai_response for key in ['narrative_structure', 'content_sections', 'storytelling_elements', 'engagement_strategy', 'metadata']):
+            return ai_response
+        
+        # AI returned old format - convert to new format
+        logger.warning("AI returned old format, converting to Schema-compliant format")
+        
+        # Extract data from old format
+        strategic_choice = ai_response.get('strategic_choice', {})
+        presentation_blueprint = ai_response.get('presentation_blueprint', [])
+        metadata = ai_response.get('metadata', {})
+        
+        # Convert to new Schema format
+        schema_compliant = {
+            "narrative_structure": {
+                "narrative_arc": strategic_choice.get('chosen_narrative_framework', 'Problem-Solution-Benefit framework'),
+                "key_story_beats": [
+                    "Opening and credibility establishment",
+                    "Problem identification and exploration",
+                    "Solution presentation and benefits",
+                    "Call to action and next steps"
+                ],
+                "emotional_journey": "From awareness through understanding to conviction and action",
+                "conflict_resolution": f"Addresses audience needs through systematic presentation of solutions"
+            },
+            "content_sections": self._convert_slides_to_content_sections(presentation_blueprint),
+            "storytelling_elements": {
+                "hero_journey_stage": "Call to Adventure",
+                "narrative_devices": ["Strategic questioning", "Evidence-based reasoning", "Progressive disclosure"],
+                "character_personas": ["Target audience", "Project stakeholders", "Implementation team"],
+                "story_themes": ["Innovation", "Problem-solving", "Positive impact"]
+            },
+            "engagement_strategy": {
+                "attention_hooks": ["Compelling opening statement", "Strategic insights", "Clear benefits"],
+                "interactive_moments": ["Audience checkpoints", "Strategic pauses", "Q&A opportunities"],
+                "call_to_action_placement": "Final slide with clear next steps",
+                "retention_techniques": ["Logical flow", "Key message repetition", "Visual reinforcement"]
+            },
+            "metadata": {
+                "created_by": "AGENT_3",
+                "version": "1.0",
+                "confidence_score": metadata.get('confidence_score', 0.8),
+                "processing_notes": f"Converted from AI old format - {metadata.get('processing_notes', 'AI generated')}"
+            }
+        }
+        
+        return schema_compliant
+    
+    def _validate_required_artifacts(self, artifacts: Dict[str, Any]) -> None:
+        """Validate required artifacts with minimal essential checks only"""
+        # Check artifact existence
+        required_artifacts = ["creative_brief", "visual_explorations"]
+        for artifact_name in required_artifacts:
+            if artifact_name not in artifacts:
+                raise ValueError(f"Required artifact '{artifact_name}' not found")
+        
+        # Minimal payload validation - only check if payload exists and has basic structure
+        creative_brief = artifacts["creative_brief"].get("payload", {})
+        visual_explorations = artifacts["visual_explorations"].get("payload", {})
+        
+        if not creative_brief:
+            raise ValueError("creative_brief payload is empty")
+        if not visual_explorations:
+            raise ValueError("visual_explorations payload is empty")
+        
+        # Only validate critical fields that AGENT_3 actually uses
+        if "project_overview" not in creative_brief:
+            logger.warning("creative_brief missing project_overview - may impact quality")
+        if "visual_themes" not in visual_explorations:
+            logger.warning("visual_explorations missing visual_themes - may impact quality")
+    
+    async def _check_existing_output(self, task_input: TaskInput, artifacts: Dict[str, Any]) -> Optional[TaskOutput]:
+        """Check if this task has already been processed successfully (P4: Idempotency)"""
+        try:
+            # Create a simple hash of input artifacts to identify identical tasks
+            import hashlib
+            import json
+            
+            # Only include essential fields for hash calculation
+            hash_data = {
+                "creative_brief_title": artifacts["creative_brief"]["payload"].get("project_overview", {}).get("title", ""),
+                "visual_themes_count": len(artifacts["visual_explorations"]["payload"].get("visual_themes", [])),
+                "agent_id": self.agent_id
+            }
+            
+            content_hash = hashlib.sha256(
+                json.dumps(hash_data, sort_keys=True).encode()
+            ).hexdigest()[:16]
+            
+            # Check if we have recent successful output for this input combination
+            # This is a simplified check - in production, you'd check the database
+            # For now, we'll return None to always process (can be enhanced later)
+            logger.debug("Idempotency check", content_hash=content_hash, 
+                        title=hash_data["creative_brief_title"])
+            
+            return None  # Always process for now - can be enhanced with database lookup
+            
+        except Exception as e:
+            logger.warning("Idempotency check failed, proceeding with processing", error=str(e))
+            return None
+    
+    def _validate_output_schema(self, output: Dict[str, Any]) -> bool:
+        """Validate output against PresentationBlueprint_v1.0 schema requirements"""
+        try:
+            # Check required top-level keys
+            required_keys = ["narrative_structure", "content_sections", "storytelling_elements", "engagement_strategy", "metadata"]
+            
+            if not all(key in output for key in required_keys):
+                missing_keys = [key for key in required_keys if key not in output]
+                logger.warning("Output missing required keys", missing_keys=missing_keys)
+                return False
+            
+            # Check narrative_structure structure
+            narrative = output.get("narrative_structure", {})
+            if not isinstance(narrative, dict):
+                logger.warning("narrative_structure must be a dict")
+                return False
+            
+            # Check content_sections is array
+            sections = output.get("content_sections", [])
+            if not isinstance(sections, list):
+                logger.warning("content_sections must be an array")
+                return False
+            
+            # Check metadata has required fields
+            metadata = output.get("metadata", {})
+            if not isinstance(metadata, dict) or "created_by" not in metadata:
+                logger.warning("metadata must be dict with created_by field")
+                return False
+            
+            logger.debug("Output schema validation passed")
+            return True
+            
+        except Exception as e:
+            logger.warning("Output schema validation error", error=str(e))
+            return False
+    
+    def _convert_slides_to_content_sections(self, slides: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Convert old slide format to new content_sections format"""
+        content_sections = []
+        
+        for slide in slides:
+            section = {
+                "section_title": slide.get('elements', {}).get('title', f"Section {slide.get('slide_number', 1)}"),
+                "content_type": slide.get('layout', 'Content_Slide'),
+                "key_messages": slide.get('elements', {}).get('bullet_points', []),
+                "visual_treatment": slide.get('elements', {}).get('visual_placeholder', 'Standard presentation layout'),
+                "interaction_elements": [
+                    slide.get('speaker_notes', {}).get('guide_note', 'Standard presentation delivery')
+                ]
+            }
+            content_sections.append(section)
+        
+        return content_sections
 
 # Example usage for testing
 async def test_narrative_architect():

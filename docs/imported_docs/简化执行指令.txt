@@ -1,0 +1,71 @@
+# Project HELIX 规范化 - 简化执行指令
+# 请在项目根目录 /projects/Projects/aiagent/ 下执行
+
+# 进入项目根目录
+cd /projects/Projects/aiagent/
+
+# 创建tmp子目录结构（如果失败可跳过，直接移动文件到tmp/）
+mkdir -p tmp/debug tmp/utilities tmp/tests tmp/logs tmp/archives
+
+# 移动所有临时文件到tmp目录（简化版）
+mv debug_*.py tmp/
+mv *_debug.py tmp/
+mv check_*.py tmp/
+mv cleanup_*.py tmp/
+mv delete_*.py tmp/
+mv export_*.py tmp/
+mv trace_*.py tmp/
+mv track_*.py tmp/
+mv test_*.py tmp/
+mv test_*.html tmp/
+mv *.log tmp/
+mv prompt.txt tmp/
+mv job_*_outputs tmp/ 2>/dev/null
+
+# 移动文档到docs
+mv FRONTEND_SETUP.md docs/
+mv QUICK_START.md docs/
+mv SYSTEM_STARTUP_GUIDE.md docs/
+
+# 创建文档索引（复制以下内容到 docs/INDEX.md）
+cat > docs/INDEX.md << 'EOF'
+# Project HELIX Documentation Index
+
+## 🚀 快速开始
+- [Quick Start Guide](QUICK_START.md)
+- [Frontend Setup](FRONTEND_SETUP.md)  
+- [System Startup Guide](SYSTEM_STARTUP_GUIDE.md)
+
+## 🏗️ 架构文档
+- [README.md](../README.md) - 项目架构蓝图
+- [CLAUDE.md](../CLAUDE.md) - AI协作指南
+
+## 📊 项目管理
+- [Project Progress](PROJECT_PROGRESS.md)
+- [Process Management](PROCESS_MANAGEMENT.md)
+- [Port Configuration](PORT_CONFIGURATION_ANALYSIS.md)
+- [Dynamic Port Management](DYNAMIC_PORT_MANAGEMENT_GUIDE.md)
+- [Data Cleanup SOP](DIRTY_DATA_CLEANUP_SOP.md)
+
+---
+**目标:** 5分钟内找到所需信息，提升开发效率
+EOF
+
+# 更新.gitignore（追加以下内容）
+cat >> .gitignore << 'EOF'
+
+# Project HELIX 临时文件管理
+tmp/
+*.log
+*_debug.py
+debug_*.py
+check_*.py
+prompt.txt
+job_*_outputs/
+EOF
+
+# 验证结果
+echo "✅ 规范化完成！检查结果："
+echo "📊 根目录文件数：$(ls -la | grep -E '^-' | wc -l)"
+echo "🗂️ tmp目录文件数：$(ls tmp/ 2>/dev/null | wc -l)"
+echo "📚 docs目录文件数：$(ls docs/ | wc -l)"

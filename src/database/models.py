@@ -23,6 +23,7 @@ class TaskStatus(str, Enum):
     COMPLETED = "COMPLETED"
     FAILED = "FAILED"
     RETRYING = "RETRYING"
+    ORCHESTRATED = "ORCHESTRATED"  # Task processed by orchestrator
 
 
 class JobCreate(BaseModel):
@@ -133,6 +134,9 @@ class JobResponse(BaseModel):
     job_id: int
     status: JobStatus
     message: str
+    created_at: datetime
+    error_message: Optional[str] = None
+    tasks: Optional[list] = None
 
 
 class TaskResponse(BaseModel):
@@ -140,3 +144,7 @@ class TaskResponse(BaseModel):
     task_id: int
     status: TaskStatus
     agent_id: str
+    created_at: datetime
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    error_log: Optional[str] = None

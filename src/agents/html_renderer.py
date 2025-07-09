@@ -48,9 +48,9 @@ class HTMLRenderer:
             context = {
                 'title': self._extract_title(presentation_blueprint),
                 'strategic_choice': presentation_blueprint.get('strategic_choice', {}),
-                'slides': presentation_blueprint.get('presentation_blueprint', []),
+                'slides': presentation_blueprint.get('content_sections', []),
                 'metadata': presentation_blueprint.get('metadata', {}),
-                'total_slides': len(presentation_blueprint.get('presentation_blueprint', []))
+                'total_slides': len(presentation_blueprint.get('content_sections', []))
             }
             
             # Render template with context
@@ -67,11 +67,15 @@ class HTMLRenderer:
     
     def _extract_title(self, presentation_blueprint: Dict[str, Any]) -> str:
         """Extract presentation title from blueprint"""
-        # Try to get title from first slide
-        slides = presentation_blueprint.get('presentation_blueprint', [])
-        if slides and 'elements' in slides[0]:
-            return slides[0]['elements'].get('title', 'Untitled Presentation')
+        # Try to get title from first section
+        sections = presentation_blueprint.get('content_sections', [])
+        if sections and 'section_title' in sections[0]:
+            return sections[0]['section_title']
         
+        # Fallback to metadata title if available
+        if 'metadata' in presentation_blueprint and 'title' in presentation_blueprint['metadata']:
+            return presentation_blueprint['metadata']['title']
+            
         return 'Untitled Presentation'
     
     def render_slide(self, slide: Dict[str, Any]) -> str:

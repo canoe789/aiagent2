@@ -1,0 +1,1361 @@
+
+    ██╗  ██╗███████╗██╗     ██╗██╗  ██╗    ██╗   ██╗██████╗ 
+    ██║  ██║██╔════╝██║     ██║╚██╗██╔╝    ██║   ██║╚════██╗
+    ███████║█████╗  ██║     ██║ ╚███╔╝     ██║   ██║ █████╔╝
+    ██╔══██║██╔══╝  ██║     ██║ ██╔██╗     ╚██╗ ██╔╝██╔═══╝ 
+    ██║  ██║███████╗███████╗██║██╔╝ ██╗     ╚████╔╝ ███████╗
+    ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═╝      ╚═══╝  ╚══════╝
+    
+    AI驱动的自动化创意生产系统
+    
+==================================================
+🔥 HELIX v2.0 系统启动中...
+==================================================
+🚀 启动 HELIX Orchestrator...
+2025-07-09 11:51:46 [debug    ] Creating new WorkflowEngine instance instance_id=140078975304144
+2025-07-09 11:51:46 [info     ] Starting HELIX Orchestrator    poll_interval=5
+🤖 启动 HELIX Agent Worker...
+{"event": "Starting HELIX Agent Worker", "timestamp": "2025-07-09T11:51:46.989190Z", "level": "info"}
+{"agents": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5"], "event": "Starting agent worker", "timestamp": "2025-07-09T11:51:46.989316Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T11:51:47.022952Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T11:51:47.025378Z", "level": "info"}
+{"instance_id": 140078975304144, "event": "Loading workflows", "timestamp": "2025-07-09T11:51:47.025542Z", "level": "debug"}
+{"agents_count": 5, "execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Workflow definitions loaded successfully", "timestamp": "2025-07-09T11:51:47.025808Z", "level": "info"}
+INFO:     Started server process [719042]
+INFO:     Waiting for application startup.
+🌐 启动 FastAPI 服务器...
+📍 API服务器配置: 0.0.0.0:8014
+🔍 健康检查端点: http://localhost:8014/api/v1/health
+📚 API文档: http://localhost:8014/docs
+{"event": "Starting Project HELIX API server", "timestamp": "2025-07-09T11:51:49.516870Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T11:51:49.543683Z", "level": "info"}
+{"event": "Database connection established", "timestamp": "2025-07-09T11:51:49.543807Z", "level": "info"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8014 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57542 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57548 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57552 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36218 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45498 - "GET /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49514 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55022 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47324 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+{"job_id": 37, "session_id": "frontend_test_session", "event": "Job created successfully", "timestamp": "2025-07-09T11:53:09.901269Z", "level": "info"}
+INFO:     127.0.0.1:47332 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+{"job_id": 37, "event": "Processing new job", "timestamp": "2025-07-09T11:53:12.104001Z", "level": "info"}
+{"job_id": 37, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T11:53:12.110359Z", "level": "info"}
+{"task_id": 128281, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T11:53:12.125416Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 29, "session_id": "frontend_test_session", "event": "Processing creative brief request", "timestamp": "2025-07-09T11:53:12.125613Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T11:53:12.127537Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T11:53:12.129433Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T11:53:12.129600Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T11:53:12.129659Z", "level": "info"}
+INFO:     127.0.0.1:32872 - "GET /api/v1/jobs/37 HTTP/1.1" 200 OK
+{"content_length": 252, "tokens_used": 2509, "event": "Gemini response received successfully", "timestamp": "2025-07-09T11:53:23.599110Z", "level": "info"}
+{"content_preview": "\n{\n  \"project_overview\": {\n    \"title\": \"Coffee Presentation for HTML Display Testing\",\n    \"type\": \"Internal Presentation / HTML Display Test\",\n    \"description\": \"A straightforward presentation abou", "error": "Unterminated string starting at: line 6 column 20 (char 164)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T11:53:23.599598Z", "level": "warning"}
+{"task_id": 128281, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T11:53:23.608666Z", "level": "info"}
+{"task_id": 128281, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T11:53:23.615506Z", "level": "info"}
+{"task_id": 128281, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T11:53:23.615630Z", "level": "info"}
+{"task_id": 128281, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T11:53:23.615677Z", "level": "info"}
+{"task_id": 128281, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T11:53:27.187515Z", "level": "info"}
+{"task_id": 128281, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T11:53:27.189435Z", "level": "info"}
+{"task_id": 128281, "event": "Artifact created for completed task", "timestamp": "2025-07-09T11:53:27.189523Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T11:53:27.189565Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T11:53:27.189592Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T11:53:27.189617Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T11:53:27.189640Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T11:53:27.189665Z", "level": "debug"}
+{"job_id": 37, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T11:53:27.193349Z", "level": "info"}
+{"task_id": 128281, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T11:53:27.195805Z", "level": "info"}
+{"task_id": 128282, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T11:53:32.139268Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T11:53:32.139453Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T11:53:32.147107Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T11:53:32.148223Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T11:53:32.149353Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T11:53:32.149474Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T11:53:32.149724Z", "level": "info"}
+INFO:     127.0.0.1:35388 - "GET /api/v1/jobs/37 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35396 - "GET /api/v1/jobs/37/tasks HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T11:53:49.846724Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T11:53:49.846831Z", "level": "warning"}
+{"task_id": 128282, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T11:53:49.853592Z", "level": "info"}
+{"task_id": 128282, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T11:53:49.859430Z", "level": "info"}
+{"task_id": 128282, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T11:53:49.859547Z", "level": "info"}
+{"task_id": 128282, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T11:53:49.859589Z", "level": "info"}
+{"task_id": 128282, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T11:53:52.213805Z", "level": "info"}
+{"task_id": 128282, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T11:53:52.215023Z", "level": "info"}
+{"task_id": 128282, "event": "Artifact created for completed task", "timestamp": "2025-07-09T11:53:52.215098Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T11:53:52.215138Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T11:53:52.215163Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T11:53:52.215189Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T11:53:52.215253Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T11:53:52.215279Z", "level": "debug"}
+{"job_id": 37, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T11:53:52.220113Z", "level": "info"}
+{"task_id": 128282, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T11:53:52.221991Z", "level": "info"}
+{"task_id": 128283, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T11:53:57.156540Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T11:53:57.156714Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T11:53:57.159849Z", "level": "info"}
+{"content_hash": "b50312e4bfcc7d22", "title": "Creative Project Brief", "event": "Idempotency check", "timestamp": "2025-07-09T11:53:57.160043Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T11:53:57.161205Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T11:53:57.162316Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T11:53:57.162427Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T11:53:57.162745Z", "level": "info"}
+{"content_length": 3423, "tokens_used": 6305, "event": "Gemini response received successfully", "timestamp": "2025-07-09T11:54:20.494640Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 6305, "event": "AI presentation blueprint generated successfully", "timestamp": "2025-07-09T11:54:20.495014Z", "level": "info"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T11:54:20.495082Z", "level": "debug"}
+{"task_id": 128283, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T11:54:20.501224Z", "level": "info"}
+{"task_id": 128283, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T11:54:20.507240Z", "level": "info"}
+{"task_id": 128283, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T11:54:20.507361Z", "level": "info"}
+{"task_id": 128283, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T11:54:20.507411Z", "level": "info"}
+{"task_id": 128283, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T11:54:22.242679Z", "level": "info"}
+{"task_id": 128283, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T11:54:22.244144Z", "level": "info"}
+{"task_id": 128283, "event": "Artifact created for completed task", "timestamp": "2025-07-09T11:54:22.244224Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T11:54:22.244259Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T11:54:22.244284Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T11:54:22.244309Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T11:54:22.244330Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T11:54:22.244349Z", "level": "debug"}
+{"job_id": 37, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T11:54:22.250606Z", "level": "info"}
+{"task_id": 128283, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T11:54:22.252637Z", "level": "info"}
+INFO:     127.0.0.1:38080 - "GET /api/v1/jobs/37 HTTP/1.1" 200 OK
+{"task_id": 128284, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T11:54:27.174379Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T11:54:27.174571Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T11:54:27.176314Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T11:54:27.176417Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T11:54:27.176453Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T11:54:27.176892Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T11:54:27.176930Z", "level": "info"}
+{"task_id": 128284, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T11:54:27.180719Z", "level": "info"}
+{"task_id": 128284, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T11:54:27.185924Z", "level": "info"}
+{"task_id": 128284, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T11:54:27.186046Z", "level": "info"}
+{"task_id": 128284, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T11:54:27.186089Z", "level": "info"}
+{"task_id": 128284, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T11:54:27.256333Z", "level": "info"}
+{"task_id": 128284, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T11:54:27.257628Z", "level": "info"}
+{"task_id": 128284, "event": "Artifact created for completed task", "timestamp": "2025-07-09T11:54:27.257718Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T11:54:27.257753Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T11:54:27.257777Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T11:54:27.257801Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T11:54:27.257829Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T11:54:27.257860Z", "level": "debug"}
+{"job_id": 37, "event": "Job completed", "timestamp": "2025-07-09T11:54:27.260036Z", "level": "info"}
+{"task_id": 128284, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T11:54:27.262155Z", "level": "info"}
+INFO:     127.0.0.1:57916 - "GET /api/v1/jobs/37 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37296 - "GET /api/v1/jobs/37/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50720 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50720 - "GET /port-discovery.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50720 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50720 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+{"job_id": 38, "session_id": "session_1752062925899", "event": "Job created successfully", "timestamp": "2025-07-09T12:08:45.801224Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"job_id": 38, "event": "Processing new job", "timestamp": "2025-07-09T12:08:47.592280Z", "level": "info"}
+{"job_id": 38, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:08:47.599595Z", "level": "info"}
+{"task_id": 128285, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:08:47.756603Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 343, "session_id": "session_1752062925899", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:08:47.756814Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:08:47.759162Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:08:47.761481Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:08:47.761675Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:08:47.761742Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"content_length": 3065, "tokens_used": 2524, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:08:57.773551Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 2524, "event": "AI creative brief generated successfully", "timestamp": "2025-07-09T12:08:57.773936Z", "level": "info"}
+{"task_id": 128285, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:08:57.781930Z", "level": "info"}
+{"task_id": 128285, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:08:57.789153Z", "level": "info"}
+{"task_id": 128285, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:08:57.789337Z", "level": "info"}
+{"task_id": 128285, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:08:57.789387Z", "level": "info"}
+{"task_id": 128285, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:08:57.950771Z", "level": "info"}
+{"task_id": 128285, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:08:57.953216Z", "level": "info"}
+{"task_id": 128285, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:08:57.953323Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:08:57.953361Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:08:57.953391Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:08:57.953426Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:08:57.953450Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:08:57.953471Z", "level": "debug"}
+{"job_id": 38, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:08:57.959758Z", "level": "info"}
+{"task_id": 128285, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:08:57.964147Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"task_id": 128286, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:09:02.769542Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:09:02.769766Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:09:02.771939Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:09:02.773987Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:09:02.775762Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:09:02.775938Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:09:02.776165Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:09:21.414765Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:09:21.414893Z", "level": "warning"}
+{"task_id": 128286, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:09:21.421631Z", "level": "info"}
+{"task_id": 128286, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:09:21.427908Z", "level": "info"}
+{"task_id": 128286, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:09:21.428050Z", "level": "info"}
+{"task_id": 128286, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:09:21.428117Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"task_id": 128286, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:09:22.983806Z", "level": "info"}
+{"task_id": 128286, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:09:22.985406Z", "level": "info"}
+{"task_id": 128286, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:09:22.985493Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:09:22.985536Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:09:22.985561Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:09:22.985585Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:09:22.985607Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:09:22.985628Z", "level": "debug"}
+{"job_id": 38, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:09:22.992318Z", "level": "info"}
+{"task_id": 128286, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:09:22.994492Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"task_id": 128287, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:09:27.791581Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:09:27.791751Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:09:27.793724Z", "level": "info"}
+{"content_hash": "b095b31b132ca589", "title": "2nd Floor Lift Access Ticket Promotion", "event": "Idempotency check", "timestamp": "2025-07-09T12:09:27.793944Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:09:27.795397Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:09:27.796775Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:09:27.796944Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:09:27.797468Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:09:50.178690Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:09:50.178872Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:09:50.179042Z", "level": "debug"}
+{"task_id": 128287, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:09:50.185796Z", "level": "info"}
+{"task_id": 128287, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:09:50.193021Z", "level": "info"}
+{"task_id": 128287, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:09:50.193209Z", "level": "info"}
+{"task_id": 128287, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:09:50.193266Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"task_id": 128287, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:09:53.021824Z", "level": "info"}
+{"task_id": 128287, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:09:53.023591Z", "level": "info"}
+{"task_id": 128287, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:09:53.023704Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:09:53.023745Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:09:53.023773Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:09:53.023799Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:09:53.023822Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:09:53.023842Z", "level": "debug"}
+{"job_id": 38, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:09:53.031671Z", "level": "info"}
+{"task_id": 128287, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:09:53.034010Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+{"task_id": 128288, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:09:57.816058Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:09:57.816279Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:09:57.818097Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:09:57.818206Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:09:57.818242Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:09:57.818730Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:09:57.818775Z", "level": "info"}
+{"task_id": 128288, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:09:57.823230Z", "level": "info"}
+{"task_id": 128288, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:09:57.828689Z", "level": "info"}
+{"task_id": 128288, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:09:57.828829Z", "level": "info"}
+{"task_id": 128288, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:09:57.828876Z", "level": "info"}
+{"task_id": 128288, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:09:58.039571Z", "level": "info"}
+{"task_id": 128288, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:09:58.040964Z", "level": "info"}
+{"task_id": 128288, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:09:58.041089Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:09:58.041132Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:09:58.041159Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:09:58.041185Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:09:58.041208Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:09:58.041228Z", "level": "debug"}
+{"job_id": 38, "event": "Job completed", "timestamp": "2025-07-09T12:09:58.043999Z", "level": "info"}
+{"task_id": 128288, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:09:58.046415Z", "level": "info"}
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48726 - "GET /api/v1/jobs/38/result HTTP/1.1" 200 OK
+{"job_id": 39, "session_id": "session_1752063405510", "event": "Job created successfully", "timestamp": "2025-07-09T12:16:45.429111Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"job_id": 39, "event": "Processing new job", "timestamp": "2025-07-09T12:16:47.861771Z", "level": "info"}
+{"job_id": 39, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:16:47.868601Z", "level": "info"}
+{"task_id": 128289, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:16:48.104158Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 343, "session_id": "session_1752063405510", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:16:48.104349Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:16:48.106841Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:16:48.108930Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:16:48.109133Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:16:48.109195Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"content_length": 3473, "tokens_used": 2524, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:16:58.420241Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 2524, "event": "AI creative brief generated successfully", "timestamp": "2025-07-09T12:16:58.420709Z", "level": "info"}
+{"task_id": 128289, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:16:58.428951Z", "level": "info"}
+{"task_id": 128289, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:16:58.437845Z", "level": "info"}
+{"task_id": 128289, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:16:58.437987Z", "level": "info"}
+{"task_id": 128289, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:16:58.438036Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128289, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:17:03.410576Z", "level": "info"}
+{"task_id": 128289, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:17:03.412688Z", "level": "info"}
+{"task_id": 128289, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:17:03.412770Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:17:03.412807Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:17:03.412831Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:17:03.412855Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:17:03.412876Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:17:03.412895Z", "level": "debug"}
+{"job_id": 39, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:17:03.418168Z", "level": "info"}
+{"task_id": 128289, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:17:03.421718Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128290, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:17:08.121067Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:17:08.121232Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:17:08.124150Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:17:08.125787Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:17:08.127358Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:17:08.127535Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:17:08.127827Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:17:25.282996Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:17:25.283146Z", "level": "warning"}
+{"task_id": 128290, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:17:25.290020Z", "level": "info"}
+{"task_id": 128290, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:17:25.296974Z", "level": "info"}
+{"task_id": 128290, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:17:25.297172Z", "level": "info"}
+{"task_id": 128290, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:17:25.297224Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128290, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:17:28.442715Z", "level": "info"}
+{"task_id": 128290, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:17:28.444280Z", "level": "info"}
+{"task_id": 128290, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:17:28.444367Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:17:28.444405Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:17:28.444429Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:17:28.444454Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:17:28.444474Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:17:28.444493Z", "level": "debug"}
+{"job_id": 39, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:17:28.452514Z", "level": "info"}
+{"task_id": 128290, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:17:28.455601Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128291, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:17:33.142852Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:17:33.143092Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:17:33.145164Z", "level": "info"}
+{"content_hash": "d0dbf7a163c3b854", "title": "Eiffel Tower 2nd Floor Lift Access Ticket Promotion", "event": "Idempotency check", "timestamp": "2025-07-09T12:17:33.145343Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:17:33.146834Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:17:33.148654Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:17:33.148829Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:17:33.149258Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"content_length": 2081, "tokens_used": 6686, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:17:56.272196Z", "level": "info"}
+{"content_preview": "\n{\n  \"narrative_structure\": {\n    \"narrative_arc\": \"\u5f15\u5bfc\u542c\u4f17\u4ece\u5bf9\u827e\u83f2\u5c14\u94c1\u5854\u8d2d\u7968\u7684\u666e\u904d\u56f0\u60d1\u4e0e\u6f5c\u5728\u7684\u201c\u9519\u5931\u6050\u60e7\u201d\uff0c\u901a\u8fc7\u6e05\u6670\u7684\u4fe1\u606f\u4f20\u9012\uff0c\u6700\u7ec8\u786e\u4fe1\u827e\u83f2\u5c14\u94c1\u5854\u4e8c\u5c42\u7535\u68af\u7968\u662f\u5176\u7406\u60f3\u4e14\u65e0\u5fe7\u7684\u9009\u62e9\uff0c\u5e76\u5b8c\u5168\u7406\u89e3\u5176\u8bbf\u95ee\u8303\u56f4\u3002\",\n    \"key_story_beats\": [\n      \"\u61a7\u61ac\u5df4\u9ece\uff1a\u827e\u83f2\u5c14\u94c1\u5854\u7684\u6807\u5fd7\u6027\u5438\u5f15\u529b\u3002\",\n      \"\u8d2d\u7968\u56f0\u5883\uff1a\u6e38\u5ba2\u9762\u4e34\u7684", "error": "Unterminated string starting at: line 61 column 24 (char 2061)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:17:56.272804Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:17:56.273082Z", "level": "debug"}
+{"task_id": 128291, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:17:56.280301Z", "level": "info"}
+{"task_id": 128291, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:17:56.287354Z", "level": "info"}
+{"task_id": 128291, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:17:56.287508Z", "level": "info"}
+{"task_id": 128291, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:17:56.287586Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128291, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:17:58.482332Z", "level": "info"}
+{"task_id": 128291, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:17:58.483913Z", "level": "info"}
+{"task_id": 128291, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:17:58.483990Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:17:58.484024Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:17:58.484048Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:17:58.484072Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:17:58.484092Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:17:58.484111Z", "level": "debug"}
+{"job_id": 39, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:17:58.491804Z", "level": "info"}
+{"task_id": 128291, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:17:58.494051Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+{"task_id": 128292, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:18:03.166919Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:18:03.167096Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:18:03.169050Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:18:03.169235Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:18:03.169275Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:18:03.169720Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:18:03.169761Z", "level": "info"}
+{"task_id": 128292, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:18:03.173509Z", "level": "info"}
+{"task_id": 128292, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:18:03.178535Z", "level": "info"}
+{"task_id": 128292, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:18:03.178660Z", "level": "info"}
+{"task_id": 128292, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:18:03.178704Z", "level": "info"}
+{"task_id": 128292, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:18:03.498354Z", "level": "info"}
+{"task_id": 128292, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:18:03.499979Z", "level": "info"}
+{"task_id": 128292, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:18:03.500077Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:18:03.500114Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:18:03.500140Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:18:03.500166Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:18:03.500188Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:18:03.500209Z", "level": "debug"}
+{"job_id": 39, "event": "Job completed", "timestamp": "2025-07-09T12:18:03.503273Z", "level": "info"}
+{"task_id": 128292, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:18:03.505975Z", "level": "info"}
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35610 - "GET /api/v1/jobs/39/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/health HTTP/1.1" 200 OK
+{"job_id": 40, "session_id": "session_1752063536050", "event": "Job created successfully", "timestamp": "2025-07-09T12:18:55.707808Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"job_id": 40, "event": "Processing new job", "timestamp": "2025-07-09T12:18:57.940191Z", "level": "info"}
+{"job_id": 40, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:18:57.946343Z", "level": "info"}
+{"task_id": 128293, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:18:58.208558Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 77, "session_id": "session_1752063536050", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:18:58.208763Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:18:58.209990Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:18:58.211439Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:18:58.211655Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:18:58.211718Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:19:10.541296Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:19:10.541414Z", "level": "warning"}
+{"task_id": 128293, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:19:10.550301Z", "level": "info"}
+{"task_id": 128293, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:19:10.555535Z", "level": "info"}
+{"task_id": 128293, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:19:10.555686Z", "level": "info"}
+{"task_id": 128293, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:19:10.555746Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128293, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:19:13.565595Z", "level": "info"}
+{"task_id": 128293, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:19:13.567072Z", "level": "info"}
+{"task_id": 128293, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:19:13.567156Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:19:13.567193Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:19:13.567217Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:19:13.567242Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:19:13.567261Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:19:13.567281Z", "level": "debug"}
+{"job_id": 40, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:19:13.570916Z", "level": "info"}
+{"task_id": 128293, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:19:13.573227Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128294, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:19:18.225096Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:19:18.225315Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:19:18.227899Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:19:18.229691Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:19:18.231459Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:19:18.231640Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:19:18.231972Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:19:36.303830Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:19:36.303961Z", "level": "warning"}
+{"task_id": 128294, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:19:36.310077Z", "level": "info"}
+{"task_id": 128294, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:19:36.316219Z", "level": "info"}
+{"task_id": 128294, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:19:36.316393Z", "level": "info"}
+{"task_id": 128294, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:19:36.316469Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128294, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:19:38.594472Z", "level": "info"}
+{"task_id": 128294, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:19:38.596212Z", "level": "info"}
+{"task_id": 128294, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:19:38.596420Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:19:38.596476Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:19:38.596502Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:19:38.596527Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:19:38.596547Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:19:38.596568Z", "level": "debug"}
+{"job_id": 40, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:19:38.603303Z", "level": "info"}
+{"task_id": 128294, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:19:38.605567Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128295, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:19:43.244243Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:19:43.244452Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:19:43.246558Z", "level": "info"}
+{"content_hash": "bf7a271e9cc993ba", "title": "HELIX Generated Presentation \ud83e\udd16 \u7531 HELIX...", "event": "Idempotency check", "timestamp": "2025-07-09T12:19:43.246771Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:19:43.248107Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:19:43.249754Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:19:43.249908Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:19:43.250319Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:20:05.844475Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:20:05.844620Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:20:05.844769Z", "level": "debug"}
+{"task_id": 128295, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:20:05.851967Z", "level": "info"}
+{"task_id": 128295, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:20:05.858056Z", "level": "info"}
+{"task_id": 128295, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:20:05.858201Z", "level": "info"}
+{"task_id": 128295, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:20:05.858253Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128295, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:20:08.630473Z", "level": "info"}
+{"task_id": 128295, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:20:08.631813Z", "level": "info"}
+{"task_id": 128295, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:20:08.631889Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:20:08.631927Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:20:08.631953Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:20:08.631978Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:20:08.632000Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:20:08.632020Z", "level": "debug"}
+{"job_id": 40, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:20:08.638236Z", "level": "info"}
+{"task_id": 128295, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:20:08.640073Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+{"task_id": 128296, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:20:13.267025Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:20:13.267215Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:20:13.269630Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:20:13.269734Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:20:13.269765Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:20:13.270228Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:20:13.270268Z", "level": "info"}
+{"task_id": 128296, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:20:13.274218Z", "level": "info"}
+{"task_id": 128296, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:20:13.279241Z", "level": "info"}
+{"task_id": 128296, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:20:13.279374Z", "level": "info"}
+{"task_id": 128296, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:20:13.279427Z", "level": "info"}
+{"task_id": 128296, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:20:13.644029Z", "level": "info"}
+{"task_id": 128296, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:20:13.645360Z", "level": "info"}
+{"task_id": 128296, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:20:13.645483Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:20:13.645531Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:20:13.645557Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:20:13.645582Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:20:13.645603Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:20:13.645623Z", "level": "debug"}
+{"job_id": 40, "event": "Job completed", "timestamp": "2025-07-09T12:20:13.648029Z", "level": "info"}
+{"task_id": 128296, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:20:13.650396Z", "level": "info"}
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53022 - "GET /api/v1/jobs/40/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57904 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:57904 - "GET /api/v1/health HTTP/1.1" 200 OK
+{"job_id": 41, "session_id": "session_1752063694219", "event": "Job created successfully", "timestamp": "2025-07-09T12:21:34.108175Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"job_id": 41, "event": "Processing new job", "timestamp": "2025-07-09T12:21:38.030582Z", "level": "info"}
+{"job_id": 41, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:21:38.036284Z", "level": "info"}
+{"task_id": 128297, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:21:38.330028Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 356, "session_id": "session_1752063694219", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:21:38.330174Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:21:38.331135Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:21:38.332261Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:21:38.332413Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:21:38.332474Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"content_length": 573, "tokens_used": 2601, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:21:49.217237Z", "level": "info"}
+{"content_preview": "\n{\n  \"project_overview\": {\n    \"title\": \"Attraction Ticketing Experience Optimization\",\n    \"type\": \"User Experience & Content Strategy\",\n    \"description\": \"To enhance the clarity, user-friendliness,", "error": "Unterminated string starting at: line 15 column 5 (char 558)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:21:49.217760Z", "level": "warning"}
+{"task_id": 128297, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:21:49.225491Z", "level": "info"}
+{"task_id": 128297, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:21:49.231414Z", "level": "info"}
+{"task_id": 128297, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:21:49.231584Z", "level": "info"}
+{"task_id": 128297, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:21:49.231645Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"task_id": 128297, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:21:53.736605Z", "level": "info"}
+{"task_id": 128297, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:21:53.738220Z", "level": "info"}
+{"task_id": 128297, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:21:53.738313Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:21:53.738353Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:21:53.738387Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:21:53.738419Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:21:53.738441Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:21:53.738460Z", "level": "debug"}
+{"job_id": 41, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:21:53.743126Z", "level": "info"}
+{"task_id": 128297, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:21:53.745381Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"task_id": 128298, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:21:58.354313Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:21:58.354546Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:21:58.356603Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:21:58.358751Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:21:58.361092Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:21:58.361238Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:21:58.361542Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:22:18.083891Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:22:18.084011Z", "level": "warning"}
+{"task_id": 128298, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:22:18.094115Z", "level": "info"}
+{"task_id": 128298, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:22:18.102026Z", "level": "info"}
+{"task_id": 128298, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:22:18.102156Z", "level": "info"}
+{"task_id": 128298, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:22:18.102210Z", "level": "info"}
+{"task_id": 128298, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:22:18.767680Z", "level": "info"}
+{"task_id": 128298, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:22:18.770144Z", "level": "info"}
+{"task_id": 128298, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:22:18.770255Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:22:18.770304Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:22:18.770329Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:22:18.770355Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:22:18.770376Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:22:18.770395Z", "level": "debug"}
+{"job_id": 41, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:22:18.777124Z", "level": "info"}
+{"task_id": 128298, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:22:18.780496Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"task_id": 128299, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:22:23.375929Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:22:23.376111Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:22:23.378830Z", "level": "info"}
+{"content_hash": "bed92a29de9683f5", "title": "4 Select an offer Iconic offers...", "event": "Idempotency check", "timestamp": "2025-07-09T12:22:23.378990Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:22:23.380031Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:22:23.381121Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:22:23.381234Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:22:23.381587Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"content_length": 2770, "tokens_used": 6513, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:22:47.130527Z", "level": "info"}
+{"content_preview": "\n{\n  \"narrative_structure\": {\n    \"narrative_arc\": \"\u5f15\u5bfc\u542c\u4f17\u4ece\u6570\u5b57\u5316\u9009\u62e9\u7684\u201c\u672a\u77e5\u201d\u4e0e\u201c\u56f0\u60d1\u201d\u51fa\u53d1\uff0c\u901a\u8fc7\u6e05\u6670\u7684\u95ee\u9898\u5256\u6790\u3001\u521b\u65b0\u89e3\u51b3\u65b9\u6848\u7684\u5c55\u793a\u3001\u4ee5\u53ca\u786e\u51ff\u7684\u4ef7\u503c\u8bc1\u660e\uff0c\u6700\u7ec8\u8fbe\u6210\u5bf9\u6211\u4eec\u63d0\u4f9b\u7684\u201c\u4f18\u8d28\u4e0e\u53ef\u9760\u201d\u6570\u5b57\u5b58\u5728\u65b9\u6848\u7684\u201c\u786e\u4fe1\u201d\u4e0e\u884c\u52a8\u3002\",\n    \"key_story_beats\": [\n      \"\u75db\u70b9\u5171\u9e23\uff1a\u63ed\u793a\u5f53\u524d\u6570\u5b57\u5316\u73af\u5883\u4e2d\u7684\u666e\u904d\u56f0\u60d1\u4e0e\u6311\u6218\uff0c\u5f15\u53d1\u542c\u4f17", "error": "Unterminated string starting at: line 83 column 5 (char 2756)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:22:47.130969Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:22:47.131164Z", "level": "debug"}
+{"task_id": 128299, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:22:47.138787Z", "level": "info"}
+{"task_id": 128299, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:22:47.146147Z", "level": "info"}
+{"task_id": 128299, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:22:47.146262Z", "level": "info"}
+{"task_id": 128299, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:22:47.146309Z", "level": "info"}
+{"task_id": 128299, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:22:48.804364Z", "level": "info"}
+{"task_id": 128299, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:22:48.805821Z", "level": "info"}
+{"task_id": 128299, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:22:48.805918Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:22:48.805958Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:22:48.806000Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:22:48.806026Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:22:48.806046Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:22:48.806065Z", "level": "debug"}
+{"job_id": 41, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:22:48.813592Z", "level": "info"}
+{"task_id": 128299, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:22:48.815694Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+{"task_id": 128300, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:22:53.397132Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:22:53.397282Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:22:53.399517Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:22:53.399643Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:22:53.399682Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:22:53.400128Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:22:53.400166Z", "level": "info"}
+{"task_id": 128300, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:22:53.403969Z", "level": "info"}
+{"task_id": 128300, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:22:53.409308Z", "level": "info"}
+{"task_id": 128300, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:22:53.409426Z", "level": "info"}
+{"task_id": 128300, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:22:53.409471Z", "level": "info"}
+{"task_id": 128300, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:22:53.819979Z", "level": "info"}
+{"task_id": 128300, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:22:53.821822Z", "level": "info"}
+{"task_id": 128300, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:22:53.821933Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:22:53.821973Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:22:53.822000Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:22:53.822025Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:22:53.822047Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:22:53.822066Z", "level": "debug"}
+{"job_id": 41, "event": "Job completed", "timestamp": "2025-07-09T12:22:53.824694Z", "level": "info"}
+{"task_id": 128300, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:22:53.827235Z", "level": "info"}
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45068 - "GET /api/v1/jobs/41/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38932 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47458 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58918 - "GET /api/v1/jobs/36/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38318 - "GET /api/v1/artifacts/3087 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38334 - "GET /api/v1/artifacts/3087 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46658 - "GET /api/v1/artifacts/3087 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42440 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39642 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39648 - "GET /api/v1/jobs/37/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38102 - "GET /api/v1/jobs/37/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47098 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36522 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50860 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+{"job_id": 42, "session_id": "debug_test", "event": "Job created successfully", "timestamp": "2025-07-09T12:28:23.979901Z", "level": "info"}
+INFO:     127.0.0.1:47028 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+{"job_id": 42, "event": "Processing new job", "timestamp": "2025-07-09T12:28:28.250691Z", "level": "info"}
+{"job_id": 42, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:28:28.257050Z", "level": "info"}
+{"task_id": 128301, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:28:28.620086Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 21, "session_id": "debug_test", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:28:28.620262Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:28:28.622048Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:28:28.623727Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:28:28.623854Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:28:28.623905Z", "level": "info"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:28:41.444986Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:28:41.445216Z", "level": "warning"}
+{"task_id": 128301, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:28:41.453448Z", "level": "info"}
+{"task_id": 128301, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:28:41.460830Z", "level": "info"}
+{"task_id": 128301, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:28:41.460951Z", "level": "info"}
+{"task_id": 128301, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:28:41.461031Z", "level": "info"}
+{"task_id": 128301, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:28:44.100757Z", "level": "info"}
+{"task_id": 128301, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:28:44.102563Z", "level": "info"}
+{"task_id": 128301, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:28:44.102650Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:28:44.102707Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:28:44.102732Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:28:44.102757Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:28:44.102778Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:28:44.102797Z", "level": "debug"}
+{"job_id": 42, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:28:44.106793Z", "level": "info"}
+{"task_id": 128301, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:28:44.110937Z", "level": "info"}
+{"task_id": 128302, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:28:48.632136Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:28:48.632307Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:28:48.634368Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:28:48.635416Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:28:48.636488Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:28:48.636592Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:28:48.636795Z", "level": "info"}
+INFO:     127.0.0.1:53896 - "GET /api/v1/jobs/42 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:29:06.617160Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:29:06.617260Z", "level": "warning"}
+{"task_id": 128302, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:29:06.623083Z", "level": "info"}
+{"task_id": 128302, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:29:06.628235Z", "level": "info"}
+{"task_id": 128302, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:29:06.628396Z", "level": "info"}
+{"task_id": 128302, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:29:06.628448Z", "level": "info"}
+{"task_id": 128302, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:29:09.131706Z", "level": "info"}
+{"task_id": 128302, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:29:09.133298Z", "level": "info"}
+{"task_id": 128302, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:29:09.133424Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:29:09.133465Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:29:09.133489Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:29:09.133513Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:29:09.133534Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:29:09.133573Z", "level": "debug"}
+{"job_id": 42, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:29:09.140158Z", "level": "info"}
+{"task_id": 128302, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:29:09.142727Z", "level": "info"}
+{"task_id": 128303, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:29:13.650008Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:29:13.650181Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:29:13.651623Z", "level": "info"}
+{"content_hash": "b50312e4bfcc7d22", "title": "Creative Project Brief", "event": "Idempotency check", "timestamp": "2025-07-09T12:29:13.651752Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:29:13.652815Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:29:13.654045Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:29:13.654149Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:29:13.654488Z", "level": "info"}
+{"content_length": 3521, "tokens_used": 6299, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:29:36.994694Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 6299, "event": "AI presentation blueprint generated successfully", "timestamp": "2025-07-09T12:29:36.995166Z", "level": "info"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:29:36.996085Z", "level": "debug"}
+{"task_id": 128303, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:29:37.004498Z", "level": "info"}
+{"task_id": 128303, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:29:37.011458Z", "level": "info"}
+{"task_id": 128303, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:29:37.011584Z", "level": "info"}
+{"task_id": 128303, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:29:37.011634Z", "level": "info"}
+{"task_id": 128303, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:29:39.164349Z", "level": "info"}
+{"task_id": 128303, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:29:39.166137Z", "level": "info"}
+{"task_id": 128303, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:29:39.166231Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:29:39.166265Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:29:39.166290Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:29:39.166314Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:29:39.166335Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:29:39.166355Z", "level": "debug"}
+{"job_id": 42, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:29:39.172795Z", "level": "info"}
+{"task_id": 128303, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:29:39.174658Z", "level": "info"}
+{"task_id": 128304, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:29:43.670599Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:29:43.670760Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:29:43.672501Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:29:43.672603Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:29:43.672636Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:29:43.673130Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:29:43.673184Z", "level": "info"}
+{"task_id": 128304, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:29:43.677039Z", "level": "info"}
+{"task_id": 128304, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:29:43.682900Z", "level": "info"}
+{"task_id": 128304, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:29:43.683036Z", "level": "info"}
+{"task_id": 128304, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:29:43.683080Z", "level": "info"}
+{"task_id": 128304, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:29:44.178046Z", "level": "info"}
+{"task_id": 128304, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:29:44.179508Z", "level": "info"}
+{"task_id": 128304, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:29:44.179607Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:29:44.179647Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:29:44.179673Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:29:44.179698Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:29:44.179720Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:29:44.179740Z", "level": "debug"}
+{"job_id": 42, "event": "Job completed", "timestamp": "2025-07-09T12:29:44.183181Z", "level": "info"}
+{"task_id": 128304, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:29:44.185187Z", "level": "info"}
+INFO:     127.0.0.1:54760 - "GET /api/v1/jobs/42 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52176 - "GET /api/v1/jobs/42/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46314 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46324 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54310 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41922 - "GET /api/v1/jobs/42/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41938 - "GET /api/v1/jobs/42/result HTTP/1.1" 200 OK
+{"job_id": 43, "session_id": "final_test", "event": "Job created successfully", "timestamp": "2025-07-09T12:31:52.464532Z", "level": "info"}
+INFO:     127.0.0.1:43168 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+{"job_id": 43, "event": "Processing new job", "timestamp": "2025-07-09T12:31:53.361758Z", "level": "info"}
+{"job_id": 43, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:31:53.366672Z", "level": "info"}
+{"task_id": 128305, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:31:53.752988Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 26, "session_id": "final_test", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:31:53.753174Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:31:53.754282Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:31:53.755456Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:31:53.755573Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:31:53.755624Z", "level": "info"}
+{"content_length": 3877, "tokens_used": 2396, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:32:04.510483Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 2396, "event": "AI creative brief generated successfully", "timestamp": "2025-07-09T12:32:04.510832Z", "level": "info"}
+{"task_id": 128305, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:32:04.517875Z", "level": "info"}
+{"task_id": 128305, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:32:04.523624Z", "level": "info"}
+{"task_id": 128305, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:32:04.523780Z", "level": "info"}
+{"task_id": 128305, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:32:04.523838Z", "level": "info"}
+{"task_id": 128305, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:32:09.294516Z", "level": "info"}
+{"task_id": 128305, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:32:09.296080Z", "level": "info"}
+{"task_id": 128305, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:32:09.296166Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:32:09.296214Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:32:09.296240Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:32:09.296267Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:32:09.296289Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:32:09.296309Z", "level": "debug"}
+{"job_id": 43, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:32:09.299878Z", "level": "info"}
+{"task_id": 128305, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:32:09.302262Z", "level": "info"}
+{"task_id": 128306, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:32:13.770078Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:32:13.770224Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:32:13.771488Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:32:13.772488Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:32:13.773586Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:32:13.773687Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:32:13.773895Z", "level": "info"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:32:31.637696Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:32:31.637798Z", "level": "warning"}
+{"task_id": 128306, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:32:31.644216Z", "level": "info"}
+{"task_id": 128306, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:32:31.650301Z", "level": "info"}
+{"task_id": 128306, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:32:31.650414Z", "level": "info"}
+{"task_id": 128306, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:32:31.650458Z", "level": "info"}
+{"task_id": 128306, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:32:34.324937Z", "level": "info"}
+{"task_id": 128306, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:32:34.326563Z", "level": "info"}
+{"task_id": 128306, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:32:34.326662Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:32:34.326699Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:32:34.326724Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:32:34.326771Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:32:34.326793Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:32:34.326814Z", "level": "debug"}
+{"job_id": 43, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:32:34.332471Z", "level": "info"}
+{"task_id": 128306, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:32:34.334895Z", "level": "info"}
+{"task_id": 128307, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:32:38.799913Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:32:38.800076Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:32:38.801848Z", "level": "info"}
+{"content_hash": "e26a87099cee1c3c", "title": "Frontend HTML Display Remediation & Demo Presentation", "event": "Idempotency check", "timestamp": "2025-07-09T12:32:38.801985Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:32:38.803172Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:32:38.804127Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:32:38.804221Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:32:38.804601Z", "level": "info"}
+{"content_length": 4584, "tokens_used": 6526, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:33:02.267151Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 6526, "event": "AI presentation blueprint generated successfully", "timestamp": "2025-07-09T12:33:02.267662Z", "level": "info"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:33:02.267765Z", "level": "debug"}
+{"task_id": 128307, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:33:02.274493Z", "level": "info"}
+{"task_id": 128307, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:33:02.282440Z", "level": "info"}
+{"task_id": 128307, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:33:02.282564Z", "level": "info"}
+{"task_id": 128307, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:33:02.282618Z", "level": "info"}
+{"task_id": 128307, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:33:04.359119Z", "level": "info"}
+{"task_id": 128307, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:33:04.361267Z", "level": "info"}
+{"task_id": 128307, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:33:04.361393Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:33:04.361431Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:33:04.361459Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:33:04.361486Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:33:04.361508Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:33:04.361528Z", "level": "debug"}
+{"job_id": 43, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:33:04.368786Z", "level": "info"}
+{"task_id": 128307, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:33:04.370581Z", "level": "info"}
+{"task_id": 128308, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:33:08.815482Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:33:08.815654Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:33:08.817725Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:33:08.817823Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:33:08.817867Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:33:08.818325Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:33:08.818361Z", "level": "info"}
+{"task_id": 128308, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:33:08.822063Z", "level": "info"}
+{"task_id": 128308, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:33:08.826213Z", "level": "info"}
+{"task_id": 128308, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:33:08.826318Z", "level": "info"}
+{"task_id": 128308, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:33:08.826359Z", "level": "info"}
+{"task_id": 128308, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:33:09.374992Z", "level": "info"}
+{"task_id": 128308, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:33:09.376588Z", "level": "info"}
+{"task_id": 128308, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:33:09.376687Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:33:09.376725Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:33:09.376754Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:33:09.376780Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:33:09.376802Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:33:09.376824Z", "level": "debug"}
+{"job_id": 43, "event": "Job completed", "timestamp": "2025-07-09T12:33:09.379278Z", "level": "info"}
+{"task_id": 128308, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:33:09.381518Z", "level": "info"}
+{"job_id": 44, "session_id": "session_1752064879024", "event": "Job created successfully", "timestamp": "2025-07-09T12:41:18.922356Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"job_id": 44, "event": "Processing new job", "timestamp": "2025-07-09T12:41:23.658969Z", "level": "info"}
+{"job_id": 44, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:41:23.665572Z", "level": "info"}
+{"task_id": 128309, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:41:24.144740Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 356, "session_id": "session_1752064879024", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:41:24.144894Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:41:24.146360Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:41:24.147752Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:41:24.147869Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:41:24.147921Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"content_length": 2395, "tokens_used": 2601, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:41:35.256235Z", "level": "info"}
+{"content_preview": "\n{\n  \"project_overview\": {\n    \"title\": \"Attraction Ticketing System Enhancement\",\n    \"type\": \"Content & User Interface Strategy\",\n    \"description\": \"To design and optimize the presentation of vario", "error": "Unterminated string starting at: line 41 column 7 (char 2352)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:41:35.256656Z", "level": "warning"}
+{"task_id": 128309, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:41:35.265108Z", "level": "info"}
+{"task_id": 128309, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:41:35.271467Z", "level": "info"}
+{"task_id": 128309, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:41:35.271599Z", "level": "info"}
+{"task_id": 128309, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:41:35.271643Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128309, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:41:39.790241Z", "level": "info"}
+{"task_id": 128309, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:41:39.791953Z", "level": "info"}
+{"task_id": 128309, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:41:39.792059Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:41:39.792106Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:41:39.792132Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:41:39.792157Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:41:39.792177Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:41:39.792197Z", "level": "debug"}
+{"job_id": 44, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:41:39.796028Z", "level": "info"}
+{"task_id": 128309, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:41:39.798326Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128310, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:41:44.159701Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:41:44.159846Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:41:44.161557Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:41:44.162889Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:41:44.164177Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:41:44.164308Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:41:44.164565Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:42:02.905273Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:42:02.905368Z", "level": "warning"}
+{"task_id": 128310, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:42:02.912333Z", "level": "info"}
+{"task_id": 128310, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:42:02.918377Z", "level": "info"}
+{"task_id": 128310, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:42:02.918519Z", "level": "info"}
+{"task_id": 128310, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:42:02.918566Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128310, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:42:04.820725Z", "level": "info"}
+{"task_id": 128310, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:42:04.822093Z", "level": "info"}
+{"task_id": 128310, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:42:04.822169Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:42:04.822216Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:42:04.822254Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:42:04.822292Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:42:04.822316Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:42:04.822336Z", "level": "debug"}
+{"job_id": 44, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:42:04.828558Z", "level": "info"}
+{"task_id": 128310, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:42:04.831035Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128311, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:42:09.179406Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:42:09.179628Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:42:09.181707Z", "level": "info"}
+{"content_hash": "bed92a29de9683f5", "title": "4 Select an offer Iconic offers...", "event": "Idempotency check", "timestamp": "2025-07-09T12:42:09.181890Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:42:09.183466Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:42:09.185089Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:42:09.185233Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:42:09.185670Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"content_length": 3242, "tokens_used": 6444, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:42:30.620043Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 6444, "event": "AI presentation blueprint generated successfully", "timestamp": "2025-07-09T12:42:30.620547Z", "level": "info"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:42:30.620631Z", "level": "debug"}
+{"task_id": 128311, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:42:30.627113Z", "level": "info"}
+{"task_id": 128311, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:42:30.634209Z", "level": "info"}
+{"task_id": 128311, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:42:30.634362Z", "level": "info"}
+{"task_id": 128311, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:42:30.634420Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128311, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:42:34.854621Z", "level": "info"}
+{"task_id": 128311, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:42:34.855955Z", "level": "info"}
+{"task_id": 128311, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:42:34.856038Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:42:34.856072Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:42:34.856097Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:42:34.856128Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:42:34.856149Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:42:34.856169Z", "level": "debug"}
+{"job_id": 44, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:42:34.863367Z", "level": "info"}
+{"task_id": 128311, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:42:34.865480Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+{"task_id": 128312, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:42:39.202102Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:42:39.202322Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:42:39.204608Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:42:39.204719Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:42:39.204762Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:42:39.205371Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:42:39.205426Z", "level": "info"}
+{"task_id": 128312, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:42:39.209548Z", "level": "info"}
+{"task_id": 128312, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:42:39.215598Z", "level": "info"}
+{"task_id": 128312, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:42:39.215741Z", "level": "info"}
+{"task_id": 128312, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:42:39.215787Z", "level": "info"}
+{"task_id": 128312, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:42:39.869498Z", "level": "info"}
+{"task_id": 128312, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:42:39.870961Z", "level": "info"}
+{"task_id": 128312, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:42:39.871046Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:42:39.871081Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:42:39.871104Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:42:39.871129Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:42:39.871149Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:42:39.871168Z", "level": "debug"}
+{"job_id": 44, "event": "Job completed", "timestamp": "2025-07-09T12:42:39.874289Z", "level": "info"}
+{"task_id": 128312, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:42:39.876618Z", "level": "info"}
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35986 - "GET /api/v1/jobs/44/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58074 - "GET / HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58074 - "GET /port-discovery.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58074 - "GET /api/v1/health HTTP/1.1" 200 OK
+{"job_id": 45, "session_id": "session_1752064973593", "event": "Job created successfully", "timestamp": "2025-07-09T12:42:53.514506Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+{"job_id": 45, "event": "Processing new job", "timestamp": "2025-07-09T12:42:53.714114Z", "level": "info"}
+{"job_id": 45, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:42:53.719096Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"task_id": 128313, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:42:54.212828Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 356, "session_id": "session_1752064973593", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:42:54.212976Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:42:54.213963Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:42:54.214878Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:42:54.214980Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:42:54.215031Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"content_length": 1278, "tokens_used": 2600, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:43:05.923552Z", "level": "info"}
+{"content_preview": "\n{\n  \"project_overview\": {\n    \"title\": \"Optimized Ticket Offer Presentation\",\n    \"type\": \"Digital Product Information Design\",\n    \"description\": \"To clearly present various access and premium ticke", "error": "Expecting ',' delimiter: line 25 column 6 (char 1270)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:43:05.923873Z", "level": "warning"}
+{"task_id": 128313, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:43:05.930548Z", "level": "info"}
+{"task_id": 128313, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:43:05.935446Z", "level": "info"}
+{"task_id": 128313, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:43:05.935557Z", "level": "info"}
+{"task_id": 128313, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:43:05.935598Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"task_id": 128313, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:43:09.901363Z", "level": "info"}
+{"task_id": 128313, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:43:09.902891Z", "level": "info"}
+{"task_id": 128313, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:43:09.902978Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:43:09.903014Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:43:09.903038Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:43:09.903062Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:43:09.903083Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:43:09.903102Z", "level": "debug"}
+{"job_id": 45, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:43:09.906225Z", "level": "info"}
+{"task_id": 128313, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:43:09.908232Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"task_id": 128314, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:43:14.229794Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:43:14.229955Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:43:14.231424Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:43:14.232529Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:43:14.234010Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:43:14.234111Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:43:14.234341Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:43:32.002610Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:43:32.002746Z", "level": "warning"}
+{"task_id": 128314, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:43:32.009263Z", "level": "info"}
+{"task_id": 128314, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:43:32.014887Z", "level": "info"}
+{"task_id": 128314, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:43:32.015001Z", "level": "info"}
+{"task_id": 128314, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:43:32.015045Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+{"task_id": 128314, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:43:34.925259Z", "level": "info"}
+{"task_id": 128314, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:43:34.926533Z", "level": "info"}
+{"task_id": 128314, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:43:34.926606Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:43:34.926642Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:43:34.926667Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:43:34.926692Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:43:34.926713Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:43:34.926732Z", "level": "debug"}
+{"job_id": 45, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:43:34.930967Z", "level": "info"}
+{"task_id": 128314, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:43:34.933357Z", "level": "info"}
+INFO:     127.0.0.1:42204 - "GET /api/v1/jobs/45 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44056 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44056 - "GET /port-discovery.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44056 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44056 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:44056 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42204 - "GET / HTTP/1.1" 200 OK
+{"task_id": 128315, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:43:39.246428Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:43:39.246583Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:43:39.248019Z", "level": "info"}
+{"content_hash": "bed92a29de9683f5", "title": "4 Select an offer Iconic offers...", "event": "Idempotency check", "timestamp": "2025-07-09T12:43:39.248200Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:43:39.249223Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:43:39.250317Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:43:39.250427Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:43:39.250772Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /port-discovery.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+{"job_id": 46, "session_id": "session_1752065023508", "event": "Job created successfully", "timestamp": "2025-07-09T12:43:43.159801Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"job_id": 46, "event": "Processing new job", "timestamp": "2025-07-09T12:43:43.743846Z", "level": "info"}
+{"job_id": 46, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:43:43.748588Z", "level": "info"}
+{"task_id": 128316, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:43:44.252489Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 356, "session_id": "session_1752065023508", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:43:44.252626Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:43:44.253735Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:43:44.254850Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:43:44.254962Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:43:44.255007Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"content_length": 2566, "tokens_used": 2600, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:43:54.965744Z", "level": "info"}
+{"content_preview": "\n{\n  \"project_overview\": {\n    \"title\": \"Ticket Offer Selection & Availability Clarity Enhancement\",\n    \"type\": \"Digital Product Improvement / UI/UX Enhancement\",\n    \"description\": \"To enhance the u", "error": "Expecting value: line 41 column 78 (char 2558)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:43:54.966109Z", "level": "warning"}
+{"task_id": 128316, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:43:54.973483Z", "level": "info"}
+{"task_id": 128316, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:43:54.978687Z", "level": "info"}
+{"task_id": 128316, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:43:54.978818Z", "level": "info"}
+{"task_id": 128316, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:43:54.978860Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128316, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:43:59.952615Z", "level": "info"}
+{"task_id": 128316, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:43:59.954110Z", "level": "info"}
+{"task_id": 128316, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:43:59.954221Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:43:59.954257Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:43:59.954282Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:43:59.954306Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:43:59.954326Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:43:59.954346Z", "level": "debug"}
+{"job_id": 46, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:43:59.957704Z", "level": "info"}
+{"task_id": 128316, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:43:59.959859Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"content_length": 3583, "tokens_used": 6179, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:44:01.535721Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 6179, "event": "AI presentation blueprint generated successfully", "timestamp": "2025-07-09T12:44:01.536214Z", "level": "info"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:44:01.536313Z", "level": "debug"}
+{"task_id": 128315, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:44:01.544413Z", "level": "info"}
+{"task_id": 128315, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:44:01.550928Z", "level": "info"}
+{"task_id": 128315, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:44:01.551065Z", "level": "info"}
+{"task_id": 128315, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:44:01.551136Z", "level": "info"}
+{"task_id": 128317, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:44:04.267111Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:44:04.267269Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:44:04.269285Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:44:04.270285Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:44:04.271254Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:44:04.271375Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:44:04.271587Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128315, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:44:04.963809Z", "level": "info"}
+{"task_id": 128315, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:44:04.965147Z", "level": "info"}
+{"task_id": 128315, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:44:04.965229Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:44:04.965262Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:44:04.965304Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:44:04.965330Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:44:04.965361Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:44:04.965380Z", "level": "debug"}
+{"job_id": 45, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:44:04.972156Z", "level": "info"}
+{"task_id": 128315, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:44:04.973953Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128318, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:44:09.272254Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:44:09.272407Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:44:09.274188Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:44:09.274315Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:44:09.274352Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:44:09.274773Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:44:09.274807Z", "level": "info"}
+{"task_id": 128318, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:44:09.278507Z", "level": "info"}
+{"task_id": 128318, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:44:09.283230Z", "level": "info"}
+{"task_id": 128318, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:44:09.283356Z", "level": "info"}
+{"task_id": 128318, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:44:09.283401Z", "level": "info"}
+{"task_id": 128318, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:44:09.978540Z", "level": "info"}
+{"task_id": 128318, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:44:09.979851Z", "level": "info"}
+{"task_id": 128318, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:44:09.979948Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:44:09.979984Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:44:09.980010Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:44:09.980035Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:44:09.980056Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:44:09.980075Z", "level": "debug"}
+{"job_id": 45, "event": "Job completed", "timestamp": "2025-07-09T12:44:09.982696Z", "level": "info"}
+{"task_id": 128318, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:44:09.985202Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:44:20.969421Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:44:20.969521Z", "level": "warning"}
+{"task_id": 128317, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:44:20.975671Z", "level": "info"}
+{"task_id": 128317, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:44:20.981124Z", "level": "info"}
+{"task_id": 128317, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:44:20.981249Z", "level": "info"}
+{"task_id": 128317, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:44:20.981302Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128317, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:44:24.997646Z", "level": "info"}
+{"task_id": 128317, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:44:24.998871Z", "level": "info"}
+{"task_id": 128317, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:44:24.998961Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:44:24.999015Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:44:24.999090Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:44:24.999116Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:44:24.999137Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:44:24.999157Z", "level": "debug"}
+{"job_id": 46, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:44:25.003319Z", "level": "info"}
+{"task_id": 128317, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:44:25.005071Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128319, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:44:29.288965Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:44:29.289287Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:44:29.291087Z", "level": "info"}
+{"content_hash": "bed92a29de9683f5", "title": "4 Select an offer Iconic offers...", "event": "Idempotency check", "timestamp": "2025-07-09T12:44:29.291296Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:44:29.292411Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:44:29.293461Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:44:29.293572Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:44:29.293976Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"content_length": 2447, "tokens_used": 6513, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:44:53.997438Z", "level": "info"}
+{"content_preview": "\n{\n  \"narrative_structure\": {\n    \"narrative_arc\": \"\u5f15\u5bfc\u542c\u4f17\u4ece\u5bf9\u73b0\u6709\u7ebf\u4e0a\u4f53\u9a8c\u7684\u6a21\u7cca\u4e0e\u75db\u70b9\uff0c\u9010\u6b65\u8ba4\u8bc6\u5230\u6211\u4eec\u521b\u65b0\u6570\u5b57\u89e3\u51b3\u65b9\u6848\u7684\u72ec\u7279\u4ef7\u503c\u3001\u5353\u8d8a\u54c1\u8d28\u548c\u7528\u6237\u4e2d\u5fc3\u8bbe\u8ba1\uff0c\u6700\u7ec8\u5efa\u7acb\u8d77\u5bf9\u54c1\u724c\u548c\u4ea7\u54c1\u7684\u575a\u5b9a\u4fe1\u4efb\u4e0e\u786e\u4fe1\uff0c\u4fc3\u6210\u884c\u52a8\u3002\",\n    \"key_story_beats\": [\n      \"\u75db\u70b9\u5171\u9e23\uff1a\u63ed\u793a\u5f53\u524d\u7ebf\u4e0a\u4f53\u9a8c\u7684\u6311\u6218\u4e0e\u4e0d\u786e\u5b9a\u6027\u3002\",\n      \"\u613f\u666f\u5448\u73b0", "error": "Unterminated string starting at: line 79 column 7 (char 2412)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:44:53.997829Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:44:53.997958Z", "level": "debug"}
+{"task_id": 128319, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:44:54.003877Z", "level": "info"}
+{"task_id": 128319, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:44:54.009044Z", "level": "info"}
+{"task_id": 128319, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:44:54.009174Z", "level": "info"}
+{"task_id": 128319, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:44:54.009223Z", "level": "info"}
+{"task_id": 128319, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:44:55.028900Z", "level": "info"}
+{"task_id": 128319, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:44:55.030453Z", "level": "info"}
+{"task_id": 128319, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:44:55.030543Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:44:55.030578Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:44:55.030603Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:44:55.030628Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:44:55.030649Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:44:55.030668Z", "level": "debug"}
+{"job_id": 46, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:44:55.037739Z", "level": "info"}
+{"task_id": 128319, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:44:55.039815Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+{"task_id": 128320, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:44:59.311525Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:44:59.311753Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:44:59.314017Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:44:59.314143Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:44:59.314189Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:44:59.314910Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:44:59.314973Z", "level": "info"}
+{"task_id": 128320, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:44:59.321596Z", "level": "info"}
+{"task_id": 128320, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:44:59.327315Z", "level": "info"}
+{"task_id": 128320, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:44:59.327485Z", "level": "info"}
+{"task_id": 128320, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:44:59.327546Z", "level": "info"}
+{"task_id": 128320, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:45:00.043530Z", "level": "info"}
+{"task_id": 128320, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:45:00.044658Z", "level": "info"}
+{"task_id": 128320, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:45:00.044731Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:45:00.044764Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:45:00.044788Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:45:00.044811Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:45:00.044832Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:45:00.044852Z", "level": "debug"}
+{"job_id": 46, "event": "Job completed", "timestamp": "2025-07-09T12:45:00.046688Z", "level": "info"}
+{"task_id": 128320, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:45:00.048776Z", "level": "info"}
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44172 - "GET /api/v1/jobs/46/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44080 - "GET /api/v1/jobs/43 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49450 - "GET /api/v1/jobs/43/result HTTP/1.1" 200 OK
+{"job_id": 47, "session_id": "schema_fix_test", "event": "Job created successfully", "timestamp": "2025-07-09T12:54:13.834151Z", "level": "info"}
+INFO:     127.0.0.1:60092 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+{"job_id": 47, "event": "Processing new job", "timestamp": "2025-07-09T12:54:14.048831Z", "level": "info"}
+{"job_id": 47, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T12:54:14.053586Z", "level": "info"}
+{"task_id": 128321, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:54:14.659016Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 31, "session_id": "schema_fix_test", "event": "Processing creative brief request", "timestamp": "2025-07-09T12:54:14.659151Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:54:14.660481Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:54:14.661750Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:54:14.661887Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:54:14.661946Z", "level": "info"}
+{"content_length": 3346, "tokens_used": 2133, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:54:23.754916Z", "level": "info"}
+{"model": "gemini-2.5-flash", "tokens": 2133, "event": "AI creative brief generated successfully", "timestamp": "2025-07-09T12:54:23.755254Z", "level": "info"}
+{"task_id": 128321, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:54:23.763025Z", "level": "info"}
+{"task_id": 128321, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:54:23.769904Z", "level": "info"}
+{"task_id": 128321, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:54:23.770034Z", "level": "info"}
+{"task_id": 128321, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T12:54:23.770081Z", "level": "info"}
+{"task_id": 128321, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T12:54:25.471542Z", "level": "info"}
+{"task_id": 128321, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:54:25.473330Z", "level": "info"}
+{"task_id": 128321, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:54:25.473403Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T12:54:25.473438Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:54:25.473462Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:54:25.473485Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T12:54:25.473506Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T12:54:25.473525Z", "level": "debug"}
+{"job_id": 47, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T12:54:25.477100Z", "level": "info"}
+{"task_id": 128321, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:54:25.479284Z", "level": "info"}
+{"task_id": 128322, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:54:29.670474Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T12:54:29.670632Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:54:29.672794Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:54:29.673821Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:54:29.674801Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:54:29.674917Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:54:29.675111Z", "level": "info"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T12:54:47.879383Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T12:54:47.879482Z", "level": "warning"}
+{"task_id": 128322, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:54:47.885331Z", "level": "info"}
+{"task_id": 128322, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:54:47.890418Z", "level": "info"}
+{"task_id": 128322, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:54:47.890554Z", "level": "info"}
+{"task_id": 128322, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T12:54:47.890598Z", "level": "info"}
+{"task_id": 128322, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T12:54:50.498526Z", "level": "info"}
+{"task_id": 128322, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:54:50.500081Z", "level": "info"}
+{"task_id": 128322, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:54:50.500163Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T12:54:50.500202Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:54:50.500230Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:54:50.500265Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T12:54:50.500292Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T12:54:50.500313Z", "level": "debug"}
+{"job_id": 47, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T12:54:50.506088Z", "level": "info"}
+{"task_id": 128322, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:54:50.508258Z", "level": "info"}
+{"task_id": 128323, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:54:54.687029Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T12:54:54.687169Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:54:54.688626Z", "level": "info"}
+{"content_hash": "ecefebbf9327acc8", "title": "Product Feature Demonstration Presentation", "event": "Idempotency check", "timestamp": "2025-07-09T12:54:54.688764Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T12:54:54.689846Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T12:54:54.690806Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T12:54:54.690907Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T12:54:54.691237Z", "level": "info"}
+{"content_length": 2322, "tokens_used": 6644, "event": "Gemini response received successfully", "timestamp": "2025-07-09T12:55:20.916124Z", "level": "info"}
+{"content_preview": "\n{\n  \"narrative_structure\": {\n    \"narrative_arc\": \"\u8be5\u6f14\u793a\u6587\u7a3f\u5c06\u5f15\u5bfc\u542c\u4f17\u7ecf\u5386\u4e00\u4e2a\u4ece\u8ba4\u8bc6\u73b0\u6709\u6311\u6218\u548c\u4f4e\u6548\uff08\u201c\u672a\u77e5\u201d\uff09\u5230\u5168\u9762\u7406\u89e3\u4ea7\u54c1\u4ef7\u503c\u5e76\u4ea7\u751f\u575a\u5b9a\u4fe1\u5ff5\uff08\u201c\u786e\u4fe1\u201d\uff09\u7684\u8ba4\u77e5\u65c5\u7a0b\u3002\u901a\u8fc7\u95ee\u9898\u5f15\u5165\u3001\u89e3\u51b3\u65b9\u6848\u5448\u73b0\u3001\u6838\u5fc3\u529f\u80fd\u6f14\u793a\u3001\u771f\u5b9e\u6848\u4f8b\u9a8c\u8bc1\u548c\u4ef7\u503c\u4e3b\u5f20\u5f3a\u8c03\uff0c\u9010\u6b65\u6784\u5efa\u4fe1\u4efb\u548c\u8ba4\u540c\u3002\",\n    \"key_story_beats\": [\n      \"\u5f15\u53d1\u5171\u9e23\uff1a\u63cf\u7ed8\u5f53\u524d\u75db", "error": "Expecting value: line 63 column 27 (char 2313)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T12:55:20.916482Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T12:55:20.916605Z", "level": "debug"}
+{"task_id": 128323, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:55:20.922367Z", "level": "info"}
+{"task_id": 128323, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:55:20.927164Z", "level": "info"}
+{"task_id": 128323, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:55:20.927262Z", "level": "info"}
+{"task_id": 128323, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T12:55:20.927305Z", "level": "info"}
+{"task_id": 128323, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T12:55:25.533425Z", "level": "info"}
+{"task_id": 128323, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:55:25.534613Z", "level": "info"}
+{"task_id": 128323, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:55:25.534682Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T12:55:25.534716Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:55:25.534739Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:55:25.534762Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T12:55:25.534782Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T12:55:25.534801Z", "level": "debug"}
+{"job_id": 47, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T12:55:25.541236Z", "level": "info"}
+{"task_id": 128323, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:55:25.543043Z", "level": "info"}
+{"task_id": 128324, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T12:55:29.712274Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T12:55:29.712430Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T12:55:29.714246Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T12:55:29.714336Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T12:55:29.714367Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T12:55:29.714812Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T12:55:29.714851Z", "level": "info"}
+{"task_id": 128324, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T12:55:29.718607Z", "level": "info"}
+{"task_id": 128324, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T12:55:29.723527Z", "level": "info"}
+{"task_id": 128324, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T12:55:29.723640Z", "level": "info"}
+{"task_id": 128324, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T12:55:29.723707Z", "level": "info"}
+{"task_id": 128324, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T12:55:30.547867Z", "level": "info"}
+{"task_id": 128324, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T12:55:30.549440Z", "level": "info"}
+{"task_id": 128324, "event": "Artifact created for completed task", "timestamp": "2025-07-09T12:55:30.549526Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T12:55:30.549561Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T12:55:30.549585Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T12:55:30.549608Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T12:55:30.549628Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T12:55:30.549658Z", "level": "debug"}
+{"job_id": 47, "event": "Job completed", "timestamp": "2025-07-09T12:55:30.552130Z", "level": "info"}
+{"task_id": 128324, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T12:55:30.554120Z", "level": "info"}
+INFO:     127.0.0.1:52446 - "GET /api/v1/jobs/47 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56106 - "GET /api/v1/jobs/47/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59124 - "GET /api/v1/jobs/47/artifacts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59128 - "GET /api/v1/artifacts/3175 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59144 - "GET /api/v1/jobs/47/result HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+{"event": "Shutting down Project HELIX API server", "timestamp": "2025-07-09T13:33:55.831360Z", "level": "info"}
+{"event": "Database connection pool closed", "timestamp": "2025-07-09T13:33:55.837851Z", "level": "info"}
+{"event": "Database connection closed", "timestamp": "2025-07-09T13:33:55.838091Z", "level": "info"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [719042]
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:33:56.162804Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:33:57.313340Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:33:59.117863Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:00.213255Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:01.165210Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:02.315761Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:04.121077Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:05.215560Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:06.167954Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:07.317835Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:09.124003Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:10.217255Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:11.170640Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:12.321179Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:14.126350Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:15.217898Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:16.173199Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:17.322807Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:19.129026Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:20.219510Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:21.175903Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:22.324441Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:24.131686Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:25.221186Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:26.177850Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T13:34:27.326377Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T13:34:29.133220Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T13:34:30.222212Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T13:34:31.180528Z", "level": "error"}

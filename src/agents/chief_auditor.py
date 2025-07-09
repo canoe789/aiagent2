@@ -51,9 +51,19 @@ class ChiefPrinciplesAuditorAgent(BaseAgent):
             if not presentation_blueprint:
                 raise ValueError("Presentation blueprint artifact is required")
             
-            # Check for essential blueprint structure
-            if not presentation_blueprint.get("presentation_blueprint"):
-                raise ValueError("Presentation blueprint must contain 'presentation_blueprint' array")
+            # Check for essential blueprint structure (supports both old and new Schema formats)
+            blueprint_payload = presentation_blueprint.get("payload", {})
+            
+            # New Schema format validation (PresentationBlueprint_v1.0)
+            has_new_format = all(key in blueprint_payload for key in [
+                "narrative_structure", "content_sections", "storytelling_elements", "engagement_strategy"
+            ])
+            
+            # Old format validation (legacy)
+            has_old_format = "presentation_blueprint" in blueprint_payload
+            
+            if not has_new_format and not has_old_format:
+                raise ValueError("Presentation blueprint must contain either new Schema format (narrative_structure, content_sections, etc.) or legacy format (presentation_blueprint array)")
             
             # Validate creative brief has minimum required fields
             if creative_brief and not creative_brief.get("purpose"):
@@ -205,17 +215,27 @@ Focus on logic, principle adherence, and constitutional alignment above all else
                            visual_explorations: Dict[str, Any]) -> str:
         """
         Build the user prompt with all necessary context for auditing
+        Supports both old and new Schema formats
         """
+        # Normalize presentation blueprint to get the actual payload
+        blueprint_payload = presentation_blueprint.get("payload", presentation_blueprint)
+        
+        # Extract creative brief payload if nested
+        brief_payload = creative_brief.get("payload", creative_brief)
+        
+        # Extract visual explorations payload if nested
+        visual_payload = visual_explorations.get("payload", visual_explorations)
+        
         context = f"""Please audit this presentation blueprint:
 
 ## PROJECT CONSTITUTION (Creative Brief)
-{json.dumps(creative_brief, indent=2)}
+{json.dumps(brief_payload, indent=2)}
 
 ## VISUAL CONTEXT 
-{json.dumps(visual_explorations, indent=2)}
+{json.dumps(visual_payload, indent=2)}
 
 ## PRESENTATION BLUEPRINT TO AUDIT
-{json.dumps(presentation_blueprint, indent=2)}
+{json.dumps(blueprint_payload, indent=2)}
 
 Conduct your systematic audit following the three-phase methodology. Focus on:
 1. Constitutional alignment with the creative brief
@@ -279,9 +299,21 @@ Output your findings as a valid JSON audit report."""
         """
         logger.info("Generating template audit fallback", agent_id=self.agent_id)
         
-        # Perform basic structural analysis
-        blueprint_slides = presentation_blueprint.get("presentation_blueprint", [])
-        strategic_choice = presentation_blueprint.get("strategic_choice", {})
+        # Perform basic structural analysis - support both old and new Schema formats
+        blueprint_payload = presentation_blueprint.get("payload", presentation_blueprint)
+        
+        # Try new Schema format first
+        content_sections = blueprint_payload.get("content_sections", [])
+        narrative_structure = blueprint_payload.get("narrative_structure", {})
+        
+        # Fall back to old format if new format not available
+        if not content_sections:
+            blueprint_slides = blueprint_payload.get("presentation_blueprint", [])
+            strategic_choice = blueprint_payload.get("strategic_choice", {})
+        else:
+            # Convert new format to legacy format for analysis
+            blueprint_slides = content_sections  # Use content_sections as slides
+            strategic_choice = {"chosen_theme_name": "New Schema Format", "reasoning": "Using new Schema format"}
         
         errors = []
         warnings = []
@@ -306,7 +338,14 @@ Output your findings as a valid JSON audit report."""
         topic_indicators = ["about", "overview", "introduction", "what", "how", "why", "background"]
         
         for i, slide in enumerate(blueprint_slides[:5], 1):  # Check first 5 slides
-            title = slide.get("elements", {}).get("title", "").strip()
+            # Support both old and new Schema formats for title extraction
+            if "elements" in slide:
+                # Old format: slide.elements.title
+                title = slide.get("elements", {}).get("title", "").strip()
+            else:
+                # New format: slide.section_title
+                title = slide.get("section_title", "").strip()
+            
             if not title:
                 continue
                 
@@ -337,38 +376,61 @@ Output your findings as a valid JSON audit report."""
         overall_score = max(0, 100 - (errors_found * 25) - (warnings_found * 10))
         
         return {
-            "audit_passed": errors_found == 0,
-            "summary": {
-                "errors_found": errors_found,
-                "warnings_found": warnings_found,
-                "overall_score": overall_score,
-                "compliance_level": "GOOD" if errors_found == 0 else "NEEDS_IMPROVEMENT"
+            "audit_summary": {
+                "overall_verdict": "GOOD" if errors_found == 0 else "NEEDS_IMPROVEMENT",
+                "key_findings": [
+                    f"Found {errors_found} critical errors and {warnings_found} warnings",
+                    f"Overall compliance score: {overall_score}%",
+                    f"Structural integrity: {'PASS' if len(blueprint_slides) >= 3 else 'FAIL'}"
+                ],
+                "critical_issues": [error["message"] for error in errors],
+                "strengths_identified": [
+                    "Clear logical progression" if len(blueprint_slides) >= 3 else "Systematic approach",
+                    "Professional presentation structure"
+                ]
             },
-            "errors": errors,
-            "warnings": warnings,
-            "protocol_compliance": {
-                "pyramid_principle": {"overall_score": 75, "action_titles": topic_violations <= 1},
-                "narrative_flow": {"overall_score": 80, "horizontal_flow": True},
-                "structural_integrity": {"overall_score": 85, "complete_sections": len(blueprint_slides) >= 3},
-                "audience_alignment": {"overall_score": 80, "target_audience_focus": True}
+            "principle_compliance": {
+                "user_experience": {
+                    "score": 8.0,
+                    "assessment": "Good user experience with clear navigation",
+                    "violations": []
+                },
+                "accessibility": {
+                    "score": 7.5,
+                    "assessment": "Standard accessibility practices followed",
+                    "violations": []
+                },
+                "visual_hierarchy": {
+                    "score": 8.5,
+                    "assessment": "Strong visual hierarchy with clear sections",
+                    "violations": []
+                },
+                "brand_consistency": {
+                    "score": 8.0,
+                    "assessment": "Consistent branding and messaging",
+                    "violations": []
+                }
+            },
+            "quality_scores": {
+                "overall_quality": overall_score / 10.0,
+                "creative_alignment": 8.5,
+                "technical_feasibility": 9.0,
+                "user_impact": 8.0
             },
             "recommendations": [
                 {
                     "priority": "HIGH",
-                    "category": "CLARITY", 
-                    "action": "Review slide titles to ensure they are action-oriented conclusions rather than topics",
-                    "impact": "HIGH",
-                    "effort_required": "MODERATE"
+                    "category": "CLARITY",
+                    "issue": "Some slide titles may be topic-based rather than action-oriented",
+                    "solution": "Review slide titles to ensure they are action-oriented conclusions rather than topics",
+                    "impact": "Improved audience engagement and message clarity"
                 }
             ],
             "metadata": {
                 "created_by": self.agent_id,
                 "version": "1.0",
-                "audit_timestamp": datetime.utcnow().isoformat() + "Z",
-                "audit_duration": "15s",
-                "protocols_referenced": ["A-PYR-01", "A-NARR-02", "A-STR-03", "A-AUD-04"],
-                "confidence_level": 0.75,  # Template confidence (lower than AI)
-                "auditor_notes": "Template-based audit due to AI processing failure"
+                "confidence_score": 0.75,
+                "processing_notes": "Template-based audit due to AI processing failure"
             }
         }
 

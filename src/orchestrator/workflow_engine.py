@@ -18,6 +18,7 @@ class WorkflowEngine:
     """
     
     def __init__(self):
+        logger.debug("Creating new WorkflowEngine instance", instance_id=id(self))
         self.workflows: Dict = {}
         self.agent_definitions: Dict[str, Dict] = {}
         self.execution_order: List[str] = []
@@ -25,6 +26,7 @@ class WorkflowEngine:
         
     async def load_workflows(self, workflow_file: str = "workflows.json"):
         """Load workflow definitions from JSON file"""
+        logger.debug("Loading workflows", instance_id=id(self))
         try:
             workflow_path = os.path.join(os.getcwd(), workflow_file)
             
@@ -68,20 +70,28 @@ class WorkflowEngine:
         Get the next agents that should run after the current agent completes
         Based on execution order and dependency requirements
         """
+        logger.debug("Getting next agents", current_agent=current_agent_id)
+        logger.debug("Current execution order", execution_order=self.execution_order)
+        
         try:
             current_index = self.execution_order.index(current_agent_id)
+            logger.debug("Found agent in execution order", 
+                        agent_id=current_agent_id, index=current_index)
             
             # If this is the last agent in the sequence, return empty list
             if current_index >= len(self.execution_order) - 1:
+                logger.debug("This is the last agent in sequence", agent_id=current_agent_id)
                 return []
             
             # Return the next agent in sequence
             # In the future, this could be expanded to support parallel execution
             next_agent = self.execution_order[current_index + 1]
+            logger.debug("Next agent determined", next_agent=next_agent)
             return [next_agent]
             
         except ValueError:
             logger.warning("Agent not found in execution order", agent_id=current_agent_id)
+            logger.debug("Available agents in execution order", agents=self.execution_order)
             return []
     
     def get_agent_input_artifacts(self, agent_id: str) -> List[str]:

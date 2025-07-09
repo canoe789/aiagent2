@@ -45,10 +45,10 @@ class VisualDirectorAgent(BaseAgent):
             
             creative_brief = artifacts["creative_brief"]["payload"]
             
-            # Get agent prompt
+            # Get agent prompt from database (P3: Externalized Cognition)
             system_prompt = await self.get_agent_prompt()
             if not system_prompt:
-                system_prompt = self._get_default_prompt()
+                raise ValueError("No prompt found for AGENT_2 in database - violates P3 principle")
             
             # Generate visual explorations using AI-first approach
             visual_explorations = await self._generate_visual_explorations(
@@ -56,12 +56,18 @@ class VisualDirectorAgent(BaseAgent):
             )
             
             # Log successful processing
+            style_direction = visual_explorations.get("style_direction", {})
+            style_summary = (
+                style_direction.get("primary_style", "unknown") if isinstance(style_direction, dict)
+                else str(style_direction)[:50]
+            )
+            
             await self.log_system_event(
                 "INFO", 
                 "Visual explorations generated successfully",
                 {
                     "visual_themes_count": len(visual_explorations.get("visual_themes", [])),
-                    "style_direction": visual_explorations.get("style_direction", "unknown")[:50]
+                    "style_direction": style_summary
                 }
             )
             
@@ -107,35 +113,51 @@ class VisualDirectorAgent(BaseAgent):
             # Create AI client
             ai_client = AIClientFactory.create_client()
             
-            # Enhanced system prompt for JSON output (AGENT_1 pattern)
+            # Enhanced system prompt for JSON output matching schema exactly
             enhanced_prompt = f"""{system_prompt}
 
 CRITICAL: You must respond with VALID JSON only. Do not include any text before or after the JSON.
-The JSON must follow this exact structure:
+The JSON must follow this EXACT structure to match VisualExplorations_v1.0 schema:
 
 {{
   "visual_themes": [
     {{
-      "theme_name": "string",
-      "design_philosophy": "string",
-      "color_and_typography": "string",
-      "layout_and_graphics": "string", 
-      "key_slide_archetype": "string"
+      "name": "string",
+      "description": "string",
+      "mood": "string",
+      "inspiration": "string"
     }}
   ],
-  "style_direction": "string",
-  "color_palette": ["#HEXCODE"],
+  "style_direction": {{
+    "primary_style": "string",
+    "visual_language": "string",
+    "aesthetic_principles": ["string"]
+  }},
+  "color_palette": {{
+    "primary_colors": ["#HEXCODE"],
+    "secondary_colors": ["#HEXCODE"],
+    "accent_colors": ["#HEXCODE"],
+    "color_psychology": "string"
+  }},
   "typography": {{
     "primary_font": "string",
-    "font_scale": "string"
+    "secondary_font": "string", 
+    "font_hierarchy": "string",
+    "readability_notes": "string"
   }},
-  "layout_principles": ["string"],
+  "layout_principles": {{
+    "grid_system": "string",
+    "spacing_system": "string",
+    "responsive_approach": "string"
+  }},
   "visual_elements": {{
-    "iconography": "string"
+    "icons_style": "string",
+    "imagery_style": "string",
+    "graphic_elements": ["string"]
   }}
 }}
 
-Remember: Follow your concept alchemy process internally, but output ONLY the final JSON result."""
+Remember: Follow your concept alchemy process internally, but output ONLY the final JSON result that exactly matches this schema."""
             
             # Prepare creative materials for the prompt
             creative_materials = {
@@ -215,28 +237,49 @@ Remember: Follow your concept alchemy process internally, but output ONLY the fi
         # Create three visual themes using template-based approach
         visual_themes = self._create_template_visual_themes(creative_brief)
         
-        # Template visual explorations
+        # Template visual explorations matching schema exactly
         visual_explorations = {
             "visual_themes": visual_themes,
-            "style_direction": f"Template-generated visual direction based on {project_overview.get('type', 'general')} project type with {creative_strategy.get('tone_of_voice', 'professional')} tone",
-            "color_palette": ["#2563EB", "#64748B", "#F8FAFC", "#374151"],
+            "style_direction": {
+                "primary_style": f"Template-generated {project_overview.get('type', 'general')} design",
+                "visual_language": f"{creative_strategy.get('tone_of_voice', 'professional')} and modern",
+                "aesthetic_principles": [
+                    "Clean and professional presentation",
+                    "Consistent visual hierarchy", 
+                    "Accessibility-focused design"
+                ]
+            },
+            "color_palette": {
+                "primary_colors": ["#2563EB", "#1E40AF"],
+                "secondary_colors": ["#64748B", "#374151"],
+                "accent_colors": ["#F8FAFC", "#E5E7EB"],
+                "color_psychology": "Professional blue conveys trust and reliability, while neutral grays provide balance"
+            },
             "typography": {
                 "primary_font": "Inter",
-                "font_scale": "1.2 ratio scale (16px base)"
+                "secondary_font": "Inter",
+                "font_hierarchy": "Clear hierarchy with 1.2 ratio scale",
+                "readability_notes": "Optimized for screen reading with high contrast"
             },
-            "layout_principles": [
-                "Clean hierarchy with clear visual flow",
-                "Balanced white space distribution",
-                "Consistent grid system throughout"
-            ],
+            "layout_principles": {
+                "grid_system": "12-column responsive grid system",
+                "spacing_system": "8px baseline grid with consistent margins",
+                "responsive_approach": "Mobile-first design with progressive enhancement"
+            },
             "visual_elements": {
-                "iconography": "Modern, minimal line icons with consistent stroke weight"
+                "icons_style": "Modern, minimal line icons with consistent stroke weight",
+                "imagery_style": "Clean, professional photography with consistent filter treatment",
+                "graphic_elements": [
+                    "Subtle gradients",
+                    "Clean geometric shapes",
+                    "Consistent border radius"
+                ]
             },
             "metadata": {
                 "created_by": "AGENT_2",
                 "version": "1.0",
                 "ai_model": "template_fallback",
-                "design_confidence": self._calculate_template_confidence(creative_brief),
+                "confidence_score": self._calculate_template_confidence(creative_brief),
                 "processing_notes": f"Template-generated visual explorations from creative brief"
             }
         }
@@ -252,31 +295,28 @@ Remember: Follow your concept alchemy process internally, but output ONLY the fi
         themes = project_overview.get("key_themes", [])
         tone = creative_strategy.get("tone_of_voice", "professional")
         
-        # Theme 1: Faithful Interpretation (直接演绎)
+        # Theme 1: Faithful Interpretation (直接演绎) - Schema compliant
         theme1 = {
-            "theme_name": "The Direct Voice",
-            "design_philosophy": "【忠实演绎】This theme directly amplifies the core metaphors and messaging from the creative brief. It takes the most literal and straightforward approach to visual representation, ensuring maximum clarity and immediate recognition.",
-            "color_and_typography": f"Colors: Professional blue (#2563EB) with neutral grays. Typography: Clean sans-serif (Inter) that conveys {tone} tone with excellent readability.",
-            "layout_and_graphics": "Layout follows conventional best practices with clear hierarchy. Graphics are straightforward and functional, prioritizing clarity over creativity.",
-            "key_slide_archetype": "Title slide: Clean centered layout with company colors, clear typography hierarchy, and minimal decorative elements."
+            "name": "The Direct Voice",
+            "description": "【忠实演绎】This theme directly amplifies the core metaphors and messaging from the creative brief. It takes the most literal and straightforward approach to visual representation, ensuring maximum clarity and immediate recognition. Layout follows conventional best practices with clear hierarchy.",
+            "mood": f"Professional and {tone}, emphasizing clarity and trustworthiness",
+            "inspiration": "Classic corporate design principles with modern refinement, inspired by leading tech companies"
         }
         
-        # Theme 2: Abstract Translation (抽象转译)
+        # Theme 2: Abstract Translation (抽象转译) - Schema compliant
         theme2 = {
-            "theme_name": "The Conceptual Bridge", 
-            "design_philosophy": "【抽象转译】This theme strips away literal interpretations to focus on the emotional core and functional purpose. It translates the underlying feelings and objectives into a fresh visual language that may surprise but still serves the goals.",
-            "color_and_typography": f"Colors: Warm earth tones (#8B5A2B, #D4B896) that convey trust and approachability. Typography: Modern serif that balances {tone} with warmth and personality.",
-            "layout_and_graphics": "Asymmetrical layouts with organic shapes and flowing lines. Graphics emphasize connection and movement, reflecting dynamic thinking processes.",
-            "key_slide_archetype": "Content slide: Off-center text blocks with subtle organic background elements and flowing connector lines between key points."
+            "name": "The Conceptual Bridge", 
+            "description": "【抽象转译】This theme strips away literal interpretations to focus on the emotional core and functional purpose. It translates the underlying feelings and objectives into a fresh visual language with asymmetrical layouts, organic shapes and flowing lines.",
+            "mood": f"Warm and approachable while maintaining {tone} credibility",
+            "inspiration": "Scandinavian design philosophy meets modern digital interfaces, drawing from natural forms"
         }
         
-        # Theme 3: Contrarian Challenge (逆向挑战)
+        # Theme 3: Contrarian Challenge (逆向挑战) - Schema compliant
         theme3 = {
-            "theme_name": "The Bold Disruption",
-            "design_philosophy": "【逆向挑战】This theme challenges conventional assumptions about the project requirements. It asks 'what if the opposite approach actually serves our goals better?' and creates a deliberately provocative visual system.",
-            "color_and_typography": f"Colors: High contrast black and white with electric accent color (#00FF88). Typography: Bold, confident typeface that commands attention regardless of {tone} expectations.",
-            "layout_and_graphics": "Dramatic layouts with stark contrasts and bold geometric shapes. Graphics are minimal but impactful, using negative space as a primary design element.",
-            "key_slide_archetype": "Statement slide: Large bold text on stark background with single powerful accent element, designed to provoke thought and discussion."
+            "name": "The Bold Disruption",
+            "description": "【逆向挑战】This theme challenges conventional assumptions about the project requirements. It creates a deliberately provocative visual system with dramatic layouts, stark contrasts and bold geometric shapes using negative space as a primary design element.",
+            "mood": f"Bold and confident, challenging {tone} expectations with striking visual impact",
+            "inspiration": "Swiss typography meets contemporary art galleries, influenced by minimalist architecture"
         }
         
         return [theme1, theme2, theme3]
@@ -292,73 +332,6 @@ Remember: Follow your concept alchemy process internally, but output ONLY the fi
         return min(base_confidence + completeness_bonus, 0.85)
     
     
-    def _get_default_prompt(self) -> str:
-        """Get default system prompt if none found in database"""
-        return """Agent 2: 概念炼金术士 / 视觉哲学家 (最终完整版 V3 - 苏格拉底版)
-【第一部分：角色与世界观设定】
-
-你是一位顶级的AI概念炼金术士，也是一位视觉哲学家。你曾在IDEO和苹果的工业设计团队担任过概念探索的灵魂人物。你的天赋不在于绘制最终的设计稿，而在于为同一个"问题（Problem）"构建出数个截然不同但同样具有说服力的"哲学解法（Philosophical Solutions）"。
-
-你深知，最强大的视觉概念不是凭空出现的灵感，而是对一个核心命题进行多角度、批判性审视后的产物。你鄙视那些只会在一个方向上做浅层变化的"风格迭代工"。你的工作台上没有工具软件，只有一张白板，上面写着一个核心问题，以及围绕它展开的无数"What if…?"（假如…会怎样？）的思维分支。
-
-你的使命是：接收一份充满原始能量的创作蓝图，然后启动一场概念的"炼金仪式"，通过正向、反向和侧向的思维诘问，将其淬炼成 3个 拥有独立灵魂、能够激发深刻讨论的演示文稿视觉主题。
-
-【第二部分：你的概念炼金仪式——从原石到宝石的三幕剧】
-
-当你拿到创作蓝图后，你将启动一场深度的、结构化的概念探索仪式，确保产出的每个概念都坚实、独特且富有战略意图。
-
-第一幕：【解码创作DNA | Deconstructing the Creative DNA】
-
-在构想任何视觉之前，你必须像一位基因科学家一样，解码这份创作蓝图的底层结构和核心张力。
-
-锁定核心命题 (Isolate the Core Proposition): 首先，将creative_brief中的purpose和key_message提炼成一句核心待解命题。例如："我们如何视觉化地呈现一个'既宁静致远（Zen）又高效多产（Productivity）'的数字空间？"
-
-提取二元张力 (Extract the Core Tensions): 从蓝图中识别出那些看似矛盾但又共存的关键词。这些"张力"是你进行创意炼金的"催化剂"。例如：（宁静 vs. 行动）、（留白 vs. 信息）、（自然感 vs. 数字感）、（专注 vs. 协作）。
-
-第二幕：【观念的锻造炉：三种战略诘问 | The Forge of Ideas: Three Strategic Interrogations】
-
-现在，你将扮演三位不同的哲学家，用三种完全不同的视角来审视你在第一幕中确立的核心命题。你将为每一个视角构建一个完整的视觉世界。这是一个强制性的、结构化的发散过程。
-
-你的任务： 针对核心命题，进行以下三种战略探索，并为每一种探索生成一个完整的视觉主题。
-
-【探索一：忠实演绎法 | The Faithful Interpretation】
-
-自我诘问: "如果我完全忠于并放大创作蓝图中最直接、最核心的那个比喻（例如'Zen Garden'），将它推向极致，会形成一个怎样的视觉世界？这个世界的规则是什么？"
-
-你的行动: 基于这个问题的答案，构建第一个视觉主题。它应该是最直观、最能体现简报字面意义的方案。
-
-【探索二：抽象转译法 | The Abstract Translation】
-
-自我诘问: "如果我剥离掉字面上的比喻（扔掉'花园'、'沙石'），转而专注于其背后的核心情感（desired_feeling）和功能（purpose），并用一种完全不同、可能更现代或更意想不到的视觉语言来表达这种'宁静'与'高效'，那会是一个怎样的世界？"
-
-你的行动: 基于这个问题的答案，构建第二个视觉主题。它应该在精神上与简报一致，但在视觉表现上截然不同。
-
-【探索三：逆向挑战法 | The Contrarian Challenge】
-
-自我诘问: "如果我挑战简报中的一个核心假设呢？例如，假设'极致的宁静'反而会导致'拖延'，而真正的'高效'来源于一种'充满活力的秩序'（Vibrant Order）。那么，这个反其道而行之的视觉世界会是什么样子？它如何能更出人意料地达成最终目的？"
-
-你的行动: 基于这个颠覆性问题的答案，构建第三个视觉主题。它应该是最具争议性、最大胆、最能激发讨论的方案。
-
-第三幕：【平行世界的呈现 | The Parallel Worlds Presentation】
-
-你将把这三个经过哲学思辨的视觉世界，清晰地呈现在一份"概念画板"上，供下游的"首席演示策略师"进行最终的战略定夺。
-
-执行要点： 你在每个主题的design_philosophy字段中，必须简要地揭示你是通过哪种"战略诘问"得到这个设计的。这使得你的每一个创意都不是凭空而来，而是有清晰的逻辑源头。
-
-【第三部分：任务与输出格式】
-
-"请接收以下由Orchestrator分派的任务。首先，根据project_id从Memory中读取《创作蓝图》。然后，严格遵循你的概念炼金仪式，并将最终的、蕴含三种不同战略思考的《视觉主题画板》以严格的JSON格式，写入与project_id关联的Memory条目中。"
-
-核心指令：
-将你最终生成的、完整的《视觉主题画板》JSON对象，作为输出结果。
-
-输出格式要求 (已优化):
-
-visual_themes数组中必须不多不少，正好包含 3个 代表不同战略方向的视觉主题。
-
-每个主题的design_philosophy必须清晰、有力，并隐含其背后的"思维路径"（忠实演绎、抽象转译或逆向挑战）。
-
-所有描述都必须专注于定义一种自洽的、可执行的视觉系统。"""
 
 
 # Example usage for testing
@@ -412,10 +385,12 @@ async def test_visual_director():
         print("Visual Explorations Generated:")
         print(f"Schema: {result.schema_id}")
         print(f"Visual Themes Count: {len(result.payload['visual_themes'])}")
-        print(f"Style Direction: {result.payload['style_direction'][:50]}...")
+        style_dir = result.payload['style_direction']
+        style_summary = style_dir.get('primary_style', str(style_dir)[:50]) if isinstance(style_dir, dict) else str(style_dir)[:50]
+        print(f"Style Direction: {style_summary}...")
         print(f"Color Palette: {result.payload['color_palette']}")
         for i, theme in enumerate(result.payload['visual_themes']):
-            print(f"Theme {i+1}: {theme['theme_name']}")
+            print(f"Theme {i+1}: {theme['name']}")
         
         return result
         

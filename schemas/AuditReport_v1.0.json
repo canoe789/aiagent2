@@ -1,294 +1,97 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://helix.ai/schemas/AuditReport_v1.0.json",
+  "$id": "https://helix.ai/schemas/AuditReport_v1.0.json", 
   "title": "Audit Report",
-  "description": "Comprehensive audit report for presentation blueprints produced by the Chief Principles Auditor (AGENT_4)",
+  "description": "Comprehensive quality audit produced by the Chief Principles Auditor (AGENT_4)",
   "type": "object",
   "required": [
-    "audit_passed",
-    "summary",
-    "errors",
-    "warnings",
+    "audit_summary",
+    "principle_compliance",
+    "quality_scores",
+    "recommendations",
     "metadata"
   ],
   "properties": {
-    "audit_passed": {
-      "type": "boolean",
-      "description": "Whether the overall audit passed (true only if errors array is empty)"
-    },
-    "summary": {
+    "audit_summary": {
       "type": "object",
-      "required": ["errors_found", "warnings_found", "overall_score"],
       "properties": {
-        "errors_found": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Total number of errors found"
-        },
-        "warnings_found": {
-          "type": "integer", 
-          "minimum": 0,
-          "description": "Total number of warnings found"
-        },
-        "overall_score": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 100,
-          "description": "Overall quality score (0-100)"
-        },
-        "compliance_level": {
-          "type": "string",
-          "enum": ["EXCELLENT", "GOOD", "ACCEPTABLE", "NEEDS_IMPROVEMENT", "FAILED"],
-          "description": "Overall compliance assessment"
-        }
+        "overall_verdict": {"type": "string"},
+        "key_findings": {"type": "array", "items": {"type": "string"}},
+        "critical_issues": {"type": "array", "items": {"type": "string"}},
+        "strengths_identified": {"type": "array", "items": {"type": "string"}}
       }
     },
-    "errors": {
-      "type": "array",
-      "description": "Critical violations that must be fixed",
-      "items": {
-        "type": "object",
-        "required": ["protocol_id", "type", "message", "location"],
-        "properties": {
-          "protocol_id": {
-            "type": "string",
-            "description": "Reference to violated protocol/principle (e.g., 'A-PYR-01')",
-            "pattern": "^A-[A-Z]{3,4}-[0-9]{2}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "VIOLATION_OF_ACTION_TITLE",
-              "MISSING_CRITICAL_SECTION", 
-              "WEAK_NARRATIVE_FLOW",
-              "STRUCTURAL_INCONSISTENCY",
-              "FORMAT_VIOLATION",
-              "AUDIENCE_MISALIGNMENT",
-              "PURPOSE_DEVIATION",
-              "LOGICAL_INCONSISTENCY"
-            ],
-            "description": "Classification of the error type"
-          },
-          "message": {
-            "type": "string",
-            "minLength": 20,
-            "maxLength": 1000,
-            "description": "Detailed description of the violation and suggested fix"
-          },
-          "location": {
-            "type": "object",
-            "properties": {
-              "slide_number": {
-                "type": ["integer", "string"],
-                "description": "Specific slide number or 'Overall Structure'"
-              },
-              "element": {
-                "type": "string",
-                "description": "Specific element (title, content, etc.)"
-              },
-              "section": {
-                "type": "string",
-                "description": "Section of the blueprint (strategic_choice, presentation_blueprint)"
-              }
-            }
-          },
-          "severity": {
-            "type": "string",
-            "enum": ["CRITICAL", "HIGH", "MEDIUM"],
-            "description": "Severity level of the error"
-          }
-        }
-      }
-    },
-    "warnings": {
-      "type": "array", 
-      "description": "Non-critical issues that should be addressed",
-      "items": {
-        "type": "object",
-        "required": ["protocol_id", "type", "message", "location"],
-        "properties": {
-          "protocol_id": {
-            "type": "string",
-            "description": "Reference to protocol/principle",
-            "pattern": "^A-[A-Z]{3,4}-[0-9]{2}$"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "POTENTIAL_VIOLATION_OF_ONE_INSIGHT_RULE",
-              "WEAK_HORIZONTAL_FLOW",
-              "PRINCIPLE_UNDEREMPHASIZED",
-              "OPTIMIZATION_OPPORTUNITY",
-              "BEST_PRACTICE_SUGGESTION",
-              "CLARITY_IMPROVEMENT"
-            ],
-            "description": "Classification of the warning type"
-          },
-          "message": {
-            "type": "string",
-            "minLength": 20,
-            "maxLength": 1000,
-            "description": "Detailed description and suggested improvement"
-          },
-          "location": {
-            "type": "object",
-            "properties": {
-              "slide_number": {
-                "type": ["integer", "string"],
-                "description": "Specific slide number or section"
-              },
-              "element": {
-                "type": "string",
-                "description": "Specific element being flagged"
-              }
-            }
-          },
-          "priority": {
-            "type": "string",
-            "enum": ["HIGH", "MEDIUM", "LOW"],
-            "description": "Priority for addressing this warning"
-          }
-        }
-      }
-    },
-    "protocol_compliance": {
+    "principle_compliance": {
       "type": "object",
-      "description": "Compliance status against key protocols",
       "properties": {
-        "pyramid_principle": {
+        "user_experience": {
           "type": "object",
           "properties": {
-            "overall_score": {"type": "integer", "minimum": 0, "maximum": 100},
-            "action_titles": {"type": "boolean"},
-            "one_insight_per_slide": {"type": "boolean"},
-            "conclusion_first": {"type": "boolean"}
+            "score": {"type": "number", "minimum": 0, "maximum": 10},
+            "assessment": {"type": "string"},
+            "violations": {"type": "array", "items": {"type": "string"}}
           }
         },
-        "narrative_flow": {
+        "accessibility": {
           "type": "object", 
           "properties": {
-            "overall_score": {"type": "integer", "minimum": 0, "maximum": 100},
-            "scqa_framework": {"type": "boolean"},
-            "horizontal_flow": {"type": "boolean"},
-            "logical_transitions": {"type": "boolean"}
+            "score": {"type": "number", "minimum": 0, "maximum": 10},
+            "assessment": {"type": "string"},
+            "violations": {"type": "array", "items": {"type": "string"}}
           }
         },
-        "structural_integrity": {
+        "visual_hierarchy": {
           "type": "object",
           "properties": {
-            "overall_score": {"type": "integer", "minimum": 0, "maximum": 100},
-            "five_part_structure": {"type": "boolean"},
-            "complete_sections": {"type": "boolean"},
-            "balanced_content": {"type": "boolean"}
+            "score": {"type": "number", "minimum": 0, "maximum": 10},
+            "assessment": {"type": "string"},
+            "violations": {"type": "array", "items": {"type": "string"}}
           }
         },
-        "audience_alignment": {
+        "brand_consistency": {
           "type": "object",
           "properties": {
-            "overall_score": {"type": "integer", "minimum": 0, "maximum": 100},
-            "target_audience_focus": {"type": "boolean"},
-            "appropriate_complexity": {"type": "boolean"},
-            "desired_feeling_achieved": {"type": "boolean"}
+            "score": {"type": "number", "minimum": 0, "maximum": 10},
+            "assessment": {"type": "string"},
+            "violations": {"type": "array", "items": {"type": "string"}}
           }
         }
       }
     },
-    "detailed_analysis": {
+    "quality_scores": {
       "type": "object",
       "properties": {
-        "strategic_choice_review": {
-          "type": "string",
-          "description": "Analysis of strategic choices made"
-        },
-        "narrative_coherence": {
-          "type": "string", 
-          "description": "Assessment of overall narrative coherence"
-        },
-        "structural_soundness": {
-          "type": "string",
-          "description": "Evaluation of structural soundness"
-        },
-        "improvement_opportunities": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Key areas for improvement"
-        }
+        "overall_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "creative_alignment": {"type": "number", "minimum": 0, "maximum": 10},
+        "technical_feasibility": {"type": "number", "minimum": 0, "maximum": 10},
+        "user_impact": {"type": "number", "minimum": 0, "maximum": 10}
       }
     },
     "recommendations": {
       "type": "array",
-      "description": "Prioritized recommendations for improvement",
       "items": {
         "type": "object",
-        "required": ["priority", "category", "action", "impact"],
         "properties": {
-          "priority": {
-            "type": "string",
-            "enum": ["IMMEDIATE", "HIGH", "MEDIUM", "LOW"],
-            "description": "Priority level for this recommendation"
-          },
-          "category": {
-            "type": "string", 
-            "enum": ["STRUCTURE", "NARRATIVE", "CLARITY", "COMPLIANCE", "OPTIMIZATION"],
-            "description": "Category of the recommendation"
-          },
-          "action": {
-            "type": "string",
-            "minLength": 10,
-            "maxLength": 500,
-            "description": "Specific action to take"
-          },
-          "impact": {
-            "type": "string",
-            "enum": ["HIGH", "MEDIUM", "LOW"],
-            "description": "Expected impact of implementing this recommendation"
-          },
-          "effort_required": {
-            "type": "string",
-            "enum": ["MINIMAL", "MODERATE", "SIGNIFICANT"],
-            "description": "Effort required to implement"
-          }
+          "priority": {"type": "string"},
+          "category": {"type": "string"},
+          "issue": {"type": "string"},
+          "solution": {"type": "string"},
+          "impact": {"type": "string"}
         }
       }
     },
     "metadata": {
       "type": "object",
-      "required": ["created_by", "version", "audit_timestamp"],
+      "required": ["created_by", "version"],
       "properties": {
-        "created_by": {
-          "type": "string",
-          "description": "Agent that created this audit report"
-        },
-        "version": {
-          "type": "string",
-          "description": "Schema version"
-        },
-        "audit_timestamp": {
-          "type": "string",
-          "format": "date-time",
-          "description": "When the audit was performed"
-        },
-        "audit_duration": {
-          "type": "string",
-          "description": "Time taken for the audit"
-        },
-        "protocols_referenced": {
-          "type": "array",
-          "items": {"type": "string"},
-          "description": "List of protocols/principles referenced in audit"
-        },
-        "confidence_level": {
+        "created_by": {"type": "string"},
+        "version": {"type": "string"},
+        "confidence_score": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "Confidence in audit findings"
+          "maximum": 1
         },
-        "auditor_notes": {
-          "type": "string",
-          "description": "Additional notes from the auditor"
-        }
+        "processing_notes": {"type": "string"}
       }
     }
   }

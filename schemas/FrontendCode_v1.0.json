@@ -6,26 +6,21 @@
   "type": "object",
   "required": [
     "html",
-    "css",
+    "css", 
     "metadata"
   ],
   "properties": {
     "html": {
       "type": "string",
-      "description": "Complete HTML code",
-      "minLength": 100,
-      "maxLength": 50000
+      "description": "Complete HTML code"
     },
     "css": {
-      "type": "string",
-      "description": "Complete CSS code",
-      "minLength": 50,
-      "maxLength": 50000
+      "type": "string", 
+      "description": "Complete CSS code"
     },
     "javascript": {
       "type": "string",
-      "description": "JavaScript code (if applicable)",
-      "maxLength": 50000
+      "description": "JavaScript code (if applicable)"
     },
     "assets": {
       "type": "object",
@@ -61,7 +56,7 @@
             "properties": {
               "name": {"type": "string"},
               "usage": {"type": "string"},
-              "format": {"type": "string", "enum": ["svg", "png", "ico", "font"]}
+              "format": {"type": "string"}
             }
           }
         }
@@ -73,7 +68,6 @@
       "properties": {
         "components": {
           "type": "array",
-          "description": "Main UI components",
           "items": {
             "type": "object",
             "properties": {
@@ -85,7 +79,6 @@
         },
         "sections": {
           "type": "array",
-          "description": "Main page sections",
           "items": {
             "type": "object",
             "properties": {
@@ -96,9 +89,9 @@
           }
         },
         "navigation": {
-          "type": "object",
+          "type": "object", 
           "properties": {
-            "type": {"type": "string", "enum": ["header", "sidebar", "footer", "floating"]},
+            "type": {"type": "string"},
             "items": {"type": "array", "items": {"type": "string"}},
             "mobile_behavior": {"type": "string"}
           }
@@ -107,26 +100,15 @@
     },
     "technical_details": {
       "type": "object",
-      "description": "Technical implementation details",
       "properties": {
-        "html_version": {
-          "type": "string",
-          "enum": ["HTML5", "XHTML", "HTML4"],
-          "default": "HTML5"
-        },
+        "html_version": {"type": "string"},
         "css_features": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["flexbox", "grid", "custom-properties", "animations", "transforms", "media-queries"]
-          }
+          "items": {"type": "string"}
         },
         "javascript_features": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["es6+", "dom-manipulation", "event-handling", "async-await", "modules"]
-          }
+          "type": "array", 
+          "items": {"type": "string"}
         },
         "frameworks_used": {
           "type": "array",
@@ -136,7 +118,6 @@
     },
     "responsive_design": {
       "type": "object",
-      "description": "Responsive design implementation",
       "properties": {
         "breakpoints": {
           "type": "object",
@@ -147,26 +128,16 @@
             "large_desktop": {"type": "string"}
           }
         },
-        "mobile_first": {
-          "type": "boolean",
-          "description": "Whether mobile-first approach was used"
-        },
-        "touch_optimized": {
-          "type": "boolean",
-          "description": "Whether touch interactions are optimized"
-        }
+        "mobile_first": {"type": "boolean"},
+        "touch_optimized": {"type": "boolean"}
       }
     },
     "performance": {
       "type": "object",
-      "description": "Performance optimization details",
       "properties": {
         "optimization_techniques": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["minification", "compression", "lazy-loading", "critical-css", "resource-hints"]
-          }
+          "items": {"type": "string"}
         },
         "estimated_metrics": {
           "type": "object",
@@ -186,71 +157,37 @@
     },
     "accessibility": {
       "type": "object",
-      "description": "Accessibility implementation details",
       "properties": {
-        "wcag_level": {
-          "type": "string",
-          "enum": ["A", "AA", "AAA"],
-          "description": "WCAG compliance level targeted"
-        },
+        "wcag_level": {"type": "string"},
         "features_implemented": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["semantic-html", "aria-labels", "focus-indicators", "color-contrast", "keyboard-navigation", "screen-reader-support"]
-          }
+          "items": {"type": "string"}
         },
-        "testing_notes": {
-          "type": "string",
-          "description": "Accessibility testing recommendations"
-        }
+        "testing_notes": {"type": "string"}
       }
     },
     "metadata": {
       "type": "object",
       "required": ["framework", "created_by", "version"],
       "properties": {
-        "framework": {
-          "type": "string",
-          "description": "Frontend framework/approach used",
-          "enum": ["vanilla_html_css", "react", "vue", "angular", "svelte", "next_js", "nuxt_js"]
-        },
-        "created_by": {
-          "type": "string",
-          "description": "Agent that generated this code"
-        },
-        "version": {
-          "type": "string",
-          "description": "Schema version"
-        },
-        "responsive": {
-          "type": "boolean",
-          "description": "Whether the code is responsive",
-          "default": true
-        },
+        "framework": {"type": "string"},
+        "created_by": {"type": "string"},
+        "version": {"type": "string"},
+        "responsive": {"type": "boolean"},
         "accessibility_score": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 100,
-          "description": "Estimated accessibility score"
+          "maximum": 100
         },
-        "performance_optimized": {
-          "type": "boolean",
-          "description": "Whether performance optimizations were applied"
-        },
+        "performance_optimized": {"type": "boolean"},
         "browser_compatibility": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["Chrome", "Firefox", "Safari", "Edge", "IE11", "Opera"]
-          },
-          "description": "Supported browsers"
+          "items": {"type": "string"}
         },
         "code_quality_score": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 100,
-          "description": "Estimated code quality score"
+          "maximum": 100
         }
       }
     }

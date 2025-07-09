@@ -6,7 +6,7 @@
   "type": "object",
   "required": [
     "project_overview",
-    "objectives",
+    "objectives", 
     "target_audience",
     "creative_strategy",
     "content_requirements",
@@ -19,29 +19,22 @@
       "properties": {
         "title": {
           "type": "string",
-          "description": "Project title",
-          "minLength": 1,
-          "maxLength": 200
+          "description": "Project title"
         },
         "type": {
           "type": "string",
-          "description": "Type of project",
-          "enum": ["website", "application", "ecommerce", "portfolio", "corporate", "blog", "general_website"]
+          "description": "Type of project - can be any descriptive project type"
         },
         "description": {
           "type": "string",
-          "description": "Project description based on user input",
-          "minLength": 10,
-          "maxLength": 1000
+          "description": "Project description based on user input"
         },
         "key_themes": {
           "type": "array",
           "description": "Key themes extracted from user requirements",
           "items": {
-            "type": "string",
-            "enum": ["modern", "professional", "creative", "user-friendly", "premium", "tech", "minimalist", "innovative"]
-          },
-          "maxItems": 10
+            "type": "string"
+          }
         }
       }
     },
@@ -51,29 +44,21 @@
       "properties": {
         "primary_goal": {
           "type": "string",
-          "description": "Main objective of the project",
-          "minLength": 10,
-          "maxLength": 500
+          "description": "Main objective of the project"
         },
         "secondary_goals": {
           "type": "array",
           "description": "Additional objectives",
           "items": {
-            "type": "string",
-            "minLength": 5,
-            "maxLength": 200
-          },
-          "maxItems": 10
+            "type": "string"
+          }
         },
         "success_metrics": {
           "type": "array",
           "description": "How success will be measured",
           "items": {
-            "type": "string",
-            "minLength": 5,
-            "maxLength": 100
-          },
-          "maxItems": 10
+            "type": "string"
+          }
         }
       }
     },
@@ -83,9 +68,7 @@
       "properties": {
         "primary_audience": {
           "type": "string",
-          "description": "Primary target audience",
-          "minLength": 5,
-          "maxLength": 200
+          "description": "Primary target audience"
         },
         "audience_characteristics": {
           "type": "object",
@@ -100,8 +83,7 @@
         },
         "user_journey_stage": {
           "type": "string",
-          "description": "Primary user journey stage being targeted",
-          "enum": ["awareness", "consideration", "decision", "retention", "advocacy"]
+          "description": "Primary user journey stage being targeted"
         }
       }
     },
@@ -111,25 +93,18 @@
       "properties": {
         "tone_of_voice": {
           "type": "string",
-          "description": "Recommended tone of voice",
-          "minLength": 5,
-          "maxLength": 200
+          "description": "Recommended tone of voice"
         },
         "key_messages": {
           "type": "array",
           "description": "Key messages to communicate",
           "items": {
-            "type": "string",
-            "minLength": 5,
-            "maxLength": 200
-          },
-          "maxItems": 10
+            "type": "string"
+          }
         },
         "creative_approach": {
           "type": "string",
-          "description": "Overall creative approach and strategy",
-          "minLength": 10,
-          "maxLength": 500
+          "description": "Overall creative approach and strategy"
         }
       }
     },
@@ -141,11 +116,8 @@
           "type": "array",
           "description": "Types of content required",
           "items": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 100
-          },
-          "maxItems": 20
+            "type": "string"
+          }
         },
         "information_hierarchy": {
           "type": "object",
@@ -158,9 +130,7 @@
         },
         "call_to_action": {
           "type": "string",
-          "description": "Primary call to action",
-          "minLength": 2,
-          "maxLength": 100
+          "description": "Primary call to action"
         }
       }
     },

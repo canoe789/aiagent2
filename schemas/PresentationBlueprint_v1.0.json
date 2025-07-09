@@ -2,196 +2,68 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://helix.ai/schemas/PresentationBlueprint_v1.0.json",
   "title": "Presentation Blueprint",
-  "description": "Strategic presentation blueprint produced by the Chief Presentation Strategist Agent (AGENT_2)",
+  "description": "Comprehensive presentation structure produced by the Chief Narrative Architect (AGENT_3)",
   "type": "object",
   "required": [
-    "strategic_choice",
-    "presentation_blueprint",
+    "narrative_structure",
+    "content_sections",
+    "storytelling_elements", 
+    "engagement_strategy",
     "metadata"
   ],
   "properties": {
-    "strategic_choice": {
+    "narrative_structure": {
       "type": "object",
-      "required": ["chosen_theme_name", "chosen_narrative_framework", "reasoning", "rejected_options"],
       "properties": {
-        "chosen_theme_name": {
-          "type": "string",
-          "description": "Final selected visual theme name",
-          "minLength": 3,
-          "maxLength": 100
-        },
-        "chosen_narrative_framework": {
-          "type": "string",
-          "description": "Final selected narrative framework",
-          "minLength": 3,
-          "maxLength": 100
-        },
-        "reasoning": {
-          "type": "string",
-          "description": "Final argument explaining why the chosen combination is optimal",
-          "minLength": 50,
-          "maxLength": 2000
-        },
-        "rejected_options": {
-          "type": "array",
-          "description": "Options that were considered and rejected",
-          "items": {
-            "type": "object",
-            "required": ["option_type", "option_name", "reason_for_rejection"],
-            "properties": {
-              "option_type": {
-                "type": "string",
-                "enum": ["Visual Theme", "Narrative Framework", "Layout Style"],
-                "description": "Type of option that was rejected"
-              },
-              "option_name": {
-                "type": "string",
-                "description": "Name of the rejected option",
-                "minLength": 3,
-                "maxLength": 100
-              },
-              "reason_for_rejection": {
-                "type": "string",
-                "description": "Specific reason why this option was rejected",
-                "minLength": 10,
-                "maxLength": 500
-              }
-            }
-          },
-          "maxItems": 10
+        "narrative_arc": {"type": "string"},
+        "key_story_beats": {"type": "array", "items": {"type": "string"}},
+        "emotional_journey": {"type": "string"},
+        "conflict_resolution": {"type": "string"}
+      }
+    },
+    "content_sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "section_title": {"type": "string"},
+          "content_type": {"type": "string"},
+          "key_messages": {"type": "array", "items": {"type": "string"}},
+          "visual_treatment": {"type": "string"},
+          "interaction_elements": {"type": "array", "items": {"type": "string"}}
         }
       }
     },
-    "presentation_blueprint": {
-      "type": "array",
-      "description": "Detailed slide-by-slide presentation blueprint",
-      "items": {
-        "type": "object",
-        "required": ["slide_number", "logic_unit_purpose", "layout", "elements", "speaker_notes"],
-        "properties": {
-          "slide_number": {
-            "type": "integer",
-            "minimum": 1,
-            "maximum": 50,
-            "description": "Sequential slide number"
-          },
-          "logic_unit_purpose": {
-            "type": "string",
-            "description": "The logical purpose this slide serves in the narrative",
-            "minLength": 5,
-            "maxLength": 300
-          },
-          "layout": {
-            "type": "string",
-            "enum": [
-              "Title_Slide",
-              "Content_With_Chart", 
-              "Two_Column",
-              "Full_Image",
-              "Quote_Slide",
-              "Bullet_Points",
-              "Comparison",
-              "Timeline",
-              "Process_Flow",
-              "Call_To_Action"
-            ],
-            "description": "Slide layout template"
-          },
-          "elements": {
-            "type": "object",
-            "description": "Content elements for the slide",
-            "properties": {
-              "title": {
-                "type": "string",
-                "maxLength": 200
-              },
-              "subtitle": {
-                "type": "string",
-                "maxLength": 300
-              },
-              "content": {
-                "type": "string",
-                "maxLength": 1000
-              },
-              "bullet_points": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "maxLength": 500
-                },
-                "maxItems": 10
-              },
-              "visual_placeholder": {
-                "type": "string",
-                "description": "Description of visual elements needed",
-                "maxLength": 500
-              }
-            }
-          },
-          "speaker_notes": {
-            "type": "object",
-            "description": "Speaker notes and guidance",
-            "required": ["speech", "guide_note"],
-            "properties": {
-              "speech": {
-                "type": "string",
-                "description": "What the speaker should say",
-                "minLength": 10,
-                "maxLength": 2000
-              },
-              "guide_note": {
-                "type": "string", 
-                "description": "Internal guidance notes for the speaker",
-                "minLength": 5,
-                "maxLength": 500
-              }
-            }
-          },
-          "transition_notes": {
-            "type": "string",
-            "description": "Transition guidance to next slide",
-            "maxLength": 300
-          }
-        }
-      },
-      "minItems": 1,
-      "maxItems": 50
+    "storytelling_elements": {
+      "type": "object",
+      "properties": {
+        "hero_journey_stage": {"type": "string"},
+        "narrative_devices": {"type": "array", "items": {"type": "string"}},
+        "character_personas": {"type": "array", "items": {"type": "string"}},
+        "story_themes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "engagement_strategy": {
+      "type": "object",
+      "properties": {
+        "attention_hooks": {"type": "array", "items": {"type": "string"}},
+        "interactive_moments": {"type": "array", "items": {"type": "string"}},
+        "call_to_action_placement": {"type": "string"},
+        "retention_techniques": {"type": "array", "items": {"type": "string"}}
+      }
     },
     "metadata": {
       "type": "object",
       "required": ["created_by", "version"],
       "properties": {
-        "created_by": {
-          "type": "string",
-          "description": "Agent that created this blueprint"
-        },
-        "version": {
-          "type": "string",
-          "description": "Schema version"
-        },
-        "ai_model": {
-          "type": "string",
-          "description": "AI model used for generation"
-        },
-        "ai_provider": {
-          "type": "string", 
-          "description": "AI provider used"
-        },
-        "tokens_used": {
-          "type": "integer",
-          "minimum": 0,
-          "description": "Tokens consumed in generation"
-        },
-        "strategy_confidence": {
+        "created_by": {"type": "string"},
+        "version": {"type": "string"},
+        "confidence_score": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "Confidence in strategic choices"
+          "maximum": 1
         },
-        "processing_notes": {
-          "type": "string",
-          "description": "Additional processing information"
-        }
+        "processing_notes": {"type": "string"}
       }
     }
   }

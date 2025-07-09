@@ -1,0 +1,161 @@
+# Project HELIX - 技术债务跟踪清单
+# 更新时间: 2025-07-09
+# 负责人: 技术团队
+
+metadata:
+  total_count: 10
+  p0_count: 0
+  p1_count: 4
+  p2_count: 4
+  p3_count: 2
+  last_review: "2025-07-09"
+  next_review: "2025-08-09"
+
+technical_debts:
+  # P1 - 性能瓶颈 (高优先级)
+  - id: TD-001
+    type: P1-性能瓶颈
+    title: "PostgreSQL查询缺少索引"
+    description: "Agent轮询任务时的查询缺少 (status, agent_id) 复合索引，导致全表扫描"
+    impact: "任务分配延迟3-5秒，影响系统响应速度"
+    effort: "2小时"
+    solution: |
+      CREATE INDEX idx_tasks_status_agent ON tasks(status, agent_id) 
+      WHERE status IN ('pending', 'processing');
+    status: "待处理"
+    created_date: "2025-07-08"
+    
+  - id: TD-002
+    type: P1-性能瓶颈  
+    title: "数据库连接池配置不当"
+    description: "连接池最大值20在高并发时可能不足，缺少连接泄漏检测"
+    impact: "高峰期可能出现连接耗尽"
+    effort: "4小时"
+    solution: |
+      1. 引入PgBouncer进行连接池管理
+      2. 配置连接泄漏检测和自动回收
+      3. 监控连接池使用率
+    status: "待处理"
+    created_date: "2025-07-09"
+
+  - id: TD-003
+    type: P1-性能瓶颈
+    title: "缺少缓存层"
+    description: "频繁查询的数据（如Agent配置）没有缓存，每次都查询数据库"
+    impact: "数据库负载增加30%"
+    effort: "8小时"
+    solution: |
+      1. 引入Redis作为缓存层
+      2. 实现Agent配置缓存（TTL=5分钟）
+      3. 实现查询结果缓存
+    status: "计划中"
+    created_date: "2025-07-09"
+    
+  - id: TD-004
+    type: P1-性能瓶颈
+    title: "同步任务处理阻塞"
+    description: "Agent处理任务时同步等待，无法并发处理多个任务"
+    impact: "吞吐量受限，CPU利用率低"
+    effort: "16小时"
+    solution: |
+      使用asyncio.gather并发处理独立任务
+      引入任务队列（如Celery）进行异步处理
+    status: "待处理"
+    created_date: "2025-07-09"
+
+  # P2 - 代码质量 (中优先级)
+  - id: TD-005
+    type: P2-代码质量
+    title: "测试覆盖率不足"
+    description: "当前测试覆盖率约60%，关键路径缺少集成测试"
+    impact: "潜在bug风险，重构困难"
+    effort: "24小时"
+    solution: |
+      1. 补充Agent间交互的集成测试
+      2. 添加端到端测试套件
+      3. 目标覆盖率80%
+    status: "进行中"
+    created_date: "2025-07-07"
+    
+  - id: TD-006
+    type: P2-代码质量
+    title: "错误处理不一致"
+    description: "不同模块的错误处理方式不统一，缺少全局错误处理策略"
+    impact: "调试困难，用户体验不一致"
+    effort: "8小时"
+    solution: |
+      1. 定义统一的异常层次结构
+      2. 实现全局异常处理中间件
+      3. 标准化错误响应格式
+    status: "待处理"
+    created_date: "2025-07-08"
+    
+  - id: TD-007
+    type: P2-代码质量
+    title: "日志格式不统一"
+    description: "部分模块使用print，部分使用logger，格式不一致"
+    impact: "日志分析困难，无法有效排查问题"
+    effort: "4小时"
+    solution: |
+      1. 统一使用structlog
+      2. 定义标准日志格式（JSON）
+      3. 配置日志级别管理
+    status: "待处理"
+    created_date: "2025-07-08"
+    
+  - id: TD-008
+    type: P2-代码质量
+    title: "配置管理混乱"
+    description: "配置分散在.env、代码和数据库中，缺少集中管理"
+    impact: "部署复杂，容易配置错误"
+    effort: "6小时"
+    solution: |
+      1. 使用Pydantic Settings统一配置管理
+      2. 实现配置验证和默认值
+      3. 支持多环境配置
+    status: "计划中"
+    created_date: "2025-07-09"
+
+  # P3 - 技术升级 (低优先级)
+  - id: TD-009
+    type: P3-技术升级
+    title: "Python依赖更新"
+    description: "部分依赖包版本较旧，存在已知安全漏洞"
+    impact: "潜在安全风险"
+    effort: "4小时"
+    solution: |
+      1. 审查所有依赖的安全公告
+      2. 更新到最新稳定版本
+      3. 运行完整测试套件验证
+    status: "待处理"
+    created_date: "2025-07-09"
+    
+  - id: TD-010
+    type: P3-技术升级
+    title: "监控系统升级"
+    description: "当前仅有基础日志，缺少指标和链路追踪"
+    impact: "问题定位效率低"
+    effort: "40小时"
+    solution: |
+      1. 集成Prometheus指标收集
+      2. 部署Grafana仪表板
+      3. 后期考虑OpenTelemetry链路追踪
+    status: "规划中"
+    created_date: "2025-07-09"
+
+# ROI计算示例
+roi_calculations:
+  TD-001:
+    expected_benefit: "减少3-5秒延迟 × 1000次/天 = 节省50分钟/天"
+    implementation_cost: "2小时开发 + 0.5小时测试"
+    roi_score: 4.5  # 高优先级
+    
+  TD-003:
+    expected_benefit: "减少30%数据库负载，提升整体性能20%"
+    implementation_cost: "8小时开发 + 2小时测试 + 1小时部署"
+    roi_score: 2.8  # 中高优先级
+    
+  TD-010:
+    expected_benefit: "问题定位时间减少70%，避免生产故障"
+    implementation_cost: "40小时开发 + 10小时运维培训"
+    roi_score: 1.2  # 中低优先级

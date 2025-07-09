@@ -1,0 +1,208 @@
+
+    ██╗  ██╗███████╗██╗     ██╗██╗  ██╗    ██╗   ██╗██████╗ 
+    ██║  ██║██╔════╝██║     ██║╚██╗██╔╝    ██║   ██║╚════██╗
+    ███████║█████╗  ██║     ██║ ╚███╔╝     ██║   ██║ █████╔╝
+    ██╔══██║██╔══╝  ██║     ██║ ██╔██╗     ╚██╗ ██╔╝██╔═══╝ 
+    ██║  ██║███████╗███████╗██║██╔╝ ██╗     ╚████╔╝ ███████╗
+    ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═╝      ╚═══╝  ╚══════╝
+    
+    AI驱动的自动化创意生产系统
+    
+==================================================
+🔥 HELIX v2.0 系统启动中...
+==================================================
+🚀 启动 HELIX Orchestrator...
+2025-07-09 09:55:24 [debug    ] Creating new WorkflowEngine instance instance_id=139761196122896
+2025-07-09 09:55:24 [info     ] Starting HELIX Orchestrator    poll_interval=5
+🤖 启动 HELIX Agent Worker...
+{"event": "Starting HELIX Agent Worker", "timestamp": "2025-07-09T09:55:24.673581Z", "level": "info"}
+{"agents": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4", "AGENT_5"], "event": "Starting agent worker", "timestamp": "2025-07-09T09:55:24.673696Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T09:55:24.706657Z", "level": "info"}
+{"instance_id": 139761196122896, "event": "Loading workflows", "timestamp": "2025-07-09T09:55:24.706827Z", "level": "debug"}
+{"agents_count": 5, "execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Workflow definitions loaded successfully", "timestamp": "2025-07-09T09:55:24.707091Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T09:55:24.712516Z", "level": "info"}
+INFO:     Started server process [677515]
+INFO:     Waiting for application startup.
+🌐 启动 FastAPI 服务器...
+📍 API服务器配置: 0.0.0.0:8032
+🔍 健康检查端点: http://localhost:8032/api/v1/health
+📚 API文档: http://localhost:8032/docs
+{"event": "Starting Project HELIX API server", "timestamp": "2025-07-09T09:55:27.170096Z", "level": "info"}
+{"min_size": 5, "max_size": 20, "event": "Database connection pool created", "timestamp": "2025-07-09T09:55:27.193050Z", "level": "info"}
+{"event": "Database connection established", "timestamp": "2025-07-09T09:55:27.193184Z", "level": "info"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8032 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60834 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60848 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60864 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38466 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46872 - "GET /api/v1/jobs/35 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET /port-discovery.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55044 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+{"job_id": 36, "session_id": "session_1752055136538", "event": "Job created successfully", "timestamp": "2025-07-09T09:58:56.623711Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "POST /api/v1/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"job_id": 36, "event": "Processing new job", "timestamp": "2025-07-09T09:58:59.844900Z", "level": "info"}
+{"job_id": 36, "agent_id": "AGENT_1", "event": "Created first task for job", "timestamp": "2025-07-09T09:58:59.850312Z", "level": "info"}
+{"task_id": 128277, "agent_id": "AGENT_1", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T09:58:59.884462Z", "level": "info"}
+{"agent_id": "AGENT_1", "input_length": 157, "session_id": "session_1752055136538", "event": "Processing creative brief request", "timestamp": "2025-07-09T09:58:59.884636Z", "level": "info"}
+{"agent_id": "AGENT_1", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T09:58:59.886301Z", "level": "warning"}
+{"agent_id": "AGENT_1", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T09:58:59.888148Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T09:58:59.888310Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 2000, "event": "Making Gemini API request", "timestamp": "2025-07-09T09:58:59.888369Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T09:59:11.908093Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T09:59:11.908192Z", "level": "warning"}
+{"task_id": 128277, "schema_id": "CreativeBrief_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T09:59:11.916221Z", "level": "info"}
+{"task_id": 128277, "schema_id": "CreativeBrief_v1.0", "artifact_name": "creative_brief", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T09:59:11.923162Z", "level": "info"}
+{"task_id": 128277, "agent_id": "AGENT_1", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T09:59:11.923273Z", "level": "info"}
+{"task_id": 128277, "agent_id": "AGENT_1", "event": "Task processed successfully", "timestamp": "2025-07-09T09:59:11.923313Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"task_id": 128277, "agent_id": "AGENT_1", "event": "Processing completed task", "timestamp": "2025-07-09T09:59:14.943144Z", "level": "info"}
+{"task_id": 128277, "artifact_name": "creative_brief", "schema_id": "CreativeBrief_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T09:59:14.944798Z", "level": "info"}
+{"task_id": 128277, "event": "Artifact created for completed task", "timestamp": "2025-07-09T09:59:14.944870Z", "level": "info"}
+{"current_agent": "AGENT_1", "event": "Getting next agents", "timestamp": "2025-07-09T09:59:14.944909Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T09:59:14.944934Z", "level": "debug"}
+{"agent_id": "AGENT_1", "index": 0, "event": "Found agent in execution order", "timestamp": "2025-07-09T09:59:14.944958Z", "level": "debug"}
+{"next_agent": "AGENT_2", "event": "Next agent determined", "timestamp": "2025-07-09T09:59:14.944981Z", "level": "debug"}
+{"agent_id": "AGENT_1", "next_agents": ["AGENT_2"], "event": "Next agents determined", "timestamp": "2025-07-09T09:59:14.945039Z", "level": "debug"}
+{"job_id": 36, "agent_id": "AGENT_2", "event": "Created next task", "timestamp": "2025-07-09T09:59:14.948581Z", "level": "info"}
+{"task_id": 128277, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T09:59:14.950719Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"task_id": 128278, "agent_id": "AGENT_2", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T09:59:19.896809Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Processing visual theme exploration request", "timestamp": "2025-07-09T09:59:19.896973Z", "level": "info"}
+{"agent_id": "AGENT_2", "artifact_count": 1, "event": "Fetched artifacts", "timestamp": "2025-07-09T09:59:19.903156Z", "level": "info"}
+{"agent_id": "AGENT_2", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T09:59:19.904387Z", "level": "warning"}
+{"agent_id": "AGENT_2", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T09:59:19.905593Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T09:59:19.905718Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 3000, "event": "Making Gemini API request", "timestamp": "2025-07-09T09:59:19.905945Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"error": "Invalid response format from Gemini", "event": "AI generation failed", "timestamp": "2025-07-09T09:59:37.083741Z", "level": "error"}
+{"error": "Invalid response format from Gemini", "event": "AI generation failed, falling back to template", "timestamp": "2025-07-09T09:59:37.083844Z", "level": "warning"}
+{"task_id": 128278, "schema_id": "VisualExplorations_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T09:59:37.090029Z", "level": "info"}
+{"task_id": 128278, "schema_id": "VisualExplorations_v1.0", "artifact_name": "visual_explorations", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T09:59:37.095760Z", "level": "info"}
+{"task_id": 128278, "agent_id": "AGENT_2", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T09:59:37.095878Z", "level": "info"}
+{"task_id": 128278, "agent_id": "AGENT_2", "event": "Task processed successfully", "timestamp": "2025-07-09T09:59:37.095922Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"task_id": 128278, "agent_id": "AGENT_2", "event": "Processing completed task", "timestamp": "2025-07-09T09:59:39.968918Z", "level": "info"}
+{"task_id": 128278, "artifact_name": "visual_explorations", "schema_id": "VisualExplorations_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T09:59:39.970322Z", "level": "info"}
+{"task_id": 128278, "event": "Artifact created for completed task", "timestamp": "2025-07-09T09:59:39.970413Z", "level": "info"}
+{"current_agent": "AGENT_2", "event": "Getting next agents", "timestamp": "2025-07-09T09:59:39.970451Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T09:59:39.970477Z", "level": "debug"}
+{"agent_id": "AGENT_2", "index": 1, "event": "Found agent in execution order", "timestamp": "2025-07-09T09:59:39.970500Z", "level": "debug"}
+{"next_agent": "AGENT_3", "event": "Next agent determined", "timestamp": "2025-07-09T09:59:39.970521Z", "level": "debug"}
+{"agent_id": "AGENT_2", "next_agents": ["AGENT_3"], "event": "Next agents determined", "timestamp": "2025-07-09T09:59:39.970541Z", "level": "debug"}
+{"job_id": 36, "agent_id": "AGENT_3", "event": "Created next task", "timestamp": "2025-07-09T09:59:39.975760Z", "level": "info"}
+{"task_id": 128278, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T09:59:39.977736Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"task_id": 128279, "agent_id": "AGENT_3", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T09:59:44.913158Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Processing presentation blueprint generation request", "timestamp": "2025-07-09T09:59:44.913322Z", "level": "info"}
+{"agent_id": "AGENT_3", "artifact_count": 2, "event": "Fetched artifacts", "timestamp": "2025-07-09T09:59:44.914744Z", "level": "info"}
+{"content_hash": "c0150012fb3c4f84", "title": "Fix data protection gaps new Assess...", "event": "Idempotency check", "timestamp": "2025-07-09T09:59:44.914900Z", "level": "debug"}
+{"agent_id": "AGENT_3", "event": "Base version v0 not found, falling back to latest", "timestamp": "2025-07-09T09:59:44.915847Z", "level": "warning"}
+{"agent_id": "AGENT_3", "version": "latest", "event": "Agent prompt retrieved", "timestamp": "2025-07-09T09:59:44.916809Z", "level": "info"}
+{"provider": "gemini", "model": "gemini-2.5-flash", "event": "AI client created successfully", "timestamp": "2025-07-09T09:59:44.916920Z", "level": "info"}
+{"model": "gemini-2.5-flash", "temperature": 0.7, "max_tokens": 4000, "event": "Making Gemini API request", "timestamp": "2025-07-09T09:59:44.917301Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"content_length": 3021, "tokens_used": 6398, "event": "Gemini response received successfully", "timestamp": "2025-07-09T10:00:08.962385Z", "level": "info"}
+{"content_preview": "\n{\n  \"narrative_structure\": {\n    \"narrative_arc\": \"\u5f15\u5bfc\u542c\u4f17\u4ece\u5bf9\u6570\u636e\u4fdd\u62a4\u6f0f\u6d1e\u7684\u201c\u672a\u77e5\u201d\u72b6\u6001\uff0c\u901a\u8fc7\u514d\u8d39\u8bc4\u4f30\u548c\u89e3\u51b3\u65b9\u6848\u7684\u6e05\u6670\u5448\u73b0\uff0c\u6700\u7ec8\u8fbe\u5230\u5bf9\u201c\u5907\u4efd\u4e0e\u707e\u96be\u6062\u590d\u670d\u52a1\u201d\u7684\u5145\u5206\u201c\u786e\u4fe1\u201d\u548c\u4fe1\u4efb\u3002\",\n    \"key_story_beats\": [\n      \"\u63ed\u793a\u6f5c\u5728\u7684\u6570\u636e\u4fdd\u62a4\u76f2\u533a\u4e0e\u98ce\u9669 (\u672a\u77e5)\",\n      \"\u5f15\u5165\u514d\u8d39\u8bc4\u4f30\u670d\u52a1\uff1a\u53d1\u73b0\u95ee\u9898\u4e0e\u89e3\u51b3\u65b9\u6848\u7684\u6865", "error": "Unterminated string starting at: line 102 column 7 (char 2999)", "event": "Failed to parse AI response as JSON", "timestamp": "2025-07-09T10:00:08.962814Z", "level": "warning"}
+{"event": "Output schema validation passed", "timestamp": "2025-07-09T10:00:08.962942Z", "level": "debug"}
+{"task_id": 128279, "schema_id": "PresentationBlueprint_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T10:00:08.968609Z", "level": "info"}
+{"task_id": 128279, "schema_id": "PresentationBlueprint_v1.0", "artifact_name": "presentation_blueprint", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T10:00:08.973817Z", "level": "info"}
+{"task_id": 128279, "agent_id": "AGENT_3", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T10:00:08.973931Z", "level": "info"}
+{"task_id": 128279, "agent_id": "AGENT_3", "event": "Task processed successfully", "timestamp": "2025-07-09T10:00:08.973974Z", "level": "info"}
+{"task_id": 128279, "agent_id": "AGENT_3", "event": "Processing completed task", "timestamp": "2025-07-09T10:00:09.998130Z", "level": "info"}
+{"task_id": 128279, "artifact_name": "presentation_blueprint", "schema_id": "PresentationBlueprint_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T10:00:09.999349Z", "level": "info"}
+{"task_id": 128279, "event": "Artifact created for completed task", "timestamp": "2025-07-09T10:00:09.999422Z", "level": "info"}
+{"current_agent": "AGENT_3", "event": "Getting next agents", "timestamp": "2025-07-09T10:00:09.999458Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T10:00:09.999483Z", "level": "debug"}
+{"agent_id": "AGENT_3", "index": 2, "event": "Found agent in execution order", "timestamp": "2025-07-09T10:00:09.999524Z", "level": "debug"}
+{"next_agent": "AGENT_4", "event": "Next agent determined", "timestamp": "2025-07-09T10:00:09.999548Z", "level": "debug"}
+{"agent_id": "AGENT_3", "next_agents": ["AGENT_4"], "event": "Next agents determined", "timestamp": "2025-07-09T10:00:09.999568Z", "level": "debug"}
+{"job_id": 36, "agent_id": "AGENT_4", "event": "Created next task", "timestamp": "2025-07-09T10:00:10.006330Z", "level": "info"}
+{"task_id": 128279, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T10:00:10.008097Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+{"task_id": 128280, "agent_id": "AGENT_4", "attempt": 1, "max_retries": 3, "event": "Starting task processing", "timestamp": "2025-07-09T10:00:14.933215Z", "level": "info"}
+{"agent_id": "AGENT_4", "task_artifacts": 3, "event": "Starting Chief Principles Auditor processing", "timestamp": "2025-07-09T10:00:14.933424Z", "level": "info"}
+{"agent_id": "AGENT_4", "artifact_count": 3, "event": "Fetched artifacts", "timestamp": "2025-07-09T10:00:14.935348Z", "level": "info"}
+{"agent_id": "AGENT_4", "event": "Creative brief lacks 'purpose' field, audit quality may be reduced", "timestamp": "2025-07-09T10:00:14.935475Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Visual explorations lacks 'selected_theme', audit quality may be reduced", "timestamp": "2025-07-09T10:00:14.935508Z", "level": "warning"}
+{"agent_id": "AGENT_4", "error": "'AIClientFactory' object has no attribute 'get_client'", "event": "AI audit generation failed, using template fallback", "timestamp": "2025-07-09T10:00:14.935958Z", "level": "warning"}
+{"agent_id": "AGENT_4", "event": "Generating template audit fallback", "timestamp": "2025-07-09T10:00:14.936001Z", "level": "info"}
+{"task_id": 128280, "schema_id": "AuditReport_v1.0", "event": "Output payload validated successfully against schema", "timestamp": "2025-07-09T10:00:14.939991Z", "level": "info"}
+{"task_id": 128280, "schema_id": "AuditReport_v1.0", "artifact_name": "audit_report", "event": "Task output and completion saved atomically", "timestamp": "2025-07-09T10:00:14.945804Z", "level": "info"}
+{"task_id": 128280, "agent_id": "AGENT_4", "attempt": 1, "event": "Task completed successfully", "timestamp": "2025-07-09T10:00:14.945960Z", "level": "info"}
+{"task_id": 128280, "agent_id": "AGENT_4", "event": "Task processed successfully", "timestamp": "2025-07-09T10:00:14.946008Z", "level": "info"}
+{"task_id": 128280, "agent_id": "AGENT_4", "event": "Processing completed task", "timestamp": "2025-07-09T10:00:15.013221Z", "level": "info"}
+{"task_id": 128280, "artifact_name": "audit_report", "schema_id": "AuditReport_v1.0", "event": "Artifact created or already exists", "timestamp": "2025-07-09T10:00:15.014914Z", "level": "info"}
+{"task_id": 128280, "event": "Artifact created for completed task", "timestamp": "2025-07-09T10:00:15.015028Z", "level": "info"}
+{"current_agent": "AGENT_4", "event": "Getting next agents", "timestamp": "2025-07-09T10:00:15.015068Z", "level": "debug"}
+{"execution_order": ["AGENT_1", "AGENT_2", "AGENT_3", "AGENT_4"], "event": "Current execution order", "timestamp": "2025-07-09T10:00:15.015095Z", "level": "debug"}
+{"agent_id": "AGENT_4", "index": 3, "event": "Found agent in execution order", "timestamp": "2025-07-09T10:00:15.015127Z", "level": "debug"}
+{"agent_id": "AGENT_4", "event": "This is the last agent in sequence", "timestamp": "2025-07-09T10:00:15.015151Z", "level": "debug"}
+{"agent_id": "AGENT_4", "next_agents": [], "event": "Next agents determined", "timestamp": "2025-07-09T10:00:15.015172Z", "level": "debug"}
+{"job_id": 36, "event": "Job completed", "timestamp": "2025-07-09T10:00:15.017871Z", "level": "info"}
+{"task_id": 128280, "event": "Task marked as orchestrated", "timestamp": "2025-07-09T10:00:15.020221Z", "level": "info"}
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55058 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60344 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60354 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37830 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41258 - "GET /api/v1/jobs/36 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41266 - "HEAD /api/v1/jobs/36/result HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45754 - "GET /api/v1/jobs/36/result HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+{"event": "Shutting down Project HELIX API server", "timestamp": "2025-07-09T10:03:35.146876Z", "level": "info"}
+{"event": "Database connection pool closed", "timestamp": "2025-07-09T10:03:35.153162Z", "level": "info"}
+{"event": "Database connection closed", "timestamp": "2025-07-09T10:03:35.153396Z", "level": "info"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [677515]
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:03:35.162106Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:03:39.982631Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:03:40.047316Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:03:40.162908Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:03:44.887693Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:03:44.983269Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:03:45.048741Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:03:45.164282Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:03:49.893305Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:03:49.983907Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:03:50.049453Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:03:50.165072Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:03:54.899250Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:03:54.984749Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:03:55.050413Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:03:55.166028Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:03:59.901244Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:03:59.985720Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:04:00.051264Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:04:00.166867Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:04:04.905274Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:04:04.986715Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:04:05.052205Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:04:05.167723Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in failed tasks monitoring", "timestamp": "2025-07-09T10:04:09.911052Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in new jobs polling", "timestamp": "2025-07-09T10:04:09.987519Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in task polling", "timestamp": "2025-07-09T10:04:10.053070Z", "level": "error"}
+{"error": "pool is closed", "event": "Error in completed tasks polling", "timestamp": "2025-07-09T10:04:10.168592Z", "level": "error"}

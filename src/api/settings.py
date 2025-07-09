@@ -3,8 +3,8 @@ Application settings for Project HELIX v2.0
 """
 
 from pydantic_settings import BaseSettings
-from pydantic import ConfigDict
-from typing import Optional
+from pydantic import ConfigDict, field_validator
+from typing import Optional, Union
 
 
 class Settings(BaseSettings):
@@ -35,14 +35,41 @@ class Settings(BaseSettings):
     # Application settings
     environment: str = "development"
     log_level: str = "INFO"
+    debug: bool = False
     
     # Orchestrator settings
     orchestrator_poll_interval: int = 5
     max_retry_attempts: int = 3
+    orchestrator_port: Optional[int] = None
+    worker_port: Optional[int] = None
+    
+    @field_validator('orchestrator_port', 'worker_port', mode='before')
+    @classmethod
+    def parse_optional_int_port(cls, v):
+        """Convert empty string to None for optional port fields"""
+        if v == '' or v is None:
+            return None
+        return int(v)
+    
+    # Security settings
+    secret_key: str = "dev_secret_key_change_in_production"
+    cors_origins: str = "http://localhost:*,https://localhost:*"
+    
+    # Performance settings
+    db_pool_min_size: int = 5
+    db_pool_max_size: int = 20
+    api_timeout: int = 30
+    agent_timeout: int = 300
+    
+    # Development settings
+    auto_reload: bool = True
+    enable_docs: bool = True
+    verbose_logging: bool = False
     
     model_config = ConfigDict(
         env_file=".env",
-        env_file_encoding="utf-8"
+        env_file_encoding="utf-8",
+        extra="ignore"  # 忽略额外字段
     )
 
 

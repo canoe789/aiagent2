@@ -9,7 +9,7 @@ from datetime import datetime
 
 from src.database.connection import get_db_connection
 from src.database.models import (
-    JobCreate, JobResponse, Job, Task, JobStatus, TaskStatus
+    JobCreate, JobResponse, Job, Task, JobStatus, TaskStatus, TaskResponse
 )
 
 logger = structlog.get_logger(__name__)
@@ -54,7 +54,10 @@ async def create_job(
         return JobResponse(
             job_id=job_id,
             status=JobStatus.PENDING,
-            message="Job created successfully and queued for processing"
+            message="Job created successfully and queued for processing",
+            created_at=datetime.utcnow(),
+            error_message=None,
+            tasks=[]
         )
         
     except Exception as e:
@@ -62,20 +65,51 @@ async def create_job(
         raise HTTPException(status_code=500, detail="Internal server error")
 
 
-@jobs_router.get("/jobs/{job_id}", response_model=Job)
+@jobs_router.get("/jobs/{job_id}", response_model=JobResponse)
 async def get_job(
     job_id: int,
     db_manager=Depends(get_db_connection)
 ):
-    """Get job details by ID"""
+    """Get job details by ID with associated tasks"""
     try:
-        query = "SELECT * FROM jobs WHERE id = $1"
-        result = await db_manager.fetch_one(query, job_id)
+        # Get job details
+        job_query = "SELECT * FROM jobs WHERE id = $1"
+        job_result = await db_manager.fetch_one(job_query, job_id)
         
-        if not result:
+        if not job_result:
             raise HTTPException(status_code=404, detail="Job not found")
         
-        return Job.model_validate(result)
+        # Get associated tasks
+        tasks_query = """
+            SELECT id, status, agent_id, created_at, started_at, completed_at, error_log
+            FROM tasks 
+            WHERE job_id = $1 
+            ORDER BY created_at ASC
+        """
+        task_results = await db_manager.fetch_all(tasks_query, job_id)
+        
+        # Convert tasks to TaskResponse objects
+        tasks = [
+            TaskResponse(
+                task_id=task["id"],
+                status=task["status"],
+                agent_id=task["agent_id"],
+                created_at=task["created_at"],
+                started_at=task["started_at"],
+                completed_at=task["completed_at"],
+                error_log=task["error_log"]
+            )
+            for task in task_results
+        ]
+        
+        return JobResponse(
+            job_id=job_result["id"],
+            status=job_result["status"],
+            message=f"Job {job_result['status'].lower()}",
+            created_at=job_result["created_at"],
+            error_message=job_result["error_message"],
+            tasks=tasks
+        )
         
     except HTTPException:
         raise

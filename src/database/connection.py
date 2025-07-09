@@ -5,7 +5,9 @@ Database connection management for Project HELIX v2.0
 import asyncio
 import asyncpg
 import os
+import json
 from typing import Optional
+from contextlib import asynccontextmanager
 import structlog
 
 logger = structlog.get_logger(__name__)
@@ -34,13 +36,23 @@ class DatabaseManager:
                 self.connection_url,
                 min_size=min_size,
                 max_size=max_size,
-                command_timeout=60
+                command_timeout=60,
+                init=self._init_connection  # Register JSON type handlers
             )
             logger.info("Database connection pool created", 
                        min_size=min_size, max_size=max_size)
         except Exception as e:
             logger.error("Failed to create database connection pool", error=str(e))
             raise
+    
+    async def _init_connection(self, conn):
+        """Register JSONB type handlers for proper serialization/deserialization"""
+        await conn.set_type_codec(
+            'jsonb',
+            encoder=json.dumps,
+            decoder=json.loads,
+            schema='pg_catalog'
+        )
     
     async def disconnect(self) -> None:
         """Close database connection pool"""
@@ -65,11 +77,12 @@ class DatabaseManager:
             rows = await connection.fetch(query, *args)
             return [dict(row) for row in rows]
     
+    @asynccontextmanager
     async def transaction(self):
-        """Get a database transaction context"""
-        connection = await self.pool.acquire()
-        transaction = connection.transaction()
-        return TransactionContext(connection, transaction, self.pool)
+        """Get a database transaction context using asyncpg's built-in transaction management"""
+        async with self.pool.acquire() as connection:
+            async with connection.transaction():
+                yield connection
 
 class TransactionContext:
     """Context manager for database transactions"""
@@ -90,11 +103,22 @@ class TransactionContext:
             await self.transaction.commit()
         await self.pool.release(self.connection)
 
-# Global database manager instance
-db_manager = DatabaseManager()
+# Global database manager instance (lazy initialization)
+_global_db_manager: Optional['DatabaseManager'] = None
+
+def get_global_db_manager() -> 'DatabaseManager':
+    """
+    Returns the global singleton DatabaseManager instance, ensuring it's initialized
+    after environment variables are loaded.
+    """
+    global _global_db_manager
+    if _global_db_manager is None:
+        _global_db_manager = DatabaseManager()
+    return _global_db_manager
 
 async def get_db_connection():
     """Get database connection (for dependency injection)"""
-    if not db_manager.pool:
-        await db_manager.connect()
-    return db_manager
+    manager = get_global_db_manager()
+    if not manager.pool:
+        await manager.connect()
+    return manager

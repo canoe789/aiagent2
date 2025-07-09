@@ -20,7 +20,7 @@ class GeminiClient(BaseAIClient):
     Uses Gemini Flash for fast, efficient responses
     """
     
-    def __init__(self, api_key: str, model_name: str = "gemini-1.5-flash", **kwargs):
+    def __init__(self, api_key: str, model_name: str = "gemini-2.5-flash", **kwargs):
         super().__init__(api_key, model_name, **kwargs)
         self.base_url = "https://generativelanguage.googleapis.com/v1beta"
         

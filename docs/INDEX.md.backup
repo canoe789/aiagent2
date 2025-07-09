@@ -1,0 +1,20 @@
+# Project HELIX Documentation Index
+
+## 🚀 快速开始
+- [Quick Start Guide](QUICK_START.md)
+- [Frontend Setup](FRONTEND_SETUP.md)
+- [System Startup Guide](SYSTEM_STARTUP_GUIDE.md)
+
+## 🏗️ 架构文档
+- [README.md](../README.md) - 项目架构蓝图
+- [CLAUDE.md](../CLAUDE.md) - AI协作指南
+
+## 📊 项目管理
+- [Project Progress](PROJECT_PROGRESS.md)
+- [Process Management](PROCESS_MANAGEMENT.md)
+- [Port Configuration](PORT_CONFIGURATION_ANALYSIS.md)
+- [Dynamic Port Management](DYNAMIC_PORT_MANAGEMENT_GUIDE.md)
+- [Data Cleanup SOP](DIRTY_DATA_CLEANUP_SOP.md)
+
+---
+**目标:** 5分钟内找到所需信息，提升开发效率

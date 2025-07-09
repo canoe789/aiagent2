@@ -206,49 +206,133 @@ HELIX 系统的核心是一个围绕中心状态数据库（PostgreSQL）构建�
 - Git
 - Docker
 - Docker Compose
+- Python 3.10+ (用于本地开发)
 
-### **6.2 安装与启动**
+### **6.2 动态端口管理**
 
-1. **克隆仓库**Generated bash
-    
-    ```jsx
-          git clone <your-repo-url>
-    cd project-helix
-    ```
-    
-2. **配置环境变量**Generated bash
-    
-    复制示例环境变量文件，并根据需要修改其中的配置（如数据库密码、API密钥等）。
-    
-    ```jsx
-          cp .env.example .env
-    ```
-    
-3. **构建并启动服务**Generated bash
-    
-    此命令将使用 docker-compose.yml 文件来构建所有服务的镜像，并以后台模式启动容器。
-    
-    ```jsx
-          docker-compose up --build -d
-    ```
-    
-4. **验证运行状态**
-    - 查看所有容器是否正常运行：Generated bash
-        
-        ```jsx
-              docker-compose ps
-        ```
-        
-    - 实时查看服务日志：Generated bash
-        
-        ```jsx
-              docker-compose logs -f
-        ```
-        
-    - 访问 FastAPI 的 API 文档页面，确认 API 服务正常： http://localhost:8000/docs
-5. **停止服务**Generated bash
-    
-          `docker-compose down`
+**重要:** 由于HELIX系统运行在共享开发环境中，我们采用动态端口分配机制，**严禁硬编码端口号**。
+
+#### **核心原则**
+- 所有服务端口通过脚本动态发现
+- 自动处理端口冲突和重试
+- 前端智能适配API端点变化
+- 数据库使用固定端口确保稳定性
+
+### **6.3 启动方式**
+
+HELIX系统提供三种启动方式，根据您的需求选择：
+
+#### **方式1: 智能动态启动（推荐用于开发）**
+
+系统会自动分配可用端口并启动所有服务：
+
+```bash
+# 1. 克隆仓库
+git clone <your-repo-url>
+cd project-helix
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件，添加必要的API密钥
+
+# 3. 智能启动（自动端口管理）
+python scripts/start-with-dynamic-ports.py
+```
+
+系统将自动输出实际使用的端口：
+```
+🌐 API Server will start on: http://localhost:8023
+📚 API Documentation: http://localhost:8023/docs
+```
+
+#### **方式2: Docker生产部署（推荐用于生产）**
+
+使用Nginx反向代理提供稳定的访问端点：
+
+```bash
+# 使用动态端口配置
+docker-compose -f config/docker-compose.dynamic.yml up -d
+
+# 访问统一端点（无论内部端口如何变化）
+# 前端界面: http://localhost:8080
+# API文档: http://localhost:8080/docs
+# 健康检查: http://localhost:8080/health
+```
+
+#### **方式3: 传统手动配置**
+
+如果需要手动控制端口分配：
+
+```bash
+# 1. 查找可用端口
+chmod +x ./scripts/find-port.sh
+AVAILABLE_PORT=$(./scripts/find-port.sh)
+echo "发现可用端口: $AVAILABLE_PORT"
+
+# 2. 配置环境文件
+cp .env.example .env
+sed -i "s/^API_PORT=.*/API_PORT=${AVAILABLE_PORT}/" .env
+
+# 3. 启动服务
+python start_system.py
+```
+
+### **6.4 验证运行状态**
+
+#### **动态启动验证**
+- 服务启动时会自动显示分配的端口
+- 前端自动发现并连接到正确的API端点
+- 浏览器访问显示的地址即可使用
+
+#### **Docker部署验证**
+```bash
+# 查看容器状态
+docker-compose -f config/docker-compose.dynamic.yml ps
+
+# 查看日志
+docker-compose -f config/docker-compose.dynamic.yml logs -f
+
+# 健康检查
+curl http://localhost:8080/api/v1/health
+```
+
+#### **端口冲突自动处理**
+如果遇到"端口已被占用"错误，系统会自动：
+1. 重新扫描可用端口
+2. 更新配置并重试
+3. 最多重试3次确保启动成功
+
+### **6.5 故障排除**
+
+#### **常见问题**
+
+**问题**: 前端无法连接API
+**解决**: 
+```bash
+# 检查API服务状态
+curl http://localhost:$(cat .env | grep API_PORT | cut -d= -f2)/api/v1/health
+
+# 查看浏览器控制台，前端会自动发现正确端口
+```
+
+**问题**: Docker容器启动失败
+**解决**:
+```bash
+# 清理并重启
+docker-compose -f config/docker-compose.dynamic.yml down
+docker-compose -f config/docker-compose.dynamic.yml up -d
+```
+
+### **6.6 停止服务**
+
+```bash
+# 动态启动的服务
+# 按 Ctrl+C 停止，或使用以下命令清理进程:
+pkill -f "start_system.py"
+
+# Docker服务
+docker-compose -f config/docker-compose.dynamic.yml down
+```
     
 
 ## **7. 项目结构 (Project Structure)**

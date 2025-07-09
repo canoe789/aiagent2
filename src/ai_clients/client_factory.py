@@ -29,7 +29,7 @@ class AIClientFactory:
     # Default models for each provider
     DEFAULT_MODELS = {
         "deepseek": "deepseek-chat",
-        "gemini": "gemini-1.5-flash",
+        "gemini": "gemini-2.5-flash",
     }
     
     # Environment variable mapping
@@ -64,7 +64,7 @@ class AIClientFactory:
         
         # Use default provider if not specified
         if not provider:
-            provider = os.getenv("DEFAULT_AI_PROVIDER", "deepseek")
+            provider = os.getenv("DEFAULT_AI_PROVIDER", "gemini")
         
         # Validate provider
         if provider not in cls.PROVIDERS:
@@ -82,7 +82,8 @@ class AIClientFactory:
         
         # Use default model if not specified
         if not model:
-            model = cls.DEFAULT_MODELS.get(provider)
+            # First check environment variable, then fall back to hardcoded default
+            model = os.getenv("DEFAULT_AI_MODEL") or cls.DEFAULT_MODELS.get(provider)
         
         # Get client class and create instance
         client_class = cls.PROVIDERS[provider]
@@ -132,7 +133,7 @@ class AIClientFactory:
         """Get description for a provider"""
         descriptions = {
             "deepseek": "DeepSeek AI - High-quality conversational AI with strong reasoning capabilities",
-            "gemini": "Google Gemini Flash - Fast and efficient multimodal AI model",
+            "gemini": "Google Gemini 2.5 Flash - Fast and efficient multimodal AI model",
         }
         return descriptions.get(provider, f"{provider.title()} AI provider")
     
@@ -190,7 +191,7 @@ class AIClientManager:
             BaseAIClient: Cached or new client instance
         """
         if not provider:
-            provider = os.getenv("DEFAULT_AI_PROVIDER", "deepseek")
+            provider = os.getenv("DEFAULT_AI_PROVIDER", "gemini")
         
         cache_key = f"{provider}_{hash(str(sorted(kwargs.items())))}"
         
